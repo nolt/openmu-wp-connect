@@ -57,10 +57,17 @@
 .openmu-line--purple { color: var(--openmu-purple); }
 .openmu-line--violet { color: var(--openmu-violet); }
 
-/* Ranking table: numbers right-aligned for comparison down the column. */
+/* Ranking table: numbers right-aligned for comparison down the column. On phones tighter
+ * cells and a smaller font; a table still wider than the screen scrolls sideways by itself,
+ * the page doesn't (like the account and mini game tables). */
+.openmu-ranking { overflow-x: auto; }
 .openmu-ranking table { width: 100%; border-collapse: collapse; }
 .openmu-ranking th, .openmu-ranking td { padding: 0.45em 0.6em; text-align: start; }
 .openmu-ranking .openmu-ranking__number, .openmu-ranking .openmu-ranking__place { text-align: end; font-variant-numeric: tabular-nums; }
+@media (max-width: 600px) {
+	.openmu-ranking table { font-size: 0.875em; }
+	.openmu-ranking th, .openmu-ranking td { padding: 0.4em 0.35em; }
+}
 
 /* Armory search form. */
 .openmu-armory__search { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-block-end: 1.5rem; }
