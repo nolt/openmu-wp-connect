@@ -68,6 +68,23 @@ the browser only gets that token in an HttpOnly cookie
 server limits failed logins per account. If the site uses a page cache, exclude
 visitors with that cookie from it.
 
+### Protection against bots and password guessing
+
+The game server sees every request coming from the web server, so the plugin adds
+limits per visitor address on its own:
+
+- **Logins:** 10 failed logins per address in 15 minutes, across all accounts; then
+  the form asks the visitor to wait.
+- **Registrations:** 5 registrations per address in an hour.
+- **Honeypot:** the registration form has a field people never see; a filled-in
+  field means a bot, and the registration is refused.
+
+The visitor address is `REMOTE_ADDR`. Behind a reverse proxy or CDN every visitor
+shares the proxy's address: return the real one with the `openmu_wp_connect_client_ip`
+filter. A captcha plugin can print into the registration form with the
+`openmu_wp_connect_register_form` action and refuse a registration with the
+`openmu_wp_connect_register_allowed` filter (see For developers).
+
 ## Caching
 
 The plugin caches answers of the server for a short time: the status for
@@ -88,7 +105,13 @@ skill names stay in English, as players know them from the game.
   - `openmu_wp_connect_data_source`: replace the data source;
   - `openmu_wp_connect_armory_url`: the address of the armory page;
   - `openmu_wp_connect_class_picture`: the picture of a character class;
-  - `openmu_wp_connect_client_assets`: the folder of the optional game client files.
+  - `openmu_wp_connect_client_assets`: the folder of the optional game client files;
+  - `openmu_wp_connect_client_ip`: the visitor address the form limits count for;
+  - `openmu_wp_connect_rate_limits`: the limits, `[ attempts, seconds ]` for `login`
+    and `register`; 0 attempts turns a limit off;
+  - `openmu_wp_connect_register_allowed`: return `true`, or a message code such as
+    `captcha_failed`, to refuse a registration.
+- Action `openmu_wp_connect_register_form`: prints into the registration form, e.g. a captcha.
 - Every value from the server is escaped when printed.
 
 ## Game client look (optional)

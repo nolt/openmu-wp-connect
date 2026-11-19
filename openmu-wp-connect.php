@@ -36,6 +36,7 @@ require_once OPENMU_WP_CONNECT_DIR . 'includes/blocks.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/blocks-extra.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/event-names.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/account.php';
+require_once OPENMU_WP_CONNECT_DIR . 'includes/account-guard.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/account-menu.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/character-view.php';
 

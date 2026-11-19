@@ -69,6 +69,23 @@ tokenem; przeglądarka dostaje tylko ten token w ciasteczku HttpOnly
 ogranicza nieudane logowania na konto. Jeśli strona używa cache stron, wyłącz
 z niego odwiedzających z tym ciasteczkiem.
 
+### Ochrona przed botami i zgadywaniem haseł
+
+Serwer gry widzi każde zapytanie jako przychodzące z serwera WWW, więc wtyczka sama
+dokłada limity na adres odwiedzającego:
+
+- **Logowanie:** 10 nieudanych logowań z jednego adresu w 15 minut, łącznie na
+  wszystkie konta; potem formularz prosi o odczekanie.
+- **Rejestracja:** 5 rejestracji z jednego adresu w godzinę.
+- **Pole-pułapka (honeypot):** formularz rejestracji ma pole, którego ludzie nie
+  widzą; wypełnione oznacza bota i rejestracja jest odrzucana.
+
+Adres odwiedzającego to `REMOTE_ADDR`. Za reverse proxy lub CDN wszyscy odwiedzający
+mają adres proxy: prawdziwy zwróć filtrem `openmu_wp_connect_client_ip`. Wtyczka z
+captchą może dopisać się do formularza rejestracji akcją
+`openmu_wp_connect_register_form` i odrzucić rejestrację filtrem
+`openmu_wp_connect_register_allowed` (zob. Dla programistów).
+
 ## Cache
 
 Wtyczka zapamiętuje odpowiedzi serwera na krótko: status na 30 sekund, rankingi
@@ -89,7 +106,13 @@ przedmiotów i umiejętności zostają po angielsku, tak jak gracze znają je z 
   - `openmu_wp_connect_data_source`: podmiana źródła danych;
   - `openmu_wp_connect_armory_url`: adres strony zbrojowni;
   - `openmu_wp_connect_class_picture`: obrazek klasy postaci;
-  - `openmu_wp_connect_client_assets`: folder opcjonalnych plików klienta gry.
+  - `openmu_wp_connect_client_assets`: folder opcjonalnych plików klienta gry;
+  - `openmu_wp_connect_client_ip`: adres odwiedzającego, dla którego liczą się limity formularzy;
+  - `openmu_wp_connect_rate_limits`: limity, `[ próby, sekundy ]` dla `login` i
+    `register`; 0 prób wyłącza limit;
+  - `openmu_wp_connect_register_allowed`: zwróć `true` albo kod komunikatu, np.
+    `captcha_failed`, żeby odrzucić rejestrację.
+- Akcja `openmu_wp_connect_register_form`: dopisuje do formularza rejestracji, np. captchę.
 - Każda wartość z serwera jest escapowana przy wypisaniu.
 
 ## Wygląd z klienta gry (opcjonalnie)

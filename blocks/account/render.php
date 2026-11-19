@@ -90,6 +90,7 @@ $openmu_time_format = (string) get_option( 'time_format' );
 							<label for="openmu-register-email"><?php esc_html_e( 'E-mail (optional)', 'openmu-wp-connect' ); ?></label>
 							<input id="openmu-register-email" type="email" name="openmu_email" maxlength="254" autocomplete="email" />
 						</p>
+						<?php openmu_wp_connect_guard_register_fields(); ?>
 						<p><button type="submit" class="wp-element-button"><?php esc_html_e( 'Create account', 'openmu-wp-connect' ); ?></button></p>
 					</form>
 				<?php endif; ?>

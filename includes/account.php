@@ -16,6 +16,9 @@
  *
  * Players' sessions are not WordPress users: a game account gets no rights on the site.
  *
+ * Limits per visitor address, the honeypot of the registration form and the captcha
+ * hooks are in account-guard.php.
+ *
  * @package OpenMU_WP_Connect
  */
 
@@ -382,6 +385,13 @@ function openmu_wp_connect_account_message( string $code, int $retry_minutes = 0
 			$retry_minutes
 		)
 		: __( 'Too many failed attempts. Try again later.', 'openmu-wp-connect' );
+	$limited = $retry_minutes > 0
+		? sprintf(
+			/* translators: %d: minutes until the next registration is allowed. */
+			_n( 'Too many accounts were created from your address. Try again in %d minute.', 'Too many accounts were created from your address. Try again in %d minutes.', $retry_minutes, 'openmu-wp-connect' ),
+			$retry_minutes
+		)
+		: __( 'Too many accounts were created from your address. Try again later.', 'openmu-wp-connect' );
 
 	$messages = array(
 		'logged_in'            => array( 'excellent', __( 'You are logged in.', 'openmu-wp-connect' ) ),
@@ -401,6 +411,8 @@ function openmu_wp_connect_account_message( string $code, int $retry_minutes = 0
 		'invalid_email'        => array( 'requirement', __( 'The e-mail address is not valid.', 'openmu-wp-connect' ) ),
 		'register_invalid'     => array( 'requirement', __( 'The server did not accept these account details.', 'openmu-wp-connect' ) ),
 		'login_taken'          => array( 'requirement', __( 'This login name is already taken.', 'openmu-wp-connect' ) ),
+		'register_limited'     => array( 'requirement', $limited ),
+		'captcha_failed'       => array( 'requirement', __( 'Please confirm that you are not a robot.', 'openmu-wp-connect' ) ),
 		'not_allowed'          => array( 'requirement', __( 'This function is not enabled for the site on the game server.', 'openmu-wp-connect' ) ),
 		'not_connected'        => array( 'requirement', __( 'Connect the site to an OpenMU server in Settings > OpenMU WP Connect.', 'openmu-wp-connect' ) ),
 		'unavailable'          => array( 'requirement', __( 'The game server is not available right now. Try again later.', 'openmu-wp-connect' ) ),
@@ -480,22 +492,42 @@ function openmu_wp_connect_account_handle_forms(): void {
 
 	switch ( $action ) {
 		case 'login':
-			[ $code, $retry ] = openmu_wp_connect_account_login( trim( openmu_wp_connect_account_posted( 'openmu_login_name' ) ), openmu_wp_connect_account_posted( 'openmu_password' ) );
-			openmu_wp_connect_account_redirect( $code, $retry );
-			break;
 		case 'refresh':
-			[ $code, $retry ] = openmu_wp_connect_account_refresh( openmu_wp_connect_account_posted( 'openmu_password' ) );
+			// Password guesses from one address are limited across accounts (account-guard.php).
+			$wait = openmu_wp_connect_guard_wait( 'login' );
+			if ( $wait > 0 ) {
+				openmu_wp_connect_account_redirect( 'locked_out', $wait );
+			}
+			[ $code, $retry ] = 'login' === $action
+				? openmu_wp_connect_account_login( trim( openmu_wp_connect_account_posted( 'openmu_login_name' ) ), openmu_wp_connect_account_posted( 'openmu_password' ) )
+				: openmu_wp_connect_account_refresh( openmu_wp_connect_account_posted( 'openmu_password' ) );
+			if ( 'login_failed' === $code ) {
+				openmu_wp_connect_guard_hit( 'login' );
+			}
 			openmu_wp_connect_account_redirect( $code, $retry );
 			break;
 		case 'register':
-			openmu_wp_connect_account_redirect(
-				openmu_wp_connect_account_register(
-					trim( openmu_wp_connect_account_posted( 'openmu_login_name' ) ),
-					openmu_wp_connect_account_posted( 'openmu_password' ),
-					openmu_wp_connect_account_posted( 'openmu_password_repeat' ),
-					sanitize_email( openmu_wp_connect_account_posted( 'openmu_email' ) )
-				)
+			$wait = openmu_wp_connect_guard_wait( 'register' );
+			if ( $wait > 0 ) {
+				openmu_wp_connect_account_redirect( 'register_limited', $wait );
+			}
+			$login_name = trim( openmu_wp_connect_account_posted( 'openmu_login_name' ) );
+			$email      = sanitize_email( openmu_wp_connect_account_posted( 'openmu_email' ) );
+			$refused    = openmu_wp_connect_guard_register( $login_name, $email );
+			if ( '' !== $refused ) {
+				openmu_wp_connect_account_redirect( $refused );
+			}
+			$code = openmu_wp_connect_account_register(
+				$login_name,
+				openmu_wp_connect_account_posted( 'openmu_password' ),
+				openmu_wp_connect_account_posted( 'openmu_password_repeat' ),
+				$email
 			);
+			// Only registrations the server answered count; typing mistakes caught here don't.
+			if ( in_array( $code, array( 'registered', 'register_invalid', 'login_taken' ), true ) ) {
+				openmu_wp_connect_guard_hit( 'register' );
+			}
+			openmu_wp_connect_account_redirect( $code );
 			break;
 		case 'password':
 			[ $code, $retry ] = openmu_wp_connect_account_change_password(

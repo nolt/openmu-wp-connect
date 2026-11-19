@@ -15,6 +15,8 @@
 }
 
 .openmu-account__form p { margin: 0 0 0.75rem; }
+/* Honeypot of the registration form (account-guard.php): off-screen, not display:none, which some bots skip. */
+.openmu-account__trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .openmu-account__form label { display: block; margin-block-end: 0.2rem; }
 .openmu-account__form input[type="text"],
 .openmu-account__form input[type="password"],
