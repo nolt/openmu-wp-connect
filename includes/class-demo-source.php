@@ -2,9 +2,9 @@
 /**
  * Demo data source: serves the JSON files in demo/.
  *
- * Lets the blocks be built, styled and tested before the OpenMU API offers the
- * endpoints they need. The files follow the planned API response shapes, so
- * switching to the live source doesn't change the blocks.
+ * Used until a server address and an API key are set, so the blocks can be placed and
+ * styled before the site is connected. The files have the shapes the API source
+ * returns, so switching to the live source doesn't change the blocks.
  *
  * @package OpenMU_WP_Connect
  */

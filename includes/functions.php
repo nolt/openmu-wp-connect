@@ -11,8 +11,9 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Returns the data source the blocks read from.
  *
- * Other code can swap it with the "openmu_wp_connect_data_source" filter, which is
- * where the OpenMU API source will be wired in.
+ * The demo source by default; settings.php swaps in the OpenMU API source through the
+ * "openmu_wp_connect_data_source" filter when a server address and an API key are set,
+ * and other code can use the same filter to supply its own source.
  */
 function openmu_wp_connect_source(): OpenMU_WP_Connect_Data_Source {
 	static $source = null;
@@ -65,7 +66,7 @@ function openmu_wp_connect_demo_notice(): void {
 	}
 	printf(
 		'<div class="notice notice-warning"><p>%s</p></div>',
-		esc_html__( 'OpenMU WP Connect shows demo data: the server status, ranking and armory blocks are not connected to your game server yet.', 'openmu-wp-connect' )
+		esc_html__( 'OpenMU WP Connect shows demo data: its blocks are not connected to your game server yet. Set the server address and the API key in Settings > OpenMU WP Connect.', 'openmu-wp-connect' )
 	);
 }
 add_action( 'admin_notices', 'openmu_wp_connect_demo_notice' );

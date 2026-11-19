@@ -161,3 +161,5 @@ MU Online is a trademark of Webzen Inc.; this project is not affiliated with Web
 ## License
 
 GPL-2.0-or-later, see [LICENSE](LICENSE).
+
+Original author: [Nolt](https://github.com/nolt).

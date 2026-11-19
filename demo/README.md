@@ -1,5 +1,5 @@
 Demo data for the OpenMU WP Connect blocks, used until the OpenMU API is connected.
-The shapes follow the planned API responses:
+The shapes are those the API source returns to the blocks:
 
 - `status.json`: same shape as OpenMU's `GET /api/status` (`state`, `players`).
 - `ranking.json`: characters ordered by resets, then level.

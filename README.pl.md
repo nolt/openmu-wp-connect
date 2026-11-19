@@ -159,3 +159,5 @@ MU Online jest znakiem towarowym Webzen Inc.; ten projekt nie jest powiązany z 
 ## Licencja
 
 GPL-2.0-or-later, zobacz [LICENSE](LICENSE).
+
+Autor oryginalny: [Nolt](https://github.com/nolt).
