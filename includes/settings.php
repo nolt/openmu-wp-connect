@@ -151,37 +151,3 @@ function openmu_wp_connect_settings_client_assets(): void {
 	</table>
 	<?php
 }
-
-/**
- * Carries the settings over from the plugin's former name, OpenMU Connect (folder
- * openmu-connect, options openmu_connect_*).
- *
- * Runs on activation. A renamed plugin lives in a new folder, so WordPress treats it as
- * a new plugin that has to be activated anyway; that is the one moment the move is needed.
- *
- * @remarks For each of the server address and the API key: when the new option is empty
- * and the old one is set, the value is copied and the old option is deleted. Cached API
- * answers and visitor sessions of the old name (transients openmu_connect_*) are dropped
- * rather than moved; they expire within minutes anyway, and logged-in visitors simply log
- * in again because the session cookie has a new name too. The wp-config.php constants
- * OPENMU_CONNECT_API_URL / OPENMU_CONNECT_API_KEY are not read any more; rename them to
- * OPENMU_WP_CONNECT_API_URL / OPENMU_WP_CONNECT_API_KEY.
- */
-function openmu_wp_connect_migrate_legacy_options(): void {
-	foreach ( array( 'api_url', 'api_key' ) as $name ) {
-		$old = get_option( 'openmu_connect_' . $name, '' );
-		if ( '' === (string) get_option( 'openmu_wp_connect_' . $name, '' ) && '' !== (string) $old ) {
-			update_option( 'openmu_wp_connect_' . $name, $old );
-		}
-		delete_option( 'openmu_connect_' . $name );
-	}
-
-	global $wpdb;
-	$wpdb->query( // phpcs:ignore WordPress.DB.DirectDatabaseQuery -- one-time cleanup, there is no API to list transients.
-		$wpdb->prepare(
-			"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s",
-			$wpdb->esc_like( '_transient_openmu_connect_' ) . '%',
-			$wpdb->esc_like( '_transient_timeout_openmu_connect_' ) . '%'
-		)
-	);
-}

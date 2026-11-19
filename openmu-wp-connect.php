@@ -47,5 +47,3 @@ function openmu_wp_connect_load_textdomain(): void {
 	load_plugin_textdomain( 'openmu-wp-connect', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 }
 add_action( 'init', 'openmu_wp_connect_load_textdomain' );
-
-register_activation_hook( __FILE__, 'openmu_wp_connect_migrate_legacy_options' );
