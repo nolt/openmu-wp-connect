@@ -43,6 +43,9 @@ class OpenMU_WP_Connect_Demo_Source implements OpenMU_WP_Connect_Data_Source {
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @param int         $limit           Number of characters, 1-100.
+	 * @param string|null $character_class Class name (one of openmu_wp_connect_character_classes()), or null for all.
 	 */
 	public function get_ranking( int $limit, ?string $character_class ): ?array {
 		$rows = $this->read( 'ranking' );
@@ -57,6 +60,8 @@ class OpenMU_WP_Connect_Demo_Source implements OpenMU_WP_Connect_Data_Source {
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @param string $name Character name.
 	 */
 	public function get_character( string $name ): ?array {
 		foreach ( (array) $this->read( 'characters' ) as $character ) {

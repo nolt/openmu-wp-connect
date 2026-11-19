@@ -318,20 +318,20 @@ function openmu_wp_connect_account_register( string $login_name, string $passwor
 /**
  * Changes the password of the logged-in account through the API.
  *
- * @param string $current  Current password.
- * @param string $new      New password.
- * @param string $repeat   The new password typed a second time.
+ * @param string $current      Current password.
+ * @param string $new_password New password.
+ * @param string $repeat       The new password typed a second time.
  * @return array{0: string, 1: int} Message code and the lockout wait in seconds.
  */
-function openmu_wp_connect_account_change_password( string $current, string $new, string $repeat ): array {
+function openmu_wp_connect_account_change_password( string $current, string $new_password, string $repeat ): array {
 	$account = openmu_wp_connect_account_current();
 	if ( ! $account ) {
 		return array( 'session_expired', 0 );
 	}
-	if ( ! openmu_wp_connect_account_valid_password( $new ) ) {
+	if ( ! openmu_wp_connect_account_valid_password( $new_password ) ) {
 		return array( 'invalid_new_password', 0 );
 	}
-	if ( $new !== $repeat ) {
+	if ( $new_password !== $repeat ) {
 		return array( 'password_mismatch', 0 );
 	}
 	if ( '' === $current ) {
@@ -343,7 +343,7 @@ function openmu_wp_connect_account_change_password( string $current, string $new
 		'/api/website/accounts/' . rawurlencode( $account['loginName'] ) . '/password',
 		array(
 			'currentPassword' => $current,
-			'newPassword'     => $new,
+			'newPassword'     => $new_password,
 		)
 	);
 
@@ -394,30 +394,30 @@ function openmu_wp_connect_account_message( string $code, int $retry_minutes = 0
 		: __( 'Too many accounts were created from your address. Try again later.', 'openmu-wp-connect' );
 
 	$messages = array(
-		'logged_in'            => array( 'excellent', __( 'You are logged in.', 'openmu-wp-connect' ) ),
-		'refreshed'            => array( 'excellent', __( 'Your account data is up to date.', 'openmu-wp-connect' ) ),
-		'logged_out'           => array( 'excellent', __( 'You are logged out.', 'openmu-wp-connect' ) ),
-		'registered'           => array( 'excellent', __( 'Your account has been created. You can log in now, on the site and in the game.', 'openmu-wp-connect' ) ),
-		'password_changed'     => array( 'excellent', __( 'Your password has been changed. Use the new one in the game too.', 'openmu-wp-connect' ) ),
-		'login_failed'         => array( 'requirement', __( 'Wrong login name or password.', 'openmu-wp-connect' ) ),
-		'locked_out'           => array( 'requirement', $locked ),
-		'wrong_password'       => array( 'requirement', __( 'The current password is wrong.', 'openmu-wp-connect' ) ),
+		'logged_in'                => array( 'excellent', __( 'You are logged in.', 'openmu-wp-connect' ) ),
+		'refreshed'                => array( 'excellent', __( 'Your account data is up to date.', 'openmu-wp-connect' ) ),
+		'logged_out'               => array( 'excellent', __( 'You are logged out.', 'openmu-wp-connect' ) ),
+		'registered'               => array( 'excellent', __( 'Your account has been created. You can log in now, on the site and in the game.', 'openmu-wp-connect' ) ),
+		'password_changed'         => array( 'excellent', __( 'Your password has been changed. Use the new one in the game too.', 'openmu-wp-connect' ) ),
+		'login_failed'             => array( 'requirement', __( 'Wrong login name or password.', 'openmu-wp-connect' ) ),
+		'locked_out'               => array( 'requirement', $locked ),
+		'wrong_password'           => array( 'requirement', __( 'The current password is wrong.', 'openmu-wp-connect' ) ),
 		'account_offline_leveling' => array( 'requirement', __( 'A character of this account is offline leveling. Stop the offline leveling in the game first, then change the password.', 'openmu-wp-connect' ) ),
-		'account_online'       => array( 'requirement', __( 'Your account is in the game now. Leave the game, then change the password.', 'openmu-wp-connect' ) ),
-		'invalid_new_password' => array( 'requirement', __( 'The new password must have 3 to 20 characters: letters, digits and common symbols (no national characters).', 'openmu-wp-connect' ) ),
-		'invalid_password'     => array( 'requirement', __( 'The password must have 3 to 20 characters: letters, digits and common symbols (no national characters).', 'openmu-wp-connect' ) ),
-		'invalid_login_name'   => array( 'requirement', __( 'The login name must have 3 to 10 characters: letters, digits and common symbols, no spaces.', 'openmu-wp-connect' ) ),
-		'password_mismatch'    => array( 'requirement', __( 'The two passwords are not the same.', 'openmu-wp-connect' ) ),
-		'invalid_email'        => array( 'requirement', __( 'The e-mail address is not valid.', 'openmu-wp-connect' ) ),
-		'register_invalid'     => array( 'requirement', __( 'The server did not accept these account details.', 'openmu-wp-connect' ) ),
-		'login_taken'          => array( 'requirement', __( 'This login name is already taken.', 'openmu-wp-connect' ) ),
-		'register_limited'     => array( 'requirement', $limited ),
-		'captcha_failed'       => array( 'requirement', __( 'Please confirm that you are not a robot.', 'openmu-wp-connect' ) ),
-		'not_allowed'          => array( 'requirement', __( 'This function is not enabled for the site on the game server.', 'openmu-wp-connect' ) ),
-		'not_connected'        => array( 'requirement', __( 'Connect the site to an OpenMU server in Settings > OpenMU WP Connect.', 'openmu-wp-connect' ) ),
-		'unavailable'          => array( 'requirement', __( 'The game server is not available right now. Try again later.', 'openmu-wp-connect' ) ),
-		'session_expired'      => array( 'requirement', __( 'Your session has ended. Log in again.', 'openmu-wp-connect' ) ),
-		'expired_form'         => array( 'requirement', __( 'The form has expired. Please try again.', 'openmu-wp-connect' ) ),
+		'account_online'           => array( 'requirement', __( 'Your account is in the game now. Leave the game, then change the password.', 'openmu-wp-connect' ) ),
+		'invalid_new_password'     => array( 'requirement', __( 'The new password must have 3 to 20 characters: letters, digits and common symbols (no national characters).', 'openmu-wp-connect' ) ),
+		'invalid_password'         => array( 'requirement', __( 'The password must have 3 to 20 characters: letters, digits and common symbols (no national characters).', 'openmu-wp-connect' ) ),
+		'invalid_login_name'       => array( 'requirement', __( 'The login name must have 3 to 10 characters: letters, digits and common symbols, no spaces.', 'openmu-wp-connect' ) ),
+		'password_mismatch'        => array( 'requirement', __( 'The two passwords are not the same.', 'openmu-wp-connect' ) ),
+		'invalid_email'            => array( 'requirement', __( 'The e-mail address is not valid.', 'openmu-wp-connect' ) ),
+		'register_invalid'         => array( 'requirement', __( 'The server did not accept these account details.', 'openmu-wp-connect' ) ),
+		'login_taken'              => array( 'requirement', __( 'This login name is already taken.', 'openmu-wp-connect' ) ),
+		'register_limited'         => array( 'requirement', $limited ),
+		'captcha_failed'           => array( 'requirement', __( 'Please confirm that you are not a robot.', 'openmu-wp-connect' ) ),
+		'not_allowed'              => array( 'requirement', __( 'This function is not enabled for the site on the game server.', 'openmu-wp-connect' ) ),
+		'not_connected'            => array( 'requirement', __( 'Connect the site to an OpenMU server in Settings > OpenMU WP Connect.', 'openmu-wp-connect' ) ),
+		'unavailable'              => array( 'requirement', __( 'The game server is not available right now. Try again later.', 'openmu-wp-connect' ) ),
+		'session_expired'          => array( 'requirement', __( 'Your session has ended. Log in again.', 'openmu-wp-connect' ) ),
+		'expired_form'             => array( 'requirement', __( 'The form has expired. Please try again.', 'openmu-wp-connect' ) ),
 	);
 
 	return $messages[ $code ] ?? null;

@@ -145,7 +145,7 @@ function openmu_wp_connect_character_view_enqueue(): void {
 	);
 	// Once per page, however many views it has.
 	static $textures_added = false;
-	$textures = openmu_wp_connect_client_texture_css();
+	$textures              = openmu_wp_connect_client_texture_css();
 	if ( '' !== $textures && ! $textures_added ) {
 		wp_add_inline_style( 'openmu-wp-connect-character-view', $textures );
 		$textures_added = true;
@@ -208,19 +208,31 @@ function openmu_wp_connect_character_view_item_lines( array $item ): array {
 	}
 
 	if ( ! empty( $item['skill'] ) ) {
-		$lines[] = array( 'text' => __( 'Skill', 'openmu-wp-connect' ), 'kind' => 'skill' );
+		$lines[] = array(
+			'text' => __( 'Skill', 'openmu-wp-connect' ),
+			'kind' => 'skill',
+		);
 	}
 	if ( ! empty( $item['luck'] ) ) {
-		$lines[] = array( 'text' => __( 'Luck (critical damage rate +5%)', 'openmu-wp-connect' ), 'kind' => 'luck' );
+		$lines[] = array(
+			'text' => __( 'Luck (critical damage rate +5%)', 'openmu-wp-connect' ),
+			'kind' => 'luck',
+		);
 	}
 	foreach ( (array) ( $item['options'] ?? array() ) as $option ) {
 		if ( is_string( $option ) && '' !== $option ) {
-			$lines[] = array( 'text' => $option, 'kind' => ! empty( $item['excellent'] ) ? 'excellent' : 'option' );
+			$lines[] = array(
+				'text' => $option,
+				'kind' => ! empty( $item['excellent'] ) ? 'excellent' : 'option',
+			);
 		}
 	}
 	if ( ! empty( $item['ancientSet'] ) && is_string( $item['ancientSet'] ) ) {
-		/* translators: %s: ancient set name. */
-		$lines[] = array( 'text' => sprintf( __( 'Set: %s', 'openmu-wp-connect' ), $item['ancientSet'] ), 'kind' => 'ancient' );
+		$lines[] = array(
+			/* translators: %s: ancient set name. */
+			'text' => sprintf( __( 'Set: %s', 'openmu-wp-connect' ), $item['ancientSet'] ),
+			'kind' => 'ancient',
+		);
 	}
 
 	return $lines;

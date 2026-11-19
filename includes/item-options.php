@@ -583,61 +583,61 @@ function openmu_wp_connect_item_option_texts(): array {
 		// Excellent options of weapons, pendants (ExcellentOptions.cs: attack options), armor and rings (defense options).
 		'excellent'    => array(
 			/* translators: %d: divisor, e.g. 8 for one eighth of the maximum mana. */
-			'Mana recover after Monster kill, multiplier of max mana'     => array( __( 'Increases acquisition rate of Mana after hunting monsters +Mana/%d', 'openmu-wp-connect' ), 'inverse' ),
+			'Mana recover after Monster kill, multiplier of max mana' => array( __( 'Increases acquisition rate of Mana after hunting monsters +Mana/%d', 'openmu-wp-connect' ), 'inverse' ),
 			/* translators: %d: divisor, e.g. 8 for one eighth of the maximum life. */
 			'Health recover after Monster kill, multiplier of max health' => array( __( 'Increases acquisition rate of Life after hunting monsters +life/%d', 'openmu-wp-connect' ), 'inverse' ),
 			/* translators: %d: attack speed bonus. */
-			'Attack Speed Any'                                            => array( __( 'Increase Attacking(Wizardry)speed +%d', 'openmu-wp-connect' ), 'int' ),
+			'Attack Speed Any'                   => array( __( 'Increase Attacking(Wizardry)speed +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: damage bonus in percent. */
-			'Physical Base Damage Increase'                               => array( __( 'Increase Damage +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Physical Base Damage Increase'      => array( __( 'Increase Damage +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: wizardry damage bonus in percent. */
-			'Wizardry Base Damage Increase'                               => array( __( 'Increase Wizardry Dmg +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Wizardry Base Damage Increase'      => array( __( 'Increase Wizardry Dmg +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: divisor of the character level, e.g. 20. */
-			'Physical Base Damage (min and max)'                          => array( __( 'Increase Damage +level/%d', 'openmu-wp-connect' ), 'per_level' ),
+			'Physical Base Damage (min and max)' => array( __( 'Increase Damage +level/%d', 'openmu-wp-connect' ), 'per_level' ),
 			/* translators: %d: divisor of the character level, e.g. 20. */
-			'Wizardry Base Damage (min and max)'                          => array( __( 'Increase Wizardry Dmg +level/%d', 'openmu-wp-connect' ), 'per_level' ),
+			'Wizardry Base Damage (min and max)' => array( __( 'Increase Wizardry Dmg +level/%d', 'openmu-wp-connect' ), 'per_level' ),
 			/* translators: %d: chance in percent. */
-			'Excellent Damage Chance'                                     => array( __( 'Excellent Damage rate +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Excellent Damage Chance'            => array( __( 'Excellent Damage rate +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: bonus in percent. */
-			'Money Drop Amount Rate'                                      => array( __( 'Increases acquisition rate of Zen after hunting monsters +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Money Drop Amount Rate'             => array( __( 'Increases acquisition rate of Zen after hunting monsters +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: bonus in percent. */
-			'Defense Rate (PvM)'                                          => array( __( 'Defense success rate +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Defense Rate (PvM)'                 => array( __( 'Defense success rate +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: reflected damage in percent. */
-			'Damage Reflection'                                           => array( __( 'Reflect Damage +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Damage Reflection'                  => array( __( 'Reflect Damage +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: decrease in percent. */
-			'Armor Damage Decrease'                                       => array( __( 'Damage Decrease +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Armor Damage Decrease'              => array( __( 'Damage Decrease +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: bonus in percent. */
-			'Maximum Mana'                                                => array( __( 'Increase Max Mana +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Maximum Mana'                       => array( __( 'Increase Max Mana +%d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: bonus in percent. */
-			'Maximum Health'                                              => array( __( 'Increase Max HP +%d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Maximum Health'                     => array( __( 'Increase Max HP +%d%%', 'openmu-wp-connect' ), 'percent' ),
 		),
 
 		// Options of the 2nd and 3rd wings and the capes (Wings.cs, CreateWingOption).
 		'wing'         => array(
 			/* translators: %d: added maximum life. */
-			'Maximum Health'                                  => array( __( 'HP +%d increased', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Health'        => array( __( 'HP +%d increased', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: added maximum mana. */
-			'Maximum Mana'                                    => array( __( 'Mana +%d increased', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Mana'          => array( __( 'Mana +%d increased', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: chance in percent. */
-			'Defense Ignore Chance'                           => array( __( "Ignore opponent's defensive power by %d%%", 'openmu-wp-connect' ), 'percent' ),
+			'Defense Ignore Chance' => array( __( "Ignore opponent's defensive power by %d%%", 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: added command (leadership). */
-			'Total Leadership'                                => array( __( 'Increase command +%d', 'openmu-wp-connect' ), 'int' ),
+			'Total Leadership'      => array( __( 'Increase command +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: chance in percent. */
 			'Chance to fully reflect damage when getting hit' => array( __( "Returns the enemy's attack power in %d%%", 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: chance in percent. */
 			'Chance to fully recover health when getting hit' => array( __( 'Complete recovery of life in %d%% rate', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: chance in percent. */
-			'Chance to fully recover mana when getting hit'   => array( __( 'Complete recovery of Mana in %d%% rate', 'openmu-wp-connect' ), 'percent' ),
+			'Chance to fully recover mana when getting hit' => array( __( 'Complete recovery of Mana in %d%% rate', 'openmu-wp-connect' ), 'percent' ),
 		),
 
 		// The regular "+option" (Jewel of Life) of weapons, armor, shields, wings and jewelry, and the Dinorant options.
 		'option'       => array(
 			/* translators: %d: added damage, e.g. 16. */
-			'Physical Base Damage (min and max)'                     => array( __( 'Additional Dmg +%d', 'openmu-wp-connect' ), 'int' ),
+			'Physical Base Damage (min and max)' => array( __( 'Additional Dmg +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: added wizardry damage. */
-			'Wizardry Base Damage (min and max)'                     => array( __( 'Additional Wizardry Dmg +%d', 'openmu-wp-connect' ), 'int' ),
+			'Wizardry Base Damage (min and max)' => array( __( 'Additional Wizardry Dmg +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: added curse damage. */
-			'Curse Base Damage (min and max)'                        => array( __( 'Additional Curse Spell +%d', 'openmu-wp-connect' ), 'int' ),
+			'Curse Base Damage (min and max)'    => array( __( 'Additional Curse Spell +%d', 'openmu-wp-connect' ), 'int' ),
 			// Magic Gladiator swords: the client writes the damage and the wizardry damage line.
 			'Base Damage Bonus (physical and wizardry, min and max)' => array(
 				/* translators: %d: added damage. */
@@ -646,14 +646,14 @@ function openmu_wp_connect_item_option_texts(): array {
 				array( __( 'Additional Wizardry Dmg +%d', 'openmu-wp-connect' ), 'int' ),
 			),
 			/* translators: %d: added defense. */
-			'Base Defense'                                           => array( __( 'Additional defense +%d', 'openmu-wp-connect' ), 'int' ),
+			'Base Defense'                       => array( __( 'Additional defense +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: added defense rate. */
-			'Defense Rate (PvM)'                                     => array( __( 'Additional defense rate +%d', 'openmu-wp-connect' ), 'int' ),
+			'Defense Rate (PvM)'                 => array( __( 'Additional defense rate +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: recovery in percent. */
-			'Health Recovery Multiplier'                             => array( __( 'Automatic HP recovery %d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Health Recovery Multiplier'         => array( __( 'Automatic HP recovery %d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: bonus in percent. */
-			'Maximum Mana'                                           => array( __( 'Max mana increased by %d%%', 'openmu-wp-connect' ), 'percent' ),
-			'Maximum Ability'                                        => array(
+			'Maximum Mana'                       => array( __( 'Max mana increased by %d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Maximum Ability'                    => array(
 				'by_aggregate' => array(
 					/* translators: %d: bonus in percent (Pendant of Ability). */
 					'Multiplicate' => array( __( 'Max AG increased by %d%%', 'openmu-wp-connect' ), 'percent' ),
@@ -662,70 +662,70 @@ function openmu_wp_connect_item_option_texts(): array {
 				),
 			),
 			/* translators: %d: absorbed damage in percent (Horn of Dinorant). */
-			'Damage Receive Multiplier'                              => array( __( 'Absorb %d%% additional damage', 'openmu-wp-connect' ), 'percent' ),
+			'Damage Receive Multiplier'          => array( __( 'Absorb %d%% additional damage', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: attack speed bonus (Horn of Dinorant). */
-			'Attack Speed Any'                                       => array( __( 'Increase Attacking(Wizardry)speed +%d', 'openmu-wp-connect' ), 'int' ),
+			'Attack Speed Any'                   => array( __( 'Increase Attacking(Wizardry)speed +%d', 'openmu-wp-connect' ), 'int' ),
 		),
 
 		// Jewel of Harmony options (HarmonyOptions.cs); names of the client's JewelOfHarmonyOption_eng.bmd.
 		'harmony'      => array(
 			/* translators: %d: harmony option value. */
-			'Minimum Physical Base Damage'           => array( __( 'Min. attack increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Minimum Physical Base Damage'       => array( __( 'Min. attack increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Maximum Physical Base Damage'           => array( __( 'Max. attack increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Physical Base Damage'       => array( __( 'Max. attack increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Strength Requirement reduction'         => array( __( 'Required strength decrease +%d', 'openmu-wp-connect' ), 'int' ),
+			'Strength Requirement reduction'     => array( __( 'Required strength decrease +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Agility Requirement reduction'          => array( __( 'Required agility decrease +%d', 'openmu-wp-connect' ), 'int' ),
+			'Agility Requirement reduction'      => array( __( 'Required agility decrease +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Physical Base Damage (min and max)'     => array( __( 'Attack increase(Min,Max) +%d', 'openmu-wp-connect' ), 'int' ),
+			'Physical Base Damage (min and max)' => array( __( 'Attack increase(Min,Max) +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Wizardry Base Damage (min and max)'     => array( __( 'Wizardry increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Wizardry Base Damage (min and max)' => array( __( 'Wizardry increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Critical Damage Bonus'                  => array( __( 'Critical damage increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Critical Damage Bonus'              => array( __( 'Critical damage increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Skill Damage Bonus'                     => array( __( 'Skill attack increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Skill Damage Bonus'                 => array( __( 'Skill attack increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Attack Rate (PvP)'                      => array( __( 'Attack success rate increase(PVP) +%d', 'openmu-wp-connect' ), 'int' ),
+			'Attack Rate (PvP)'                  => array( __( 'Attack success rate increase(PVP) +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'SD decrease rate increase'              => array( __( 'SD decrement increase +%d', 'openmu-wp-connect' ), 'fraction' ),
+			'SD decrease rate increase'          => array( __( 'SD decrement increase +%d', 'openmu-wp-connect' ), 'fraction' ),
 			/* translators: %d: harmony option value. */
-			'Shield Bypass Chance'                   => array( __( 'SD bypass rate increase +%d', 'openmu-wp-connect' ), 'fraction' ),
+			'Shield Bypass Chance'               => array( __( 'SD bypass rate increase +%d', 'openmu-wp-connect' ), 'fraction' ),
 			/* translators: %d: harmony option value. */
-			'Base Defense'                           => array( __( 'Defense increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Base Defense'                       => array( __( 'Defense increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Maximum Ability'                        => array( __( 'Max. AG increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Ability'                    => array( __( 'Max. AG increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Maximum Health'                         => array( __( 'Max. HP increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Health'                     => array( __( 'Max. HP increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Health Recovery Absolute Increase'      => array( __( 'Life auto increment increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Health Recovery Absolute Increase'  => array( __( 'Life auto increment increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Mana Recovery Absolute Increase'        => array( __( 'Mana auto increment increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Mana Recovery Absolute Increase'    => array( __( 'Mana auto increment increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: harmony option value. */
-			'Defense Rate (PvP)'                     => array( __( 'Defense success rate increase(PVP) +%d', 'openmu-wp-connect' ), 'int' ),
+			'Defense Rate (PvP)'                 => array( __( 'Defense success rate increase(PVP) +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: decrease in percent. */
-			'Armor Damage Decrease'                  => array( __( 'Damage decrement increase +%d%%', 'openmu-wp-connect' ), 'fraction' ),
+			'Armor Damage Decrease'              => array( __( 'Damage decrement increase +%d%%', 'openmu-wp-connect' ), 'fraction' ),
 			/* translators: %d: harmony option value. */
-			'SD Rate Increase'                       => array( __( 'SD ratio increase +%d', 'openmu-wp-connect' ), 'fraction' ),
+			'SD Rate Increase'                   => array( __( 'SD ratio increase +%d', 'openmu-wp-connect' ), 'fraction' ),
 		),
 
 		// Options of the level 380 items, added with a Jewel of Guardian (GuardianOptions.cs).
 		'guardian'     => array(
 			/* translators: %d: bonus. */
-			'Attack Rate (PvP)'                => array( __( 'Attack success rate increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Attack Rate (PvP)'                 => array( __( 'Attack success rate increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: bonus. */
-			'Final Damage Increase (PvP)'      => array( __( 'Additional Damage +%d', 'openmu-wp-connect' ), 'int' ),
+			'Final Damage Increase (PvP)'       => array( __( 'Additional Damage +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: bonus. */
-			'Defense Rate (PvP)'               => array( __( 'Defense success rate increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Defense Rate (PvP)'                => array( __( 'Defense success rate increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: bonus. */
-			'Defense (PvP)'                    => array( __( 'Defensive skill +%d', 'openmu-wp-connect' ), 'int' ),
+			'Defense (PvP)'                     => array( __( 'Defensive skill +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: bonus. */
-			'Maximum Health'                   => array( __( 'Max. HP increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Health'                    => array( __( 'Max. HP increase +%d', 'openmu-wp-connect' ), 'int' ),
 			/* translators: %d: bonus. */
-			'Maximum Shield'                   => array( __( 'Max. SD increase +%d', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Shield'                    => array( __( 'Max. SD increase +%d', 'openmu-wp-connect' ), 'int' ),
 			'Shield Recovery Active Everywhere' => array( __( 'SD auto recovery', 'openmu-wp-connect' ), 'none' ),
 			/* translators: %d: bonus in percent. */
-			'Shield Recovery Multiplier'       => array( __( 'SD recovery rate increase +%d%%', 'openmu-wp-connect' ), 'int' ),
+			'Shield Recovery Multiplier'        => array( __( 'SD recovery rate increase +%d%%', 'openmu-wp-connect' ), 'int' ),
 		),
 
 		// The +5/+10 stat option of ancient items (AncientSets.cs); the client calls stamina what OpenMU calls vitality.
@@ -743,48 +743,48 @@ function openmu_wp_connect_item_option_texts(): array {
 		// Fenrir options (Pets.cs), keyed by "type|attribute"; the Gold Fenrir has four.
 		'pet'          => array(
 			/* translators: %d: bonus in percent. */
-			'Black Fenrir Option|Attack Damage Increase'                 => array( __( 'Increase final damage %d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Black Fenrir Option|Attack Damage Increase'   => array( __( 'Increase final damage %d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %d: absorbed damage in percent. */
-			'Blue Fenrir Option|Damage Receive Multiplier'               => array( __( 'Absorb final damage %d%%', 'openmu-wp-connect' ), 'percent' ),
+			'Blue Fenrir Option|Damage Receive Multiplier' => array( __( 'Absorb final damage %d%%', 'openmu-wp-connect' ), 'percent' ),
 			/* translators: %s: added life, e.g. "200" or "level/2". */
-			'Gold Fenrir Option|Maximum Health'                          => array( __( 'Added %s of Life', 'openmu-wp-connect' ), 'level' ),
+			'Gold Fenrir Option|Maximum Health'            => array( __( 'Added %s of Life', 'openmu-wp-connect' ), 'level' ),
 			/* translators: %s: added mana, e.g. "200" or "level/2". */
-			'Gold Fenrir Option|Maximum Mana'                            => array( __( 'Added %s of Mana', 'openmu-wp-connect' ), 'level' ),
+			'Gold Fenrir Option|Maximum Mana'              => array( __( 'Added %s of Mana', 'openmu-wp-connect' ), 'level' ),
 			/* translators: %s: added damage, e.g. "33" or "level/12". */
-			'Gold Fenrir Option|Physical Base Damage (min and max)'      => array( __( 'Added %s Attack', 'openmu-wp-connect' ), 'level' ),
+			'Gold Fenrir Option|Physical Base Damage (min and max)' => array( __( 'Added %s Attack', 'openmu-wp-connect' ), 'level' ),
 			/* translators: %s: added wizardry damage, e.g. "16" or "level/25". */
-			'Gold Fenrir Option|Wizardry Base Damage (min and max)'      => array( __( 'Added %s Wizardry', 'openmu-wp-connect' ), 'level' ),
+			'Gold Fenrir Option|Wizardry Base Damage (min and max)' => array( __( 'Added %s Wizardry', 'openmu-wp-connect' ), 'level' ),
 		),
 
 		// Seed spheres (SocketSystem.cs): attribute => [element, option name of socketitem_eng.bmd, value mode].
 		'socket'       => array(
 			'Base Damage Bonus (physical and wizardry, min and max)|related' => array( __( 'Fire', 'openmu-wp-connect' ), __( '(Level type)Attack/Wizardry increase', 'openmu-wp-connect' ), 'per_level' ),
-			'Attack Speed Any'                                       => array( __( 'Fire', 'openmu-wp-connect' ), __( 'Attack speed increase', 'openmu-wp-connect' ), 'int' ),
-			'Base Max Damage Bonus (physical and wizardry)'          => array( __( 'Fire', 'openmu-wp-connect' ), __( 'Maximum attack/Wizardry increase', 'openmu-wp-connect' ), 'int' ),
-			'Base Min Damage Bonus (physical and wizardry)'          => array( __( 'Fire', 'openmu-wp-connect' ), __( 'Minimum attack/Wizardry increase', 'openmu-wp-connect' ), 'int' ),
+			'Attack Speed Any'                        => array( __( 'Fire', 'openmu-wp-connect' ), __( 'Attack speed increase', 'openmu-wp-connect' ), 'int' ),
+			'Base Max Damage Bonus (physical and wizardry)' => array( __( 'Fire', 'openmu-wp-connect' ), __( 'Maximum attack/Wizardry increase', 'openmu-wp-connect' ), 'int' ),
+			'Base Min Damage Bonus (physical and wizardry)' => array( __( 'Fire', 'openmu-wp-connect' ), __( 'Minimum attack/Wizardry increase', 'openmu-wp-connect' ), 'int' ),
 			'Base Damage Bonus (physical and wizardry, min and max)' => array( __( 'Fire', 'openmu-wp-connect' ), __( 'Attack/Wizardry increase', 'openmu-wp-connect' ), 'int' ),
-			'Ability Usage Reduction'                                => array( __( 'Fire', 'openmu-wp-connect' ), __( 'AG cost decrease', 'openmu-wp-connect' ), 'percent' ),
-			'Defense Rate (PvM)'                                     => array( __( 'Water', 'openmu-wp-connect' ), __( 'Block rating increase', 'openmu-wp-connect' ), 'percent' ),
-			'Final Defense'                                          => array( __( 'Water', 'openmu-wp-connect' ), __( 'Defense increase', 'openmu-wp-connect' ), 'int' ),
-			'Shield Item Defense Increase Multiplier'                => array( __( 'Water', 'openmu-wp-connect' ), __( 'Shield protection increase', 'openmu-wp-connect' ), 'percent' ),
-			'Armor Damage Decrease'                                  => array( __( 'Water', 'openmu-wp-connect' ), __( 'Damage reduction', 'openmu-wp-connect' ), 'percent' ),
-			'Damage Reflection'                                      => array( __( 'Water', 'openmu-wp-connect' ), __( 'Damage reflection', 'openmu-wp-connect' ), 'percent' ),
+			'Ability Usage Reduction'                 => array( __( 'Fire', 'openmu-wp-connect' ), __( 'AG cost decrease', 'openmu-wp-connect' ), 'percent' ),
+			'Defense Rate (PvM)'                      => array( __( 'Water', 'openmu-wp-connect' ), __( 'Block rating increase', 'openmu-wp-connect' ), 'percent' ),
+			'Final Defense'                           => array( __( 'Water', 'openmu-wp-connect' ), __( 'Defense increase', 'openmu-wp-connect' ), 'int' ),
+			'Shield Item Defense Increase Multiplier' => array( __( 'Water', 'openmu-wp-connect' ), __( 'Shield protection increase', 'openmu-wp-connect' ), 'percent' ),
+			'Armor Damage Decrease'                   => array( __( 'Water', 'openmu-wp-connect' ), __( 'Damage reduction', 'openmu-wp-connect' ), 'percent' ),
+			'Damage Reflection'                       => array( __( 'Water', 'openmu-wp-connect' ), __( 'Damage reflection', 'openmu-wp-connect' ), 'percent' ),
 			'Health recover after Monster kill, multiplier of max health' => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Monster destruction for the Life increase', 'openmu-wp-connect' ), 'inverse' ),
 			'Mana recover after Monster kill, multiplier of max mana' => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Monster destruction for the Mana increase', 'openmu-wp-connect' ), 'inverse' ),
-			'Skill Damage Bonus'                                     => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Skill attack increase', 'openmu-wp-connect' ), 'int' ),
-			'Attack Rate (PvM)'                                      => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Attack rating increase', 'openmu-wp-connect' ), 'int' ),
-			'Weapon Duration Increase'                               => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Item durability increase', 'openmu-wp-connect' ), 'percent' ),
-			'Health Recovery Absolute Increase'                      => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Automatic Life recovery increase', 'openmu-wp-connect' ), 'int' ),
-			'Maximum Health|Multiplicate'                            => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Maximum Life increase', 'openmu-wp-connect' ), 'percent' ),
-			'Maximum Mana'                                           => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Maximum Mana increase', 'openmu-wp-connect' ), 'percent' ),
-			'Mana Recovery Absolute Increase'                        => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Automatic Mana recovery increase', 'openmu-wp-connect' ), 'int' ),
-			'Maximum Ability'                                        => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Maximum AG increase', 'openmu-wp-connect' ), 'int' ),
-			'Ability Recovery Absolute Increase'                     => array( __( 'Wind', 'openmu-wp-connect' ), __( 'AG value increase', 'openmu-wp-connect' ), 'int' ),
-			'Excellent Damage Bonus'                                 => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Excellent damage increase', 'openmu-wp-connect' ), 'int' ),
-			'Excellent Damage Chance'                                => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Excellent damage rate increase', 'openmu-wp-connect' ), 'percent' ),
-			'Critical Damage Bonus'                                  => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Critical damage increase', 'openmu-wp-connect' ), 'int' ),
-			'Critical Damage Chance'                                 => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Critical damage rate increase', 'openmu-wp-connect' ), 'percent' ),
-			'Maximum Health'                                         => array( __( 'Earth', 'openmu-wp-connect' ), __( 'Health increase', 'openmu-wp-connect' ), 'int' ),
+			'Skill Damage Bonus'                      => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Skill attack increase', 'openmu-wp-connect' ), 'int' ),
+			'Attack Rate (PvM)'                       => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Attack rating increase', 'openmu-wp-connect' ), 'int' ),
+			'Weapon Duration Increase'                => array( __( 'Ice', 'openmu-wp-connect' ), __( 'Item durability increase', 'openmu-wp-connect' ), 'percent' ),
+			'Health Recovery Absolute Increase'       => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Automatic Life recovery increase', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Health|Multiplicate'             => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Maximum Life increase', 'openmu-wp-connect' ), 'percent' ),
+			'Maximum Mana'                            => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Maximum Mana increase', 'openmu-wp-connect' ), 'percent' ),
+			'Mana Recovery Absolute Increase'         => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Automatic Mana recovery increase', 'openmu-wp-connect' ), 'int' ),
+			'Maximum Ability'                         => array( __( 'Wind', 'openmu-wp-connect' ), __( 'Maximum AG increase', 'openmu-wp-connect' ), 'int' ),
+			'Ability Recovery Absolute Increase'      => array( __( 'Wind', 'openmu-wp-connect' ), __( 'AG value increase', 'openmu-wp-connect' ), 'int' ),
+			'Excellent Damage Bonus'                  => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Excellent damage increase', 'openmu-wp-connect' ), 'int' ),
+			'Excellent Damage Chance'                 => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Excellent damage rate increase', 'openmu-wp-connect' ), 'percent' ),
+			'Critical Damage Bonus'                   => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Critical damage increase', 'openmu-wp-connect' ), 'int' ),
+			'Critical Damage Chance'                  => array( __( 'Lightning', 'openmu-wp-connect' ), __( 'Critical damage rate increase', 'openmu-wp-connect' ), 'percent' ),
+			'Maximum Health'                          => array( __( 'Earth', 'openmu-wp-connect' ), __( 'Health increase', 'openmu-wp-connect' ), 'int' ),
 		),
 
 		// Socket bonus options by their number (SocketSystem.cs, CreateSocketBonusOption).

@@ -106,8 +106,8 @@ przedmiotów i umiejętności zostają po angielsku, tak jak gracze znają je z 
 ## Dla programistów
 
 - `includes/interface-data-source.php` to kontrakt, z którego czytają bloki;
-  `includes/class-api-source.php` realizuje go przez API dla stron,
-  `includes/class-demo-source.php` przez `demo/*.json`.
+  `includes/class-openmu-wp-connect-api-source.php` realizuje go przez API dla stron,
+  `includes/class-openmu-wp-connect-demo-source.php` przez `demo/*.json`.
 - Filtry:
   - `openmu_wp_connect_data_source`: podmiana źródła danych;
   - `openmu_wp_connect_armory_url`: adres strony zbrojowni;

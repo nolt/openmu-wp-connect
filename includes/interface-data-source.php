@@ -3,8 +3,8 @@
  * Contract between the blocks and wherever the game data comes from.
  *
  * The blocks only talk to this interface. Two implementations ship with the plugin:
- * the OpenMU website API (class-api-source.php) and the demo source
- * with bundled JSON files (class-demo-source.php), used until the API
+ * the OpenMU website API (class-openmu-wp-connect-api-source.php) and the demo source
+ * with bundled JSON files (class-openmu-wp-connect-demo-source.php), used until the API
  * is configured. All methods return plain arrays in the shapes the blocks use, or null
  * when the data isn't available.
  *

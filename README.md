@@ -106,8 +106,8 @@ skill names stay in English, as players know them from the game.
 ## For developers
 
 - `includes/interface-data-source.php` is the contract the blocks read from;
-  `includes/class-api-source.php` implements it with the website API,
-  `includes/class-demo-source.php` with `demo/*.json`.
+  `includes/class-openmu-wp-connect-api-source.php` implements it with the website API,
+  `includes/class-openmu-wp-connect-demo-source.php` with `demo/*.json`.
 - Filters:
   - `openmu_wp_connect_data_source`: replace the data source;
   - `openmu_wp_connect_armory_url`: the address of the armory page;

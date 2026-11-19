@@ -44,7 +44,7 @@ function openmu_wp_connect_item_data(): array {
 		return $data;
 	}
 
-	$data = array(
+	$data   = array(
 		'items'  => array(),
 		'stats'  => array(),
 		'texts'  => array(),
@@ -201,7 +201,7 @@ function openmu_wp_connect_item_values( array $definition, array $item ): array 
 	}
 
 	// Stats (ComputeItemStats): ancient items count as excellent here, wings' options don't.
-	$context = array(
+	$context    = array(
 		'level'     => $level,
 		'dropLevel' => (int) ( $definition['drop'] ?? 0 ),
 		'excellent' => ( $excellent && ! $wing ) || $ancient,
@@ -607,11 +607,11 @@ function openmu_wp_connect_item_weapon_kind( array $definition ): string {
  * Names a class at the class level an item needs (ClassLineName in ZzzInventory.cpp): a level the class
  * skips names its next one (a Magic Gladiator's 2 is the Dual Master).
  *
- * @param int $class       Class index of the client (0 Dark Wizard ... 6 Rage Fighter).
+ * @param int $class_index Class index of the client (0 Dark Wizard ... 6 Rage Fighter).
  * @param int $class_level Level the item needs: 1 first class, 2 second, 3 third.
  * @return string|null The class name, or null for a level no character reaches.
  */
-function openmu_wp_connect_item_class_name( int $class, int $class_level ): ?string {
+function openmu_wp_connect_item_class_name( int $class_index, int $class_level ): ?string {
 	$names = array(
 		array( __( 'Dark Wizard', 'openmu-wp-connect' ), __( 'Soul Master', 'openmu-wp-connect' ), __( 'Grand Master', 'openmu-wp-connect' ) ),
 		array( __( 'Dark Knight', 'openmu-wp-connect' ), __( 'Blade Knight', 'openmu-wp-connect' ), __( 'Blade Master', 'openmu-wp-connect' ) ),
@@ -622,8 +622,8 @@ function openmu_wp_connect_item_class_name( int $class, int $class_level ): ?str
 		array( __( 'Rage Fighter', 'openmu-wp-connect' ), null, __( 'Fist Master', 'openmu-wp-connect' ) ),
 	);
 	for ( $step = max( $class_level, 1 ); $step <= 3; $step++ ) {
-		if ( isset( $names[ $class ][ $step - 1 ] ) ) {
-			return $names[ $class ][ $step - 1 ];
+		if ( isset( $names[ $class_index ][ $step - 1 ] ) ) {
+			return $names[ $class_index ][ $step - 1 ];
 		}
 	}
 
@@ -679,7 +679,7 @@ function openmu_wp_connect_item_description_lines( array $definition, array $ite
 			'{defense}'       => (string) $values['defense'],
 		);
 		foreach ( (array) ( $line['values'] ?? array() ) as $placeholder => $source ) {
-			$source = (string) $source;
+			$source                              = (string) $source;
 			$replace[ '{' . $placeholder . '}' ] = str_starts_with( $source, 'table:' )
 				? (string) openmu_wp_connect_item_level_bonus( substr( $source, 6 ), $values['level'] )
 				: (string) ( $values[ $source ] ?? '' );
@@ -784,16 +784,16 @@ function openmu_wp_connect_item_shared_texts(): array {
 	if ( null === $texts ) {
 		$texts = array(
 			/* translators: {durability} and {maxDurability}: current and maximum durability; keep the braces. */
-			'durability'           => __( 'Durability: [{durability}/{maxDurability}]', 'openmu-wp-connect' ),
+			'durability'              => __( 'Durability: [{durability}/{maxDurability}]', 'openmu-wp-connect' ),
 			/* translators: {durability}: life of the pet; keep the braces. */
-			'life'                 => __( 'Life: {durability}', 'openmu-wp-connect' ),
+			'life'                    => __( 'Life: {durability}', 'openmu-wp-connect' ),
 			/* translators: {percent}: damage bonus in percent; keep the braces. */
-			'damageIncrease'       => __( 'Increase {percent}% of Damage', 'openmu-wp-connect' ),
+			'damageIncrease'          => __( 'Increase {percent}% of Damage', 'openmu-wp-connect' ),
 			/* translators: {percent}: absorbed damage in percent; keep the braces. */
-			'damageAbsorb'         => __( 'Absorb {percent}% of Damage', 'openmu-wp-connect' ),
-			'increaseSpeed'        => __( 'Increase speed', 'openmu-wp-connect' ),
-			'automaticHpRecovery3' => __( 'Automatic HP recovery 3%', 'openmu-wp-connect' ),
-			'cannotRepair'         => __( 'Cannot Repair', 'openmu-wp-connect' ),
+			'damageAbsorb'            => __( 'Absorb {percent}% of Damage', 'openmu-wp-connect' ),
+			'increaseSpeed'           => __( 'Increase speed', 'openmu-wp-connect' ),
+			'automaticHpRecovery3'    => __( 'Automatic HP recovery 3%', 'openmu-wp-connect' ),
+			'cannotRepair'            => __( 'Cannot Repair', 'openmu-wp-connect' ),
 			'additionalDamagePlusOne' => __( 'Additional Dmg +1', 'openmu-wp-connect' ),
 			'unableToEquipWithADifferentTransformationRing' => __( 'Unable to Equip with a Different Transformation Ring', 'openmu-wp-connect' ),
 		);
@@ -817,7 +817,7 @@ function openmu_wp_connect_item_skill_lines( array $item ): array {
 		return array();
 	}
 
-	$formats = array(
+	$formats    = array(
 		/* translators: %d: mana cost of the skill. */
 		18  => __( 'Defend skill (Mana:%d)', 'openmu-wp-connect' ),
 		/* translators: %d: mana cost of the skill. */

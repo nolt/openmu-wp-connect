@@ -123,6 +123,9 @@ class OpenMU_WP_Connect_Api_Source implements OpenMU_WP_Connect_Data_Source {
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @param int         $limit           Number of characters, 1-100.
+	 * @param string|null $character_class Class name (one of openmu_wp_connect_character_classes()), or null for all.
 	 */
 	public function get_ranking( int $limit, ?string $character_class ): ?array {
 		$query = array( 'count' => max( 1, min( 100, $limit ) ) );
@@ -150,6 +153,8 @@ class OpenMU_WP_Connect_Api_Source implements OpenMU_WP_Connect_Data_Source {
 
 	/**
 	 * {@inheritDoc}
+	 *
+	 * @param string $name Character name.
 	 */
 	public function get_character( string $name ): ?array {
 		$character = $this->cached( 'character_' . md5( $name ), self::CHARACTER_CACHE, fn() => $this->get( '/api/website/characters/' . rawurlencode( $name ) ) );
@@ -212,15 +217,30 @@ class OpenMU_WP_Connect_Api_Source implements OpenMU_WP_Connect_Data_Source {
 	public function test_connection(): array {
 		$response = $this->request( 'GET', '/api/website/status' );
 		if ( is_wp_error( $response ) ) {
-			return array( 'ok' => false, 'message' => $response->get_error_message() );
+			return array(
+				'ok'      => false,
+				'message' => $response->get_error_message(),
+			);
 		}
 
 		$code = (int) wp_remote_retrieve_response_code( $response );
 		return match ( $code ) {
-			200     => array( 'ok' => true, 'message' => __( 'Connected. The server status can be read.', 'openmu-wp-connect' ) ),
-			401     => array( 'ok' => false, 'message' => __( 'The API key is unknown or disabled.', 'openmu-wp-connect' ) ),
-			403     => array( 'ok' => false, 'message' => __( 'The key works, but it is not a website key or "Server status" is not selected for it.', 'openmu-wp-connect' ) ),
-			default => array( 'ok' => false, 'message' => sprintf( /* translators: %d: HTTP status code. */ __( 'Unexpected answer of the server: HTTP %d.', 'openmu-wp-connect' ), $code ) ),
+			200     => array(
+				'ok'      => true,
+				'message' => __( 'Connected. The server status can be read.', 'openmu-wp-connect' ),
+			),
+			401     => array(
+				'ok'      => false,
+				'message' => __( 'The API key is unknown or disabled.', 'openmu-wp-connect' ),
+			),
+			403     => array(
+				'ok'      => false,
+				'message' => __( 'The key works, but it is not a website key or "Server status" is not selected for it.', 'openmu-wp-connect' ),
+			),
+			default => array(
+				'ok'      => false,
+				'message' => sprintf( /* translators: %d: HTTP status code. */ __( 'Unexpected answer of the server: HTTP %d.', 'openmu-wp-connect' ), $code ),
+			),
 		};
 	}
 

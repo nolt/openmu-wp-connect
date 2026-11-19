@@ -42,8 +42,14 @@ if ( $openmu_message && ! $openmu_account && in_array( $openmu_message_code, arr
 }
 
 $openmu_time_format = (string) get_option( 'time_format' );
+$openmu_wrapper     = get_block_wrapper_attributes(
+	array(
+		'class' => 'openmu-account',
+		'id'    => 'openmu-account',
+	)
+);
 ?>
-<div <?php echo get_block_wrapper_attributes( array( 'class' => 'openmu-account', 'id' => 'openmu-account' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core helper escapes. ?>>
+<div <?php echo $openmu_wrapper; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- core helper escapes. ?>>
 	<?php if ( ! $openmu_connected ) : ?>
 		<?php echo openmu_wp_connect_not_connected_notice(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the helper. ?>
 	<?php else : ?>

@@ -25,11 +25,11 @@ define( 'OPENMU_WP_CONNECT_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OPENMU_WP_CONNECT_VERSION', '0.1.0' );
 
 require_once OPENMU_WP_CONNECT_DIR . 'includes/interface-data-source.php';
-require_once OPENMU_WP_CONNECT_DIR . 'includes/class-demo-source.php';
+require_once OPENMU_WP_CONNECT_DIR . 'includes/class-openmu-wp-connect-demo-source.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/client-assets.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/item-options.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/item-data.php';
-require_once OPENMU_WP_CONNECT_DIR . 'includes/class-api-source.php';
+require_once OPENMU_WP_CONNECT_DIR . 'includes/class-openmu-wp-connect-api-source.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/settings.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/functions.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/blocks.php';

@@ -45,13 +45,24 @@ function openmu_wp_connect_armory_url( string $character ): string {
  */
 function openmu_wp_connect_character_classes(): array {
 	return array(
-		'Dark Wizard', 'Soul Master', 'Grand Master',
-		'Dark Knight', 'Blade Knight', 'Blade Master',
-		'Fairy Elf', 'Muse Elf', 'High Elf',
-		'Magic Gladiator', 'Duel Master',
-		'Dark Lord', 'Lord Emperor',
-		'Summoner', 'Bloody Summoner', 'Dimension Master',
-		'Rage Fighter', 'Fist Master',
+		'Dark Wizard',
+		'Soul Master',
+		'Grand Master',
+		'Dark Knight',
+		'Blade Knight',
+		'Blade Master',
+		'Fairy Elf',
+		'Muse Elf',
+		'High Elf',
+		'Magic Gladiator',
+		'Duel Master',
+		'Dark Lord',
+		'Lord Emperor',
+		'Summoner',
+		'Bloody Summoner',
+		'Dimension Master',
+		'Rage Fighter',
+		'Fist Master',
 	);
 }
 

@@ -34,12 +34,20 @@ function openmu_wp_connect_api_source(): ?OpenMU_WP_Connect_Api_Source {
 function openmu_wp_connect_api_call( string $method, string $path, ?array $body = null ): array {
 	$api = openmu_wp_connect_api_source();
 	if ( ! $api ) {
-		return array( 'code' => 0, 'data' => null, 'retry_after' => 0 );
+		return array(
+			'code'        => 0,
+			'data'        => null,
+			'retry_after' => 0,
+		);
 	}
 
 	$response = $api->request( $method, $path, $body );
 	if ( is_wp_error( $response ) ) {
-		return array( 'code' => 0, 'data' => null, 'retry_after' => 0 );
+		return array(
+			'code'        => 0,
+			'data'        => null,
+			'retry_after' => 0,
+		);
 	}
 
 	// Retry-After is either a number of seconds or an HTTP date; both are allowed by RFC 9110.

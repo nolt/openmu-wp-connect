@@ -40,7 +40,7 @@ function openmu_wp_connect_account_menu_label( string $content ): string {
 	if ( ! $account_page ) {
 		return $content;
 	}
-	$url = preg_quote( untrailingslashit( get_permalink( $account_page ) ), '#' );
+	$url    = preg_quote( untrailingslashit( get_permalink( $account_page ) ), '#' );
 	$log_in = esc_html__( 'Sign in', 'openmu-wp-connect' );
 
 	// Anchor whose href is the account page (trailing slash or query string allowed); the label is either
