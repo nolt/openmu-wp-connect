@@ -1,0 +1,95 @@
+/*
+ * OpenMU WP Connect - neutral block styles.
+ *
+ * Keeps the blocks readable in any theme: lines, item tooltips and the
+ * colour code of the game (green = excellent/online, blue = options,
+ * gold = high-level names, red = errors/offline). Themes override the
+ * colours through the --openmu-* variables; OpenMU Site sets them from its palette.
+ */
+
+:root {
+	--openmu-excellent: #3fb94a;
+	--openmu-option: #3d6fd6;
+	--openmu-ancient: #b88a14;
+	--openmu-requirement: #d33;
+	--openmu-muted: #777;
+	/* Guardian (level 380) options: pale red-purple in game. */
+	--openmu-guardian: #cc80cc;
+	/* Socket headings and Divine Archangel weapon names: purple (magenta) in game. */
+	--openmu-purple: #ff1aff;
+	/* Names of socket items: violet in game. */
+	--openmu-violet: #b366ff;
+	--openmu-tooltip-bg: rgb(0 0 0 / 82%);
+	--openmu-tooltip-text: #eee;
+}
+
+.openmu-line { margin: 0; }
+.openmu-line--excellent { color: var(--openmu-excellent); }
+.openmu-line--option { color: var(--openmu-option); }
+.openmu-line--ancient { color: var(--openmu-ancient); }
+.openmu-line--set { color: #00ff00; background: #3c3cc8; }
+/* Status lamp of the server-status block: a round dot in the text colour (currentColor) with a soft glow; decorative. */
+.openmu-status__dot {
+	display: inline-block;
+	width: 0.6em;
+	height: 0.6em;
+	margin-inline-end: 0.5em;
+	vertical-align: 0.04em;
+	border-radius: 50%;
+	background: currentColor;
+	box-shadow: 0 0 0.5em 0.05em currentColor;
+	animation: openmu-status-pulse 2s ease-in-out infinite;
+}
+/* Offline lamp pulses slower (3 s) so it reads as calmer than the online one. */
+.openmu-status.is-offline .openmu-status__dot { animation-duration: 3s; }
+/* Status-LED pulse: opacity (dot and its glow) fades between ~0.45 and 1; the box-shadow is part of the element, so it fades with it. */
+@keyframes openmu-status-pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.45; }
+}
+/* Respect users who ask for less motion: keep the lamp steady. */
+@media (prefers-reduced-motion: reduce) {
+	.openmu-status__dot { animation: none; }
+}
+.openmu-line--requirement { color: var(--openmu-requirement); }
+.openmu-line--muted { color: var(--openmu-muted); }
+.openmu-line--guardian { color: var(--openmu-guardian); }
+.openmu-line--purple { color: var(--openmu-purple); }
+.openmu-line--violet { color: var(--openmu-violet); }
+
+/* Ranking table: numbers right-aligned for comparison down the column. */
+.openmu-ranking table { width: 100%; border-collapse: collapse; }
+.openmu-ranking th, .openmu-ranking td { padding: 0.45em 0.6em; text-align: start; }
+.openmu-ranking .openmu-ranking__number, .openmu-ranking .openmu-ranking__place { text-align: end; font-variant-numeric: tabular-nums; }
+
+/* Armory search form. */
+.openmu-armory__search { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-block-end: 1.5rem; }
+.openmu-armory__search label { flex-basis: 100%; }
+
+.openmu-armory__header { text-align: center; margin-block-end: 1.5rem; }
+.openmu-armory__name { margin: 0 0 0.25rem; }
+
+/* Equipped items: a grid of in-game style tooltips. */
+.openmu-armory__items {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+	gap: 1rem;
+}
+
+.openmu-item {
+	background: var(--openmu-tooltip-bg);
+	color: var(--openmu-tooltip-text);
+	text-align: center;
+	padding: 0.9rem 1rem;
+	line-height: 1.4;
+}
+
+.openmu-item p { margin: 0; }
+.openmu-item__slot { font-size: 0.8em; opacity: 0.65; margin-block-end: 0.3rem !important; }
+.openmu-item__name { font-weight: 700; margin-block-end: 0.35rem !important; }
+/* Item picture from the game server (item editor pictures), above the item name. */
+.openmu-item__image { display: block; max-width: 96px; max-height: 96px; margin: 0.25rem auto 0.5rem; image-rendering: auto; }
+.openmu-line--plain { color: inherit; }

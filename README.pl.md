@@ -1,0 +1,132 @@
+# OpenMU WP Connect
+
+*[English version](README.md)*
+
+Wtyczka WordPressa dla strony serwera gry [OpenMU](https://github.com/MUnique/OpenMU).
+Jej bloki pokazują dane na żywo z serwera — status, rankingi, harmonogram eventów,
+zbrojownię — i pozwalają graczom logować się kontem z gry. Strona nigdy nie łączy
+się z bazą gry: wszystko idzie przez **API dla stron** serwera, z kluczem API,
+który może tylko to, na co pozwolisz.
+
+Działa z każdym motywem blokowym. Nie ma własnego motywu; zbrojownia ma neutralny
+wygląd albo wygląd okna postaci z gry, gdy dodasz pliki z własnego klienta gry
+(zobacz [Wygląd z klienta gry](#wygląd-z-klienta-gry-opcjonalnie)).
+
+## Wymagania
+
+- WordPress 6.6 lub nowszy, PHP 8.1 lub nowszy.
+- Serwer OpenMU z API dla stron (`/api/website`) i klucz API z rolą
+  **Website (selected functions only)**. API dla stron jest dodawane do OpenMU;
+  dopóki nie trafi do wydania, potrzebny jest build, który je zawiera.
+
+Bez połączenia bloki pokazują dane demonstracyjne (`demo/`), a kokpit informuje
+o tym administratorów — nic zmyślonego nie zostanie opublikowane przez przypadek.
+
+## Instalacja
+
+1. Skopiuj ten katalog do `wp-content/plugins/openmu-wp-connect` (albo wgraj go jako
+   zip w **Wtyczki > Dodaj nową > Wyślij wtyczkę na serwer**) i włącz
+   **OpenMU WP Connect**.
+2. W admin panelu OpenMU utwórz klucz API z rolą
+   **Website (selected functions only)** i zaznacz funkcje, których używa strona
+   (tabela niżej).
+3. W WordPressie otwórz **Ustawienia > OpenMU WP Connect** i wpisz adres admin
+   panelu OpenMU oraz klucz. Albo wpisz je w `wp-config.php`, wtedy klucz nie leży
+   w bazie; stałe mają pierwszeństwo przed ustawieniami:
+
+   ```php
+   define( 'OPENMU_WP_CONNECT_API_URL', 'http://192.168.1.10:8080' );
+   define( 'OPENMU_WP_CONNECT_API_KEY', '...' );
+   ```
+
+4. Utwórz strony i wstaw na nie bloki (wtyczka nie tworzy stron). Oczekiwane są
+   dwa adresy: zbrojownia pod `/armory/` (wiersze rankingu tam linkują) i konto pod
+   `/account/` (jego pozycja w menu brzmi „Sign in” dla gości).
+
+API wywołuj tylko z serwera WordPressa, nigdy z przeglądarek odwiedzających;
+wtyczka robi dokładnie tak.
+
+## Bloki
+
+Wszystkie bloki są w wstawiaczu w grupie **Widżety** i renderują się na serwerze,
+więc zawsze pokazują aktualne dane.
+
+| Blok | Pokazuje | Ustawienia | Funkcje klucza API |
+| --- | --- | --- | --- |
+| **Status serwera** | Online lub offline z lampką statusu i liczbą graczy. | brak | `website_status` |
+| **Ranking postaci** | Najlepsze postacie wg resetów, master levelu i levelu, z klasą i gildią; nazwy linkują do zbrojowni. | liczba postaci, jedna klasa lub wszystkie | `website_ranking` |
+| **Zbrojownia** | Postać w dwóch oknach ułożonych jak w grze: klasa, poziomy, resety, gildia i założone przedmioty z tooltipami. Z opcjonalnymi plikami klienta: tekstury, render klasy i pełne tooltipy jak w grze. | stała postać albo puste, żeby szukać (`?character=Nazwa`) | `website_character` |
+| **Konto** | Logowanie kontem z gry, rejestracja, zmiana hasła; postacie konta z zenem i położeniem. | zezwól na rejestrację | `website_login`, `website_change_password`, `website_register` (tylko z rejestracją) |
+| **Eventy** | Najbliższe starty eventów serwera (mini gry, inwazje, happy hour, ...). | liczba pozycji | `website_events` |
+| **Ranking mini gier** | Tabele wyników Blood Castle, Devil Square, Chaos Castle i innych mini gier. | mini gra, liczba dni | `website_minigame_ranking` |
+
+## Gracze i sesje
+
+Gracze nie są użytkownikami WordPressa i nie mają żadnych uprawnień na stronie. Po
+udanym logowaniu wtyczka trzyma odpowiedź serwera w transiencie pod losowym
+tokenem; przeglądarka dostaje tylko ten token w ciasteczku HttpOnly
+(`openmu_wp_connect_session`, 30 minut). Hasło nigdy nie jest zapisywane. Serwer
+ogranicza nieudane logowania na konto. Jeśli strona używa cache stron, wyłącz
+z niego odwiedzających z tym ciasteczkiem.
+
+## Cache
+
+Wtyczka zapamiętuje odpowiedzi serwera na krótko: status na 30 sekund, rankingi
+na 5 minut, profile postaci na 1 minutę. Nieistniejące nazwy postaci nie są
+zapamiętywane.
+
+## Języki
+
+Angielski, z tłumaczeniem polskim (`languages/`). Nazwy klas, eventów, map,
+przedmiotów i umiejętności zostają po angielsku, tak jak gracze znają je z gry.
+
+## Dla programistów
+
+- `includes/interface-data-source.php` to kontrakt, z którego czytają bloki;
+  `includes/class-api-source.php` realizuje go przez API dla stron,
+  `includes/class-demo-source.php` przez `demo/*.json`.
+- Filtry:
+  - `openmu_wp_connect_data_source`: podmiana źródła danych;
+  - `openmu_wp_connect_armory_url`: adres strony zbrojowni;
+  - `openmu_wp_connect_class_picture`: obrazek klasy postaci;
+  - `openmu_wp_connect_client_assets`: folder opcjonalnych plików klienta gry.
+- Każda wartość z serwera jest escapowana przy wypisaniu.
+
+## Wygląd z klienta gry (opcjonalnie)
+
+Wtyczka nie zawiera żadnych plików klienta gry MU Online. Bez nich zbrojownia
+(i widok postaci w bloku konta) ma neutralny wygląd, pasujący do każdego motywu:
+proste okna z obramowanymi slotami ekwipunku, obrazki przedmiotów z serwera OpenMU,
+emblemat zamiast obrazka klasy i tooltipy przedmiotów zbudowane z tego, co przysyła
+API dla stron (nazwa, poziom, excellent/ancient, opcje, zestaw ancient, sockety).
+
+Właściciel strony, który ma klienta gry, może nadać zbrojowni wygląd z gry,
+kopiując pliki z własnego klienta do `wp-content/uploads/openmu-wp-connect-client/`.
+Wtyczka sprawdza każdą część osobno i używa tego, co znajdzie; **Ustawienia >
+OpenMU WP Connect** pokazuje, które części znalazła.
+
+| Folder | Pliki | Efekt |
+| --- | --- | --- |
+| `character-view/` | `frame-top.webp`, `frame-bottom.webp`, `frame-left.webp`, `frame-right.webp` (ramka ekwipunku, w kliencie `Data/Interface/newui_item_back04/02/03`), `zen.webp` (pasek zen, `newui_item_money`), `slot-pet.webp`, `slot-helm.webp`, `slot-wings.webp`, `slot-weapon.webp`, `slot-armor.webp`, `slot-shield.webp`, `slot-gloves.webp`, `slot-pants.webp`, `slot-boots.webp`, `slot-pendant.webp`, `slot-ring.webp` (puste sloty, `newui_item_*`). WebP, w dwukrotnym rozmiarze klienta. | Teksturowane okna jak ekwipunek w grze. Używane tylko, gdy jest wszystkich 16 plików. |
+| `classes/` | Po jednym obrazku całej postaci na klasę, przezroczysty WebP nazwany jak klasa małymi literami z łącznikami: `dark-wizard.webp`, `soul-master.webp`, `grand-master.webp`, `dark-knight.webp`, `blade-knight.webp`, `blade-master.webp`, `fairy-elf.webp`, `muse-elf.webp`, `high-elf.webp`, `magic-gladiator.webp`, `duel-master.webp`, `dark-lord.webp`, `lord-emperor.webp`, `summoner.webp`, `bloody-summoner.webp`, `dimension-master.webp`, `rage-fighter.webp`, `fist-master.webp`. | Obrazek klasy zamiast emblematu. Klasa bez własnego obrazka używa klasy bazowej swojej linii (np. `dark-knight.webp`). |
+| `data/` | `items.json` (wymagany), `item-sets.json`, `skills.json`: dane przedmiotów klienta (`Data/Items`, `Data/Local/Eng`) w formacie JSON wtyczki. Skrypt, który je generuje, nie jest częścią tego repozytorium. | Pełne tooltipy jak w grze: statystyki bazowe, wytrzymałość, wymagania, klasy, opisy, mana umiejętności i blok zestawu ancient. |
+
+Żeby trzymać pliki gdzie indziej, np. w motywie, użyj filtra
+`openmu_wp_connect_client_assets`; zwraca on ścieżkę i adres folderu (puste
+napisy wyłączają wygląd z gry):
+
+```php
+add_filter( 'openmu_wp_connect_client_assets', function () {
+	return array(
+		'path' => get_stylesheet_directory() . '/openmu-client/',
+		'url'  => get_stylesheet_directory_uri() . '/openmu-client/',
+	);
+} );
+```
+
+Pliki należą do klienta gry; używaj tylko takich, które wolno ci publikować.
+MU Online jest znakiem towarowym Webzen Inc.; ten projekt nie jest powiązany z Webzen.
+
+## Licencja
+
+GPL-2.0-or-later, zobacz [LICENSE](LICENSE).

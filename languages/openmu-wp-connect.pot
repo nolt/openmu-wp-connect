@@ -1,0 +1,2117 @@
+# Copyright (C) 2026 Nolt
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenMU WP Connect 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/openmu-wp-connect\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-11-19T13:26:45+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: openmu-wp-connect\n"
+
+#. Plugin Name of the plugin
+#: openmu-wp-connect.php
+#: includes/settings.php:69
+#: includes/settings.php:85
+msgid "OpenMU WP Connect"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: openmu-wp-connect.php
+msgid "https://github.com/nolt/openmu-wp-connect"
+msgstr ""
+
+#. Description of the plugin
+#: openmu-wp-connect.php
+msgid "Blocks that show live data from an OpenMU game server through its website API: server status, character ranking, mini game rankings, event schedule, the armory and a player account. The site never touches the game database. Until the API is connected the blocks show demo data."
+msgstr ""
+
+#. Author of the plugin
+#: openmu-wp-connect.php
+msgid "Nolt"
+msgstr ""
+
+#. Author URI of the plugin
+#: openmu-wp-connect.php
+msgid "https://github.com/nolt"
+msgstr ""
+
+#: blocks/account/render.php:57
+#: blocks/account/render.php:67
+msgid "Log in"
+msgstr ""
+
+#: blocks/account/render.php:60
+#: blocks/account/render.php:76
+msgid "Login name"
+msgstr ""
+
+#: blocks/account/render.php:64
+#: blocks/account/render.php:81
+#: blocks/account/render.php:234
+msgid "Password"
+msgstr ""
+
+#: blocks/account/render.php:68
+msgid "Use the login name and password of your game account."
+msgstr ""
+
+#: blocks/account/render.php:73
+msgid "Create an account"
+msgstr ""
+
+#: blocks/account/render.php:78
+msgid "3 to 10 characters, no spaces."
+msgstr ""
+
+#: blocks/account/render.php:83
+#: blocks/account/render.php:219
+msgid "3 to 20 characters, without national characters."
+msgstr ""
+
+#: blocks/account/render.php:86
+msgid "Repeat the password"
+msgstr ""
+
+#: blocks/account/render.php:90
+msgid "E-mail (optional)"
+msgstr ""
+
+#: blocks/account/render.php:93
+msgid "Create account"
+msgstr ""
+
+#. translators: %s: login name of the game account.
+#: blocks/account/render.php:107
+#, php-format
+msgid "Account %s"
+msgstr ""
+
+#. translators: %s: account state from the game server, e.g. Normal or Banned.
+#: blocks/account/render.php:114
+#, php-format
+msgid "Account state: %s"
+msgstr ""
+
+#: blocks/account/render.php:119
+msgid "A character of this account is leveling offline. End offline leveling before you change the password."
+msgstr ""
+
+#: blocks/account/render.php:121
+msgid "You are in the game now. Leave the game to change the password."
+msgstr ""
+
+#: blocks/account/render.php:123
+msgid "You are not in the game now."
+msgstr ""
+
+#. translators: 1: time the data was read from the game server, 2: time the website session ends.
+#: blocks/account/render.php:130
+#, php-format
+msgid "Data as of %1$s. Your session on the site ends at %2$s."
+msgstr ""
+
+#: blocks/account/render.php:140
+msgid "Characters"
+msgstr ""
+
+#. translators: %s: character name from the address.
+#: blocks/account/render.php:145
+#, php-format
+msgid "There is no character named \"%s\" on your account."
+msgstr ""
+
+#: blocks/account/render.php:150
+msgid "No characters yet. Create one in the game."
+msgstr ""
+
+#: blocks/account/render.php:156
+#: blocks/minigame-ranking/render.php:116
+#: blocks/ranking/render.php:27
+#: includes/character-view.php:486
+msgid "Character"
+msgstr ""
+
+#: blocks/account/render.php:157
+#: blocks/minigame-ranking/render.php:117
+#: blocks/ranking/render.php:28
+#: assets/editor.js:47
+msgid "Class"
+msgstr ""
+
+#: blocks/account/render.php:158
+#: blocks/ranking/render.php:30
+#: includes/character-view.php:289
+msgid "Level"
+msgstr ""
+
+#: blocks/account/render.php:159
+#: blocks/ranking/render.php:29
+#: includes/character-view.php:291
+msgid "Resets"
+msgstr ""
+
+#: blocks/account/render.php:160
+#: includes/character-view.php:394
+msgid "Zen"
+msgstr ""
+
+#: blocks/account/render.php:161
+#: includes/character-view.php:302
+msgid "Location"
+msgstr ""
+
+#. translators: %d: master level, shown after the normal level.
+#: blocks/account/render.php:174
+#: blocks/ranking/render.php:46
+#, php-format
+msgid "+%d ML"
+msgstr ""
+
+#. translators: %d: map number of the game.
+#: blocks/account/render.php:186
+#: includes/character-view.php:301
+#, php-format
+msgid "Map %d"
+msgstr ""
+
+#. translators: 1: map name, 2: X coordinate, 3: Y coordinate.
+#: blocks/account/render.php:190
+#: includes/character-view.php:304
+#, php-format
+msgid "%1$s (%2$d, %3$d)"
+msgstr ""
+
+#: blocks/account/render.php:208
+#: blocks/account/render.php:225
+msgid "Change password"
+msgstr ""
+
+#: blocks/account/render.php:213
+msgid "Current password"
+msgstr ""
+
+#: blocks/account/render.php:217
+msgid "New password"
+msgstr ""
+
+#: blocks/account/render.php:222
+msgid "Repeat the new password"
+msgstr ""
+
+#: blocks/account/render.php:230
+msgid "Refresh data"
+msgstr ""
+
+#: blocks/account/render.php:232
+msgid "The site does not keep your password, so it needs it again to read the current data."
+msgstr ""
+
+#: blocks/account/render.php:237
+msgid "Refresh"
+msgstr ""
+
+#: blocks/account/render.php:242
+msgid "Log out"
+msgstr ""
+
+#: blocks/armory/render.php:27
+msgid "Character name"
+msgstr ""
+
+#: blocks/armory/render.php:29
+msgid "Show character"
+msgstr ""
+
+#. translators: %s: character name the visitor searched for.
+#: blocks/armory/render.php:37
+#, php-format
+msgid "No character named \"%s\"."
+msgstr ""
+
+#. translators: %s: time of day, e.g. "00:30".
+#: blocks/events/render.php:79
+#, php-format
+msgid "Today %s"
+msgstr ""
+
+#. translators: %s: time of day, e.g. "02:00".
+#: blocks/events/render.php:83
+#, php-format
+msgid "Tomorrow %s"
+msgstr ""
+
+#. translators: 1: short weekday name, e.g. "Fri". 2: time of day, e.g. "18:00".
+#. translators: 1: ancient set name, e.g. "Hyon"; 2: item name.
+#: blocks/events/render.php:86
+#: includes/item-options.php:42
+#, php-format
+msgid "%1$s %2$s"
+msgstr ""
+
+#: blocks/events/render.php:96
+msgid "The event schedule is not available right now."
+msgstr ""
+
+#: blocks/events/render.php:98
+msgid "No events are planned at the moment."
+msgstr ""
+
+#. translators: %d: number of the game server.
+#: blocks/events/render.php:109
+#, php-format
+msgid "Server %d"
+msgstr ""
+
+#: blocks/events/render.php:115
+msgid "No events are planned on this server."
+msgstr ""
+
+#. translators: %s: time until the event starts, e.g. "25 mins".
+#: blocks/events/render.php:129
+#, php-format
+msgid "in %s"
+msgstr ""
+
+#: blocks/events/render.php:130
+msgid "starting now"
+msgstr ""
+
+#: blocks/minigame-ranking/render.php:76
+msgid "The mini game ranking is not available right now."
+msgstr ""
+
+#. translators: %d: number of days the ranking covers.
+#: blocks/minigame-ranking/render.php:86
+#, php-format
+msgid "last %d day"
+msgid_plural "last %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: blocks/minigame-ranking/render.php:98
+msgid "Mini game"
+msgstr ""
+
+#: blocks/minigame-ranking/render.php:104
+#: includes/character-view.php:498
+msgid "Show"
+msgstr ""
+
+#: blocks/minigame-ranking/render.php:109
+msgid "Nobody has finished this mini game in this period yet."
+msgstr ""
+
+#: blocks/minigame-ranking/render.php:115
+#: blocks/ranking/render.php:26
+msgid "Place"
+msgstr ""
+
+#: blocks/minigame-ranking/render.php:118
+msgid "Total score"
+msgstr ""
+
+#: blocks/minigame-ranking/render.php:119
+msgid "Best score"
+msgstr ""
+
+#: blocks/minigame-ranking/render.php:120
+msgid "Games"
+msgstr ""
+
+#: blocks/ranking/render.php:19
+msgid "The ranking is not available right now."
+msgstr ""
+
+#: blocks/ranking/render.php:21
+msgid "No characters in this ranking yet."
+msgstr ""
+
+#: blocks/ranking/render.php:31
+#: includes/character-view.php:294
+msgid "Guild"
+msgstr ""
+
+#: blocks/server-status/render.php:19
+msgid "Server online"
+msgstr ""
+
+#. translators: %d: number of players currently in game.
+#: blocks/server-status/render.php:25
+#, php-format
+msgid "%d player in game"
+msgid_plural "%d players in game"
+msgstr[0] ""
+msgstr[1] ""
+
+#: blocks/server-status/render.php:32
+msgid "Server offline"
+msgstr ""
+
+#: includes/account-menu.php:44
+msgid "Sign in"
+msgstr ""
+
+#. translators: %d: minutes until the next try is allowed.
+#: includes/account.php:381
+#, php-format
+msgid "Too many failed attempts. Try again in %d minute."
+msgid_plural "Too many failed attempts. Try again in %d minutes."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/account.php:384
+msgid "Too many failed attempts. Try again later."
+msgstr ""
+
+#: includes/account.php:387
+msgid "You are logged in."
+msgstr ""
+
+#: includes/account.php:388
+msgid "Your account data is up to date."
+msgstr ""
+
+#: includes/account.php:389
+msgid "You are logged out."
+msgstr ""
+
+#: includes/account.php:390
+msgid "Your account has been created. You can log in now, on the site and in the game."
+msgstr ""
+
+#: includes/account.php:391
+msgid "Your password has been changed. Use the new one in the game too."
+msgstr ""
+
+#: includes/account.php:392
+msgid "Wrong login name or password."
+msgstr ""
+
+#: includes/account.php:394
+msgid "The current password is wrong."
+msgstr ""
+
+#: includes/account.php:395
+msgid "A character of this account is offline leveling. Stop the offline leveling in the game first, then change the password."
+msgstr ""
+
+#: includes/account.php:396
+msgid "Your account is in the game now. Leave the game, then change the password."
+msgstr ""
+
+#: includes/account.php:397
+msgid "The new password must have 3 to 20 characters: letters, digits and common symbols (no national characters)."
+msgstr ""
+
+#: includes/account.php:398
+msgid "The password must have 3 to 20 characters: letters, digits and common symbols (no national characters)."
+msgstr ""
+
+#: includes/account.php:399
+msgid "The login name must have 3 to 10 characters: letters, digits and common symbols, no spaces."
+msgstr ""
+
+#: includes/account.php:400
+msgid "The two passwords are not the same."
+msgstr ""
+
+#: includes/account.php:401
+msgid "The e-mail address is not valid."
+msgstr ""
+
+#: includes/account.php:402
+msgid "The server did not accept these account details."
+msgstr ""
+
+#: includes/account.php:403
+msgid "This login name is already taken."
+msgstr ""
+
+#: includes/account.php:404
+msgid "This function is not enabled for the site on the game server."
+msgstr ""
+
+#: includes/account.php:405
+#: includes/blocks-extra.php:92
+msgid "Connect the site to an OpenMU server in Settings > OpenMU WP Connect."
+msgstr ""
+
+#: includes/account.php:406
+msgid "The game server is not available right now. Try again later."
+msgstr ""
+
+#: includes/account.php:407
+msgid "Your session has ended. Log in again."
+msgstr ""
+
+#: includes/account.php:408
+msgid "The form has expired. Please try again."
+msgstr ""
+
+#: includes/character-view.php:41
+msgid "Pet"
+msgstr ""
+
+#: includes/character-view.php:42
+msgid "Helm"
+msgstr ""
+
+#: includes/character-view.php:43
+msgid "Wings"
+msgstr ""
+
+#: includes/character-view.php:44
+msgid "Weapon"
+msgstr ""
+
+#: includes/character-view.php:45
+msgid "Pendant"
+msgstr ""
+
+#: includes/character-view.php:46
+msgid "Armor"
+msgstr ""
+
+#: includes/character-view.php:47
+msgid "Second hand"
+msgstr ""
+
+#: includes/character-view.php:48
+msgid "Gloves"
+msgstr ""
+
+#: includes/character-view.php:49
+#: includes/character-view.php:51
+msgid "Ring"
+msgstr ""
+
+#: includes/character-view.php:50
+msgid "Pants"
+msgstr ""
+
+#: includes/character-view.php:52
+msgid "Boots"
+msgstr ""
+
+#: includes/character-view.php:211
+#: includes/item-options.php:254
+msgid "Skill"
+msgstr ""
+
+#: includes/character-view.php:214
+#: includes/item-options.php:273
+msgid "Luck (critical damage rate +5%)"
+msgstr ""
+
+#. translators: %s: ancient set name.
+#: includes/character-view.php:223
+#: includes/item-data.php:982
+#: includes/item-options.php:133
+#, php-format
+msgid "Set: %s"
+msgstr ""
+
+#: includes/character-view.php:290
+msgid "Master level"
+msgstr ""
+
+#: includes/character-view.php:336
+#: includes/character-view.php:337
+msgid "Equipment"
+msgstr ""
+
+#. translators: %s: equipment slot, e.g. Helm.
+#: includes/character-view.php:347
+#, php-format
+msgid "%s: empty"
+msgstr ""
+
+#. translators: 1: equipment slot, e.g. Helm; 2: item title, e.g. Dragon Helm +13.
+#: includes/character-view.php:373
+#, php-format
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: includes/character-view.php:477
+msgid "Your characters"
+msgstr ""
+
+#: includes/character-view.php:478
+msgid "‹ All characters"
+msgstr ""
+
+#. translators: 1: character name, 2: class name, 3: level.
+#: includes/character-view.php:492
+#, php-format
+msgid "%1$s – %2$s, level %3$d"
+msgstr ""
+
+#: includes/character-view.php:504
+msgid "The equipment of this character cannot be read from the game server right now."
+msgstr ""
+
+#: includes/class-api-source.php:215
+msgid "Connected. The server status can be read."
+msgstr ""
+
+#: includes/class-api-source.php:216
+msgid "The API key is unknown or disabled."
+msgstr ""
+
+#: includes/class-api-source.php:217
+msgid "The key works, but it is not a website key or \"Server status\" is not selected for it."
+msgstr ""
+
+#. translators: %d: HTTP status code.
+#: includes/class-api-source.php:218
+#, php-format
+msgid "Unexpected answer of the server: HTTP %d."
+msgstr ""
+
+#: includes/event-names.php:27
+msgid "Devil Square"
+msgstr ""
+
+#: includes/event-names.php:28
+msgid "Blood Castle"
+msgstr ""
+
+#: includes/event-names.php:29
+msgid "Chaos Castle"
+msgstr ""
+
+#: includes/event-names.php:30
+msgid "Illusion Temple"
+msgstr ""
+
+#: includes/event-names.php:31
+msgid "Kanturu"
+msgstr ""
+
+#: includes/functions.php:68
+msgid "OpenMU WP Connect shows demo data: the server status, ranking and armory blocks are not connected to your game server yet."
+msgstr ""
+
+#. translators: 1: minimum damage, 2: maximum damage.
+#: includes/item-data.php:467
+#, php-format
+msgid "Two-Handed Damage: %1$d ~ %2$d"
+msgstr ""
+
+#. translators: 1: minimum damage, 2: maximum damage.
+#: includes/item-data.php:469
+#, php-format
+msgid "One-Handed Damage: %1$d ~ %2$d"
+msgstr ""
+
+#. translators: %d: defense of the item.
+#: includes/item-data.php:475
+#, php-format
+msgid "Defense: %d"
+msgstr ""
+
+#. translators: %d: spell resistance of the item.
+#: includes/item-data.php:479
+#, php-format
+msgid "Spell resistance: %d"
+msgstr ""
+
+#. translators: %d: defense rate of the shield.
+#: includes/item-data.php:483
+#, php-format
+msgid "Defense rate: %d"
+msgstr ""
+
+#. translators: %d: attack speed of the weapon.
+#: includes/item-data.php:487
+#, php-format
+msgid "Attack speed: %d"
+msgstr ""
+
+#. translators: %d: moving speed bonus of the item.
+#: includes/item-data.php:491
+#, php-format
+msgid "Moving speed: %d"
+msgstr ""
+
+#. translators: 1: current durability, 2: maximum durability.
+#: includes/item-data.php:499
+#, php-format
+msgid "Durability: [%1$d/%2$d]"
+msgstr ""
+
+#. translators: %d: ice resistance.
+#: includes/item-data.php:504
+#, php-format
+msgid "Ice Resistance: %d"
+msgstr ""
+
+#. translators: %d: poison resistance.
+#: includes/item-data.php:506
+#, php-format
+msgid "Poison Resistance: %d"
+msgstr ""
+
+#. translators: %d: lightning resistance.
+#: includes/item-data.php:508
+#, php-format
+msgid "Lightning Resistance: %d"
+msgstr ""
+
+#. translators: %d: fire resistance.
+#: includes/item-data.php:510
+#, php-format
+msgid "Fire Resistance: %d"
+msgstr ""
+
+#. translators: %d: earth resistance.
+#: includes/item-data.php:512
+#, php-format
+msgid "Earth Resistance: %d"
+msgstr ""
+
+#. translators: %d: wind resistance.
+#: includes/item-data.php:514
+#, php-format
+msgid "Wind Resistance: %d"
+msgstr ""
+
+#. translators: %d: water resistance.
+#: includes/item-data.php:516
+#, php-format
+msgid "Water Resistance: %d"
+msgstr ""
+
+#. translators: %d: minimum character level.
+#: includes/item-data.php:527
+#, php-format
+msgid "Minimum Level Requirement: %d"
+msgstr ""
+
+#. translators: %d: required strength.
+#: includes/item-data.php:532
+#, php-format
+msgid "Strength Requirement: %d"
+msgstr ""
+
+#. translators: %d: required agility.
+#: includes/item-data.php:536
+#, php-format
+msgid "Agility Requirement: %d"
+msgstr ""
+
+#. translators: %d: required stamina (vitality).
+#: includes/item-data.php:540
+#, php-format
+msgid "Stamina Requirement: %d"
+msgstr ""
+
+#. translators: %d: required energy.
+#: includes/item-data.php:544
+#, php-format
+msgid "Energy Requirement: %d"
+msgstr ""
+
+#. translators: %d: required command (leadership).
+#: includes/item-data.php:548
+#, php-format
+msgid "Charisma Requirement: %d"
+msgstr ""
+
+#. translators: %s: character class, e.g. "Dark Knight".
+#: includes/item-data.php:561
+#, php-format
+msgid "Can be equipped by %s"
+msgstr ""
+
+#: includes/item-data.php:570
+msgid "Increases moving speed"
+msgstr ""
+
+#: includes/item-data.php:574
+msgid "Swimming speed increase"
+msgstr ""
+
+#. translators: %d: curse damage bonus in percent.
+#: includes/item-data.php:581
+#, php-format
+msgid "Curse Spell increment %d%%"
+msgstr ""
+
+#. translators: %d: wizardry damage bonus in percent.
+#: includes/item-data.php:583
+#, php-format
+msgid "Wizardry Dmg %d%% rise"
+msgstr ""
+
+#. translators: %d: pet attack bonus in percent.
+#: includes/item-data.php:590
+#, php-format
+msgid "Increase pet attack as %d%%"
+msgstr ""
+
+#: includes/item-data.php:616
+msgid "Dark Wizard"
+msgstr ""
+
+#: includes/item-data.php:616
+msgid "Soul Master"
+msgstr ""
+
+#: includes/item-data.php:616
+msgid "Grand Master"
+msgstr ""
+
+#: includes/item-data.php:617
+msgid "Dark Knight"
+msgstr ""
+
+#: includes/item-data.php:617
+msgid "Blade Knight"
+msgstr ""
+
+#: includes/item-data.php:617
+msgid "Blade Master"
+msgstr ""
+
+#: includes/item-data.php:618
+msgid "Elf"
+msgstr ""
+
+#: includes/item-data.php:618
+msgid "Muse Elf"
+msgstr ""
+
+#: includes/item-data.php:618
+msgid "High Elf"
+msgstr ""
+
+#: includes/item-data.php:619
+msgid "Magic Gladiator"
+msgstr ""
+
+#: includes/item-data.php:619
+msgid "Dual Master"
+msgstr ""
+
+#: includes/item-data.php:620
+msgid "Dark Lord"
+msgstr ""
+
+#: includes/item-data.php:620
+msgid "Lord Emperor"
+msgstr ""
+
+#: includes/item-data.php:621
+msgid "Summoner"
+msgstr ""
+
+#: includes/item-data.php:621
+msgid "Bloody Summoner"
+msgstr ""
+
+#: includes/item-data.php:621
+msgid "Dimension Master"
+msgstr ""
+
+#: includes/item-data.php:622
+msgid "Rage Fighter"
+msgstr ""
+
+#: includes/item-data.php:622
+msgid "Fist Master"
+msgstr ""
+
+#. translators: {durability} and {maxDurability}: current and maximum durability; keep the braces.
+#: includes/item-data.php:787
+msgid "Durability: [{durability}/{maxDurability}]"
+msgstr ""
+
+#. translators: {durability}: life of the pet; keep the braces.
+#: includes/item-data.php:789
+msgid "Life: {durability}"
+msgstr ""
+
+#. translators: {percent}: damage bonus in percent; keep the braces.
+#: includes/item-data.php:791
+msgid "Increase {percent}% of Damage"
+msgstr ""
+
+#. translators: {percent}: absorbed damage in percent; keep the braces.
+#: includes/item-data.php:793
+msgid "Absorb {percent}% of Damage"
+msgstr ""
+
+#: includes/item-data.php:794
+#: includes/item-options.php:238
+msgid "Increase speed"
+msgstr ""
+
+#: includes/item-data.php:795
+msgid "Automatic HP recovery 3%"
+msgstr ""
+
+#: includes/item-data.php:796
+msgid "Cannot Repair"
+msgstr ""
+
+#: includes/item-data.php:797
+msgid "Additional Dmg +1"
+msgstr ""
+
+#: includes/item-data.php:798
+msgid "Unable to Equip with a Different Transformation Ring"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:822
+#, php-format
+msgid "Defend skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:824
+#, php-format
+msgid "Falling Slash skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:826
+#, php-format
+msgid "Lunge skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:828
+#, php-format
+msgid "Uppercut skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:830
+#, php-format
+msgid "Cyclone Cutting skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:832
+#, php-format
+msgid "Slashing skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:834
+#, php-format
+msgid "Triple Shot skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:836
+#, php-format
+msgid "Raid Skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:838
+#, php-format
+msgid "4 shot skill (Mana: %d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:840
+#, php-format
+msgid "Power Slash Skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:842
+#, php-format
+msgid "Long spear skill (mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:844
+#, php-format
+msgid "Earth shake skill (mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:846
+#, php-format
+msgid "Force wave skill (mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:848
+#, php-format
+msgid "Plasma storm skill (Mana:%d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:850
+#, php-format
+msgid "Explosion Skill (Mana: %d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:852
+#, php-format
+msgid "Requiem (Mana: %d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:854
+#, php-format
+msgid "Pollution skill (Mana: %d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:856
+#, php-format
+msgid "Killing Blow (Mana: %d)"
+msgstr ""
+
+#. translators: %d: mana cost of the skill.
+#: includes/item-data.php:858
+#, php-format
+msgid "Beast Uppercut (Mana: %d)"
+msgstr ""
+
+#: includes/item-data.php:879
+msgid "Knight specific skill"
+msgstr ""
+
+#: includes/item-data.php:884
+msgid "Dark Lord exclusive skill"
+msgstr ""
+
+#: includes/item-data.php:906
+msgid "Can summon the Fenrir when equipped."
+msgstr ""
+
+#: includes/item-data.php:915
+msgid "Skills will improve through upgrading."
+msgstr ""
+
+#: includes/item-data.php:1002
+msgid "Set Item option info"
+msgstr ""
+
+#. translators: %d: bonus.
+#. translators: %d: added strength.
+#: includes/item-data.php:1052
+#: includes/item-options.php:734
+#, php-format
+msgid "Increase strength +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#. translators: %d: added agility.
+#: includes/item-data.php:1054
+#: includes/item-options.php:736
+#, php-format
+msgid "Increase agility +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#. translators: %d: added energy.
+#: includes/item-data.php:1056
+#: includes/item-options.php:740
+#, php-format
+msgid "Increase energy +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#. translators: %d: added stamina (vitality).
+#: includes/item-data.php:1058
+#: includes/item-options.php:738
+#, php-format
+msgid "Increase stamina +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#. translators: %d: added command (leadership).
+#: includes/item-data.php:1060
+#: includes/item-options.php:624
+#, php-format
+msgid "Increase command +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1062
+#, php-format
+msgid "Increase min. damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1064
+#, php-format
+msgid "Increase max. damage +%d"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#. translators: %d: wizardry damage bonus in percent.
+#: includes/item-data.php:1066
+#: includes/item-options.php:594
+#, php-format
+msgid "Increase Wizardry Dmg +%d%%"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1068
+#, php-format
+msgid "Increase damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1070
+#, php-format
+msgid "Increase damage success rate +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1072
+#, php-format
+msgid "Increase defensive skill +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1074
+#, php-format
+msgid "Increase max. life +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1076
+#, php-format
+msgid "Increase max. mana +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1078
+#, php-format
+msgid "Increase max. AG +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1080
+#, php-format
+msgid "Increase AG increase rate +%d"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-data.php:1082
+#, php-format
+msgid "Increase critical damage rate %d%%"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1084
+#, php-format
+msgid "Increase critical damage +%d"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-data.php:1086
+#, php-format
+msgid "Increase excellent damage rate %d%%"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1088
+#, php-format
+msgid "Increase excellent damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1090
+#, php-format
+msgid "Increase skill attacking rate +%d"
+msgstr ""
+
+#. translators: %d: chance in percent.
+#: includes/item-data.php:1092
+#, php-format
+msgid "Double damage rate %d%%"
+msgstr ""
+
+#. translators: %d: chance in percent.
+#: includes/item-data.php:1094
+#, php-format
+msgid "Ignore enemies defensive skill %d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-data.php:1096
+#, php-format
+msgid "Increase defensive skill when using shield weapons %d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-data.php:1098
+#, php-format
+msgid "Increase damage when using two handed weapons +%d%%"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1100
+#, php-format
+msgid "Ice attribute skill increase damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1102
+#, php-format
+msgid "Poison attribute skill increase damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1104
+#, php-format
+msgid "Lightning attribute skill increase damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1106
+#, php-format
+msgid "Fire attribute skill increase damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1108
+#, php-format
+msgid "Earth attribute skill increase damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1110
+#, php-format
+msgid "Wind attribute skill increase damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-data.php:1112
+#, php-format
+msgid "Water attribute skill increase damage +%d"
+msgstr ""
+
+#. translators: %s: item name; the game prefixes excellent items.
+#: includes/item-options.php:47
+#, php-format
+msgid "Excellent %s"
+msgstr ""
+
+#. translators: %s: item name (Horn of Fenrir with the golden option).
+#: includes/item-options.php:59
+#, php-format
+msgid "%s +Illusion"
+msgstr ""
+
+#. translators: %s: item name (Horn of Fenrir with the protecting option).
+#: includes/item-options.php:62
+#, php-format
+msgid "%s +Protect"
+msgstr ""
+
+#. translators: %s: item name (Horn of Fenrir with the destroying option).
+#: includes/item-options.php:65
+#, php-format
+msgid "%s +Destroy"
+msgstr ""
+
+#: includes/item-options.php:219
+msgid "Golden Fenrir"
+msgstr ""
+
+#: includes/item-options.php:223
+msgid "Exclusive edition only given to MU Heroes"
+msgstr ""
+
+#: includes/item-options.php:269
+msgid "Luck (success rate of Jewel of Soul +25%)"
+msgstr ""
+
+#. translators: %d: divisor of the character level, e.g. 2.
+#: includes/item-options.php:395
+#, php-format
+msgid "level/%d"
+msgstr ""
+
+#. translators: 1: option text so far, 2: attribute the bonus depends on, 3: factor.
+#: includes/item-options.php:461
+#, php-format
+msgid "%1$s + %2$s × %3$s"
+msgstr ""
+
+#: includes/item-options.php:464
+msgid "Unknown option"
+msgstr ""
+
+#: includes/item-options.php:497
+msgid "Socket Item option info"
+msgstr ""
+
+#: includes/item-options.php:505
+msgid "No item application"
+msgstr ""
+
+#. translators: %d: divisor, e.g. 8 for one eighth of the maximum life.
+#: includes/item-options.php:525
+#, php-format
+msgid "+life/%d"
+msgstr ""
+
+#. translators: %d: divisor of the character level, e.g. 20.
+#: includes/item-options.php:527
+#, php-format
+msgid "+level/%d"
+msgstr ""
+
+#. translators: 1: seed element, e.g. "Fire"; 2: option name; 3: value, e.g. "+7" or "+10%".
+#: includes/item-options.php:531
+#, php-format
+msgid "%1$s(%2$s %3$s)"
+msgstr ""
+
+#. translators: 1: socket number, 2: seed sphere of the socket, e.g. "Fire(Attack speed increase +7)".
+#: includes/item-options.php:540
+#, php-format
+msgid "Socket %1$d: %2$s"
+msgstr ""
+
+#: includes/item-options.php:551
+msgid "Bonus socket option"
+msgstr ""
+
+#. translators: 1: socket bonus name, 2: its value.
+#: includes/item-options.php:557
+#, php-format
+msgid "%1$s +%2$d"
+msgstr ""
+
+#. translators: %d: divisor, e.g. 8 for one eighth of the maximum mana.
+#: includes/item-options.php:586
+#, php-format
+msgid "Increases acquisition rate of Mana after hunting monsters +Mana/%d"
+msgstr ""
+
+#. translators: %d: divisor, e.g. 8 for one eighth of the maximum life.
+#: includes/item-options.php:588
+#, php-format
+msgid "Increases acquisition rate of Life after hunting monsters +life/%d"
+msgstr ""
+
+#. translators: %d: attack speed bonus.
+#. translators: %d: attack speed bonus (Horn of Dinorant).
+#: includes/item-options.php:590
+#: includes/item-options.php:667
+#, php-format
+msgid "Increase Attacking(Wizardry)speed +%d"
+msgstr ""
+
+#. translators: %d: damage bonus in percent.
+#: includes/item-options.php:592
+#, php-format
+msgid "Increase Damage +%d%%"
+msgstr ""
+
+#. translators: %d: divisor of the character level, e.g. 20.
+#: includes/item-options.php:596
+#, php-format
+msgid "Increase Damage +level/%d"
+msgstr ""
+
+#. translators: %d: divisor of the character level, e.g. 20.
+#: includes/item-options.php:598
+#, php-format
+msgid "Increase Wizardry Dmg +level/%d"
+msgstr ""
+
+#. translators: %d: chance in percent.
+#: includes/item-options.php:600
+#, php-format
+msgid "Excellent Damage rate +%d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-options.php:602
+#, php-format
+msgid "Increases acquisition rate of Zen after hunting monsters +%d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-options.php:604
+#, php-format
+msgid "Defense success rate +%d%%"
+msgstr ""
+
+#. translators: %d: reflected damage in percent.
+#: includes/item-options.php:606
+#, php-format
+msgid "Reflect Damage +%d%%"
+msgstr ""
+
+#. translators: %d: decrease in percent.
+#: includes/item-options.php:608
+#, php-format
+msgid "Damage Decrease +%d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-options.php:610
+#, php-format
+msgid "Increase Max Mana +%d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-options.php:612
+#, php-format
+msgid "Increase Max HP +%d%%"
+msgstr ""
+
+#. translators: %d: added maximum life.
+#: includes/item-options.php:618
+#, php-format
+msgid "HP +%d increased"
+msgstr ""
+
+#. translators: %d: added maximum mana.
+#: includes/item-options.php:620
+#, php-format
+msgid "Mana +%d increased"
+msgstr ""
+
+#. translators: %d: chance in percent.
+#: includes/item-options.php:622
+#, php-format
+msgid "Ignore opponent's defensive power by %d%%"
+msgstr ""
+
+#. translators: %d: chance in percent.
+#: includes/item-options.php:626
+#, php-format
+msgid "Returns the enemy's attack power in %d%%"
+msgstr ""
+
+#. translators: %d: chance in percent.
+#: includes/item-options.php:628
+#, php-format
+msgid "Complete recovery of life in %d%% rate"
+msgstr ""
+
+#. translators: %d: chance in percent.
+#: includes/item-options.php:630
+#, php-format
+msgid "Complete recovery of Mana in %d%% rate"
+msgstr ""
+
+#. translators: %d: added damage, e.g. 16.
+#. translators: %d: added damage.
+#: includes/item-options.php:636
+#: includes/item-options.php:644
+#, php-format
+msgid "Additional Dmg +%d"
+msgstr ""
+
+#. translators: %d: added wizardry damage.
+#: includes/item-options.php:638
+#: includes/item-options.php:646
+#, php-format
+msgid "Additional Wizardry Dmg +%d"
+msgstr ""
+
+#. translators: %d: added curse damage.
+#: includes/item-options.php:640
+#, php-format
+msgid "Additional Curse Spell +%d"
+msgstr ""
+
+#. translators: %d: added defense.
+#: includes/item-options.php:649
+#, php-format
+msgid "Additional defense +%d"
+msgstr ""
+
+#. translators: %d: added defense rate.
+#: includes/item-options.php:651
+#, php-format
+msgid "Additional defense rate +%d"
+msgstr ""
+
+#. translators: %d: recovery in percent.
+#: includes/item-options.php:653
+#, php-format
+msgid "Automatic HP recovery %d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-options.php:655
+#, php-format
+msgid "Max mana increased by %d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent (Pendant of Ability).
+#: includes/item-options.php:659
+#, php-format
+msgid "Max AG increased by %d%%"
+msgstr ""
+
+#. translators: %d: added maximum AG (Horn of Dinorant).
+#: includes/item-options.php:661
+#, php-format
+msgid "Max AG +%d increased"
+msgstr ""
+
+#. translators: %d: absorbed damage in percent (Horn of Dinorant).
+#: includes/item-options.php:665
+#, php-format
+msgid "Absorb %d%% additional damage"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:673
+#, php-format
+msgid "Min. attack increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:675
+#, php-format
+msgid "Max. attack increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:677
+#, php-format
+msgid "Required strength decrease +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:679
+#, php-format
+msgid "Required agility decrease +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:681
+#, php-format
+msgid "Attack increase(Min,Max) +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:683
+#, php-format
+msgid "Wizardry increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:685
+#, php-format
+msgid "Critical damage increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:687
+#, php-format
+msgid "Skill attack increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:689
+#, php-format
+msgid "Attack success rate increase(PVP) +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:691
+#, php-format
+msgid "SD decrement increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:693
+#, php-format
+msgid "SD bypass rate increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:695
+#, php-format
+msgid "Defense increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:697
+#, php-format
+msgid "Max. AG increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#. translators: %d: bonus.
+#: includes/item-options.php:699
+#: includes/item-options.php:723
+#, php-format
+msgid "Max. HP increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:701
+#, php-format
+msgid "Life auto increment increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:703
+#, php-format
+msgid "Mana auto increment increase +%d"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:705
+#, php-format
+msgid "Defense success rate increase(PVP) +%d"
+msgstr ""
+
+#. translators: %d: decrease in percent.
+#: includes/item-options.php:707
+#, php-format
+msgid "Damage decrement increase +%d%%"
+msgstr ""
+
+#. translators: %d: harmony option value.
+#: includes/item-options.php:709
+#, php-format
+msgid "SD ratio increase +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-options.php:715
+#, php-format
+msgid "Attack success rate increase +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-options.php:717
+#, php-format
+msgid "Additional Damage +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-options.php:719
+#, php-format
+msgid "Defense success rate increase +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-options.php:721
+#, php-format
+msgid "Defensive skill +%d"
+msgstr ""
+
+#. translators: %d: bonus.
+#: includes/item-options.php:725
+#, php-format
+msgid "Max. SD increase +%d"
+msgstr ""
+
+#: includes/item-options.php:726
+msgid "SD auto recovery"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-options.php:728
+#, php-format
+msgid "SD recovery rate increase +%d%%"
+msgstr ""
+
+#. translators: %d: bonus in percent.
+#: includes/item-options.php:746
+#, php-format
+msgid "Increase final damage %d%%"
+msgstr ""
+
+#. translators: %d: absorbed damage in percent.
+#: includes/item-options.php:748
+#, php-format
+msgid "Absorb final damage %d%%"
+msgstr ""
+
+#. translators: %s: added life, e.g. "200" or "level/2".
+#: includes/item-options.php:750
+#, php-format
+msgid "Added %s of Life"
+msgstr ""
+
+#. translators: %s: added mana, e.g. "200" or "level/2".
+#: includes/item-options.php:752
+#, php-format
+msgid "Added %s of Mana"
+msgstr ""
+
+#. translators: %s: added damage, e.g. "33" or "level/12".
+#: includes/item-options.php:754
+#, php-format
+msgid "Added %s Attack"
+msgstr ""
+
+#. translators: %s: added wizardry damage, e.g. "16" or "level/25".
+#: includes/item-options.php:756
+#, php-format
+msgid "Added %s Wizardry"
+msgstr ""
+
+#: includes/item-options.php:761
+#: includes/item-options.php:762
+#: includes/item-options.php:763
+#: includes/item-options.php:764
+#: includes/item-options.php:765
+#: includes/item-options.php:766
+msgid "Fire"
+msgstr ""
+
+#: includes/item-options.php:761
+msgid "(Level type)Attack/Wizardry increase"
+msgstr ""
+
+#: includes/item-options.php:762
+msgid "Attack speed increase"
+msgstr ""
+
+#: includes/item-options.php:763
+msgid "Maximum attack/Wizardry increase"
+msgstr ""
+
+#: includes/item-options.php:764
+msgid "Minimum attack/Wizardry increase"
+msgstr ""
+
+#: includes/item-options.php:765
+#: includes/item-options.php:794
+msgid "Attack/Wizardry increase"
+msgstr ""
+
+#: includes/item-options.php:766
+msgid "AG cost decrease"
+msgstr ""
+
+#: includes/item-options.php:767
+#: includes/item-options.php:768
+#: includes/item-options.php:769
+#: includes/item-options.php:770
+#: includes/item-options.php:771
+msgid "Water"
+msgstr ""
+
+#: includes/item-options.php:767
+msgid "Block rating increase"
+msgstr ""
+
+#: includes/item-options.php:768
+#: includes/item-options.php:796
+msgid "Defense increase"
+msgstr ""
+
+#: includes/item-options.php:769
+msgid "Shield protection increase"
+msgstr ""
+
+#: includes/item-options.php:770
+msgid "Damage reduction"
+msgstr ""
+
+#: includes/item-options.php:771
+msgid "Damage reflection"
+msgstr ""
+
+#: includes/item-options.php:772
+#: includes/item-options.php:773
+#: includes/item-options.php:774
+#: includes/item-options.php:775
+#: includes/item-options.php:776
+msgid "Ice"
+msgstr ""
+
+#: includes/item-options.php:772
+msgid "Monster destruction for the Life increase"
+msgstr ""
+
+#: includes/item-options.php:773
+msgid "Monster destruction for the Mana increase"
+msgstr ""
+
+#: includes/item-options.php:774
+#: includes/item-options.php:793
+#: includes/item-options.php:795
+msgid "Skill attack increase"
+msgstr ""
+
+#: includes/item-options.php:775
+msgid "Attack rating increase"
+msgstr ""
+
+#: includes/item-options.php:776
+msgid "Item durability increase"
+msgstr ""
+
+#: includes/item-options.php:777
+#: includes/item-options.php:778
+#: includes/item-options.php:779
+#: includes/item-options.php:780
+#: includes/item-options.php:781
+#: includes/item-options.php:782
+msgid "Wind"
+msgstr ""
+
+#: includes/item-options.php:777
+msgid "Automatic Life recovery increase"
+msgstr ""
+
+#: includes/item-options.php:778
+#: includes/item-options.php:797
+msgid "Maximum Life increase"
+msgstr ""
+
+#: includes/item-options.php:779
+msgid "Maximum Mana increase"
+msgstr ""
+
+#: includes/item-options.php:780
+msgid "Automatic Mana recovery increase"
+msgstr ""
+
+#: includes/item-options.php:781
+msgid "Maximum AG increase"
+msgstr ""
+
+#: includes/item-options.php:782
+msgid "AG value increase"
+msgstr ""
+
+#: includes/item-options.php:783
+#: includes/item-options.php:784
+#: includes/item-options.php:785
+#: includes/item-options.php:786
+msgid "Lightning"
+msgstr ""
+
+#: includes/item-options.php:783
+msgid "Excellent damage increase"
+msgstr ""
+
+#: includes/item-options.php:784
+msgid "Excellent damage rate increase"
+msgstr ""
+
+#: includes/item-options.php:785
+msgid "Critical damage increase"
+msgstr ""
+
+#: includes/item-options.php:786
+msgid "Critical damage rate increase"
+msgstr ""
+
+#: includes/item-options.php:787
+msgid "Earth"
+msgstr ""
+
+#: includes/item-options.php:787
+msgid "Health increase"
+msgstr ""
+
+#: includes/item-options.php:792
+msgid "Attack power increase"
+msgstr ""
+
+#: includes/settings.php:86
+msgid "Create an API key with the role \"Website (selected functions only)\" in the OpenMU admin panel (API keys), select the functions this site uses, and enter it here. Without an address and a key, the blocks show demo data."
+msgstr ""
+
+#: includes/settings.php:94
+msgid "Server address"
+msgstr ""
+
+#: includes/settings.php:97
+msgid "Address of the OpenMU admin panel, as this server reaches it. Keep the admin panel out of the internet; only this site needs to reach it."
+msgstr ""
+
+#: includes/settings.php:101
+msgid "API key"
+msgstr ""
+
+#: includes/settings.php:104
+msgid "Set by OPENMU_WP_CONNECT_API_KEY in wp-config.php instead, if you prefer to keep the key out of the database."
+msgstr ""
+
+#: includes/settings.php:123
+msgid "Inventory textures: the armory is drawn like the game window."
+msgstr ""
+
+#: includes/settings.php:124
+msgid "Class pictures: the armory shows the class render instead of an emblem."
+msgstr ""
+
+#: includes/settings.php:125
+msgid "Item data: item tooltips add base stats, requirements and descriptions."
+msgstr ""
+
+#: includes/settings.php:128
+msgid "Game client look (optional)"
+msgstr ""
+
+#: includes/settings.php:129
+msgid "The plugin ships no files of the game client. Copy the textures, class pictures and item data from your own game client into this folder to give the armory the look of the game; the README lists the files. Without them the armory uses a neutral style."
+msgstr ""
+
+#: includes/settings.php:132
+msgid "Folder"
+msgstr ""
+
+#: includes/settings.php:134
+msgid "(none)"
+msgstr ""
+
+#: includes/settings.php:135
+msgid "Change it with the openmu_wp_connect_client_assets filter."
+msgstr ""
+
+#: includes/settings.php:143
+msgid "Found"
+msgstr ""
+
+#: includes/settings.php:145
+msgid "Not found"
+msgstr ""
+
+#: assets/editor-extra.js:47
+msgid "Player account"
+msgstr ""
+
+#: assets/editor-extra.js:49
+msgid "Allow creating accounts"
+msgstr ""
+
+#: assets/editor-extra.js:50
+msgid "Shows a registration form next to the login form."
+msgstr ""
+
+#: assets/editor-extra.js:61
+msgid "Event schedule"
+msgstr ""
+
+#: assets/editor-extra.js:63
+msgid "Events per server"
+msgstr ""
+
+#: assets/editor-extra.js:76
+msgid "Mini game ranking"
+msgstr ""
+
+#: assets/editor-extra.js:78
+msgid "Mini game shown first"
+msgstr ""
+
+#: assets/editor-extra.js:80
+msgid "First with results (server decides)"
+msgstr ""
+
+#: assets/editor-extra.js:86
+msgid "Period in days"
+msgstr ""
+
+#: assets/editor-extra.js:87
+msgid "0 = the default period of the game server."
+msgstr ""
+
+#: assets/editor.js:38
+msgid "Ranking"
+msgstr ""
+
+#: assets/editor.js:40
+msgid "Number of characters"
+msgstr ""
+
+#: assets/editor.js:49
+msgid "All classes"
+msgstr ""
+
+#: assets/editor.js:73
+msgid "Armory"
+msgstr ""
+
+#: assets/editor.js:75
+msgid "Always show this character"
+msgstr ""
+
+#: assets/editor.js:76
+msgid "Leave empty to let visitors search by name."
+msgstr ""
+
+#: blocks/account/block.json
+msgctxt "block title"
+msgid "Player account"
+msgstr ""
+
+#: blocks/account/block.json
+msgctxt "block description"
+msgid "Game account on the site: log in with the game login, see your characters, change the password, and optionally create a new account."
+msgstr ""
+
+#: blocks/account/block.json
+msgctxt "block keyword"
+msgid "account"
+msgstr ""
+
+#: blocks/account/block.json
+msgctxt "block keyword"
+msgid "login"
+msgstr ""
+
+#: blocks/account/block.json
+msgctxt "block keyword"
+msgid "register"
+msgstr ""
+
+#: blocks/account/block.json
+msgctxt "block keyword"
+msgid "password"
+msgstr ""
+
+#: blocks/account/block.json
+#: blocks/ranking/block.json
+msgctxt "block keyword"
+msgid "characters"
+msgstr ""
+
+#: blocks/armory/block.json
+msgctxt "block title"
+msgid "Armory"
+msgstr ""
+
+#: blocks/armory/block.json
+msgctxt "block description"
+msgid "A character's class, level and equipped items, shown as in-game item tooltips. Visitors search by name, or the block shows one fixed character."
+msgstr ""
+
+#: blocks/armory/block.json
+msgctxt "block keyword"
+msgid "armory"
+msgstr ""
+
+#: blocks/armory/block.json
+msgctxt "block keyword"
+msgid "character"
+msgstr ""
+
+#: blocks/armory/block.json
+msgctxt "block keyword"
+msgid "equipment"
+msgstr ""
+
+#: blocks/armory/block.json
+msgctxt "block keyword"
+msgid "items"
+msgstr ""
+
+#: blocks/events/block.json
+msgctxt "block title"
+msgid "Event schedule"
+msgstr ""
+
+#: blocks/events/block.json
+msgctxt "block description"
+msgid "Next start of the game events (Blood Castle, Devil Square, invasions...) on each game server, in the site's time zone, soonest first."
+msgstr ""
+
+#: blocks/events/block.json
+msgctxt "block keyword"
+msgid "events"
+msgstr ""
+
+#: blocks/events/block.json
+msgctxt "block keyword"
+msgid "schedule"
+msgstr ""
+
+#: blocks/events/block.json
+#: blocks/minigame-ranking/block.json
+msgctxt "block keyword"
+msgid "blood castle"
+msgstr ""
+
+#: blocks/events/block.json
+#: blocks/minigame-ranking/block.json
+msgctxt "block keyword"
+msgid "devil square"
+msgstr ""
+
+#: blocks/minigame-ranking/block.json
+msgctxt "block title"
+msgid "Mini game ranking"
+msgstr ""
+
+#: blocks/minigame-ranking/block.json
+msgctxt "block description"
+msgid "Leaderboard of a mini game (Blood Castle, Devil Square, Chaos Castle...) for the last days; visitors can switch between the mini games."
+msgstr ""
+
+#: blocks/minigame-ranking/block.json
+#: blocks/ranking/block.json
+msgctxt "block keyword"
+msgid "ranking"
+msgstr ""
+
+#: blocks/minigame-ranking/block.json
+msgctxt "block keyword"
+msgid "chaos castle"
+msgstr ""
+
+#: blocks/minigame-ranking/block.json
+msgctxt "block keyword"
+msgid "mini game"
+msgstr ""
+
+#: blocks/ranking/block.json
+msgctxt "block title"
+msgid "Character ranking"
+msgstr ""
+
+#: blocks/ranking/block.json
+msgctxt "block description"
+msgid "Top characters by resets and level, optionally for one class. Names link to the armory."
+msgstr ""
+
+#: blocks/ranking/block.json
+msgctxt "block keyword"
+msgid "top"
+msgstr ""
+
+#: blocks/server-status/block.json
+msgctxt "block title"
+msgid "Server status"
+msgstr ""
+
+#: blocks/server-status/block.json
+msgctxt "block description"
+msgid "Whether the game server is online and how many players are in game."
+msgstr ""
+
+#: blocks/server-status/block.json
+msgctxt "block keyword"
+msgid "online"
+msgstr ""
+
+#: blocks/server-status/block.json
+msgctxt "block keyword"
+msgid "players"
+msgstr ""
+
+#: blocks/server-status/block.json
+msgctxt "block keyword"
+msgid "status"
+msgstr ""

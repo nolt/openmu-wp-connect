@@ -1,0 +1,730 @@
+/*
+ * OpenMU WP Connect - character view (includes/character-view.php).
+ *
+ * Two windows of the game's legacy interface side by side: the character on the
+ * left, the equipment on the right, laid out like the client's inventory window
+ * (190 x 429 reference pixels; the equipment part is the top 236). Everything inside
+ * the windows is measured in those reference pixels times --u, so the windows scale
+ * as one picture: up to 2.3 screen pixels per reference pixel where there is room (the
+ * textures are stored at 2x, so 2.3 is a mild upscale), less on narrow screens.
+ *
+ * Two looks:
+ * - Neutral (default): bordered windows and sockets in the theme's own text and
+ *   background colours, so it fits light and dark themes alike.
+ * - Game look (.openmu-cv--textured): the client's inventory textures, used only when
+ *   the site owner provides them (includes/client-assets.php). This file holds no
+ *   texture addresses: the plugin sets them inline as custom properties
+ *   --openmu-cv-tx-<name> (frame-top/bottom/left/right, zen, slot-<slot>).
+ *   The textured windows are always dark, so they use the game's light colours, from
+ *   the OpenMU Site palette when that theme is active.
+ *
+ * The item tooltip is dark in both looks, with the game's colours.
+ */
+
+/* ---------- Sizing ------------------------------------------------------ */
+
+/* The view measures its own width, so it fits a narrow column as well as a full page. */
+.openmu-cv {
+	container-type: inline-size;
+	margin-block: 1.5rem;
+
+	/* Neutral look: the theme's text colour, the theme's background ("base" in most block themes). */
+	--openmu-cv-surface: var(--wp--preset--color--base, Canvas);
+	--openmu-cv-field: color-mix(in srgb, currentColor 6%, var(--openmu-cv-surface));
+	--openmu-cv-line: color-mix(in srgb, currentColor 28%, transparent);
+	--openmu-cv-text: currentColor;
+	--openmu-cv-muted: color-mix(in srgb, currentColor 68%, transparent);
+	--openmu-cv-value: currentColor;
+	--openmu-cv-caption: currentColor;
+	--openmu-cv-focus: currentColor;
+	--openmu-cv-gold: var(--wp--preset--color--ancient, #e2c15e);
+	--openmu-cv-heading-font: var(--wp--preset--font-family--heading, inherit);
+}
+
+/* Game look: dark textured windows, the game's light colours (the OpenMU Site palette has the same ones). */
+.openmu-cv--textured {
+	--openmu-cv-text: #e8e6e1;
+	--openmu-cv-muted: var(--wp--preset--color--muted, #a3a19c);
+	--openmu-cv-value: var(--wp--preset--color--option, #80aeff);
+	--openmu-cv-caption: var(--openmu-cv-gold);
+	--openmu-cv-focus: var(--openmu-cv-gold);
+	--openmu-cv-heading-font: var(--wp--preset--font-family--heading, Georgia, "Times New Roman", serif);
+}
+
+/* Stacked: one window per row, as wide as the column allows, at most 2.3x. */
+.openmu-cv__layout {
+	--u: min(2.3px, calc(100cqi / 190));
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+/* Side by side once both windows fit at a readable size (about 1.4x and up). */
+@container (min-width: 560px) {
+	.openmu-cv__layout {
+		--u: min(2.3px, calc((100cqi - 1.5rem) / 380));
+		flex-direction: row;
+		justify-content: center;
+		/* Both windows take the height of the taller one, so they end on one line. */
+		align-items: stretch;
+	}
+}
+
+/* ---------- Window frame ------------------------------------------------ */
+
+/* Neutral window: a lightly tinted panel with a thin border, in the theme's colours. */
+.openmu-cv__window {
+	position: relative;
+	isolation: isolate;
+	box-sizing: border-box;
+	flex: none;
+	width: calc(190 * var(--u));
+	min-height: calc(236 * var(--u));
+	color: var(--openmu-cv-text);
+	text-align: center;
+	background: color-mix(in srgb, currentColor 3%, var(--openmu-cv-surface));
+	border: 1px solid var(--openmu-cv-line);
+	border-radius: calc(3 * var(--u));
+}
+
+/*
+ * Game look: the inventory frame from four pieces: side bars as backgrounds of the
+ * window itself over a solid dark fill, the top cap (with the caption box) and the bottom cap as layers
+ * over it. The caps sit under the content, so sockets that reach into the cap
+ * (as they do in game) stay visible.
+ */
+.openmu-cv--textured .openmu-cv__window {
+	background:
+		var(--openmu-cv-tx-frame-left) left top / calc(21 * var(--u)) 100% no-repeat,
+		var(--openmu-cv-tx-frame-right) right top / calc(21 * var(--u)) 100% no-repeat,
+		#141417;
+	border: 0;
+	border-radius: 0;
+	box-shadow: 0 10px 28px rgb(0 0 0 / 55%);
+}
+
+.openmu-cv--textured .openmu-cv__window::before,
+.openmu-cv--textured .openmu-cv__window::after {
+	content: "";
+	position: absolute;
+	inset-inline: 0;
+	z-index: -1;
+	pointer-events: none;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.openmu-cv--textured .openmu-cv__window::before {
+	inset-block-start: 0;
+	height: calc(64 * var(--u));
+	background-image: var(--openmu-cv-tx-frame-top);
+}
+
+.openmu-cv--textured .openmu-cv__window::after {
+	inset-block-end: 0;
+	height: calc(45 * var(--u));
+	background-image: var(--openmu-cv-tx-frame-bottom);
+}
+
+/* Neutral caption: a title row across the top of the window, above a thin rule. */
+.openmu-cv__caption {
+	position: absolute;
+	inset-block-start: calc(13 * var(--u));
+	inset-inline-start: calc(15 * var(--u));
+	width: calc(160 * var(--u));
+	height: calc(15 * var(--u));
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	font-family: var(--openmu-cv-heading-font);
+	font-size: calc(8 * var(--u));
+	font-weight: 700;
+	line-height: calc(12 * var(--u));
+	letter-spacing: 0.02em;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	color: var(--openmu-cv-caption);
+	border-bottom: 1px solid var(--openmu-cv-line);
+}
+
+/* Game look: the caption sits in the black box of the top cap (56..134 x 13..25 reference pixels). */
+.openmu-cv--textured .openmu-cv__caption {
+	inset-inline-start: calc(56 * var(--u));
+	width: calc(78 * var(--u));
+	height: calc(12 * var(--u));
+	border-bottom: 0;
+	text-shadow: 0 1px 2px rgb(0 0 0 / 90%);
+}
+
+/* Screen-reader-only text (the theme may not define WordPress's screen-reader-text). */
+.openmu-cv__sr {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* ---------- Character window -------------------------------------------- */
+
+.openmu-cv__window--info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: calc(44 * var(--u)) calc(15 * var(--u)) calc(30 * var(--u));
+}
+
+/*
+ * Portrait: a tall frame as wide as the facts below. It starts at 44 reference pixels,
+ * the top of the equipment sockets, so it lines up with them. The class render stands
+ * in it (see .has-figure), or the emblem sits in its middle when the class has no picture.
+ * Neutral: a bordered field.
+ */
+.openmu-cv__portrait {
+	position: relative;
+	box-sizing: border-box;
+	width: 100%;
+	height: calc(140 * var(--u));
+	display: grid;
+	place-items: center;
+	background: var(--openmu-cv-field);
+	border: 1px solid var(--openmu-cv-line);
+	overflow: hidden;
+}
+
+/*
+ * Game look: a recessed alcove in the window. Backdrop, top layer first: a soft glow
+ * behind the figure, so the dark default outfits stand out, and a vignette that darkens
+ * the window towards the edges. The window's fill shows through both.
+ */
+.openmu-cv--textured .openmu-cv__portrait {
+	background:
+		radial-gradient(ellipse 40% 52% at 50% 44%, rgb(186 172 142 / 30%), rgb(120 110 92 / 12%) 60%, transparent 100%),
+		radial-gradient(ellipse 80% 75% at 50% 42%, rgb(18 18 20 / 30%), rgb(0 0 0 / 82%) 100%);
+	border: 1px solid rgb(191 195 201 / 35%);
+	box-shadow: inset 0 0 calc(10 * var(--u)) rgb(0 0 0 / 90%), 0 0 0 calc(1.5 * var(--u)) rgb(0 0 0 / 60%);
+}
+
+/* The ground the figure stands on: a soft shadow under the feet. */
+.openmu-cv__portrait.has-figure::before {
+	content: "";
+	position: absolute;
+	inset-inline: 28%;
+	inset-block-end: calc(3.5 * var(--u));
+	height: calc(8 * var(--u));
+	background: radial-gradient(closest-side, rgb(0 0 0 / 35%), transparent);
+	pointer-events: none;
+}
+
+.openmu-cv--textured .openmu-cv__portrait.has-figure::before {
+	background: radial-gradient(closest-side, rgb(0 0 0 / 75%), transparent);
+}
+
+/*
+ * The render, fitted to the frame's height (the wide ones, holding a weapon out, to its
+ * width) and standing on the bottom edge. The renders have a transparent margin of
+ * about 5% on every side, so the picture box reaches almost to the frame: the figure
+ * then ends some 8 reference pixels from the top and stands on the shadow above.
+ */
+.openmu-cv__portrait img {
+	position: absolute;
+	inset: calc(2 * var(--u)) calc(4 * var(--u)) calc(1 * var(--u));
+	width: calc(100% - 8 * var(--u));
+	height: calc(100% - 3 * var(--u));
+	max-width: none;
+	object-fit: contain;
+	object-position: 50% 100%;
+	filter: drop-shadow(0 0 calc(3 * var(--u)) rgb(0 0 0 / 85%));
+}
+
+/* Neutral emblem: an outlined shield in the text colour (the CSS fill wins over the SVG's dark gradient). */
+.openmu-cv__emblem {
+	width: 50%;
+	height: auto;
+}
+
+.openmu-cv__emblem-edge {
+	fill: var(--openmu-cv-field);
+	stroke: currentColor;
+	stroke-width: 3;
+}
+
+.openmu-cv__emblem-inner {
+	stroke: var(--openmu-cv-line);
+	stroke-width: 1.5;
+	fill: none;
+}
+
+.openmu-cv__emblem-mark {
+	fill: currentColor;
+	font-family: var(--openmu-cv-heading-font);
+	font-weight: 700;
+	letter-spacing: 1px;
+}
+
+/* Game look: a dark shield with a silver edge and a gold mark. */
+.openmu-cv--textured .openmu-cv__emblem {
+	filter: drop-shadow(0 0 calc(4 * var(--u)) rgb(0 0 0 / 80%));
+}
+
+.openmu-cv--textured .openmu-cv__emblem-edge {
+	fill: url(#openmu-cv-emblem-fill);
+	stroke: #bfc3c9;
+}
+
+.openmu-cv--textured .openmu-cv__emblem-inner {
+	stroke: rgb(191 195 201 / 45%);
+}
+
+.openmu-cv--textured .openmu-cv__emblem-mark {
+	fill: var(--openmu-cv-gold);
+}
+
+.openmu-cv__class {
+	margin: calc(6 * var(--u)) 0 calc(5 * var(--u));
+	font-family: var(--openmu-cv-heading-font);
+	font-size: max(0.85rem, calc(8 * var(--u)));
+	color: var(--openmu-cv-text);
+}
+
+/* Facts as label/value rows, each in a field (game look: dark, like the client's info boxes). */
+.openmu-cv__facts {
+	width: 100%;
+	margin: 0;
+	display: grid;
+	gap: calc(2 * var(--u));
+	font-size: max(0.75rem, calc(6.5 * var(--u)));
+	line-height: 1.35;
+}
+
+.openmu-cv__fact {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 0.6em;
+	padding: calc(2.5 * var(--u)) calc(5 * var(--u));
+	background: var(--openmu-cv-field);
+	border: 1px solid var(--openmu-cv-line);
+}
+
+.openmu-cv--textured .openmu-cv__fact {
+	background: rgb(0 0 0 / 55%);
+	border-color: rgb(191 195 201 / 16%);
+}
+
+.openmu-cv__fact dt {
+	color: var(--openmu-cv-muted);
+}
+
+.openmu-cv__fact dd {
+	margin: 0;
+	color: var(--openmu-cv-value);
+	font-weight: 700;
+	text-align: end;
+	font-variant-numeric: tabular-nums;
+	overflow-wrap: anywhere;
+}
+
+/* ---------- Equipment window --------------------------------------------- */
+
+/* With the zen bar under the sockets the equipment window is one bar taller. */
+.openmu-cv--owner .openmu-cv__window {
+	min-height: calc(266 * var(--u));
+}
+
+.openmu-cv__slots {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+ * A socket; the item, if any, is drawn over it. Game look: the client's empty-slot picture.
+ * Neutral: a bordered box (::before) over the same area the picture fills: the pictures
+ * (2x, slot-*.webp) are opaque from 1 reference px on the left and 0 at the top to 2.5 on
+ * the right and 2 at the bottom, with corners rounded at about 2 reference px. So
+ * neighbouring sockets (helm and wings) don't overlap, as in the game.
+ */
+.openmu-cv__slot {
+	position: absolute;
+	margin: 0;
+	padding: 0;
+	--openmu-cv-socket-inset: 0 calc(2.5 * var(--u)) calc(2 * var(--u)) var(--u);
+}
+
+.openmu-cv__slot::before {
+	content: "";
+	position: absolute;
+	inset: var(--openmu-cv-socket-inset);
+	box-sizing: border-box;
+	background: var(--openmu-cv-field);
+	border: 1px solid var(--openmu-cv-line);
+	border-radius: calc(2 * var(--u));
+	pointer-events: none;
+}
+
+.openmu-cv--textured .openmu-cv__slot {
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.openmu-cv--textured .openmu-cv__slot::before {
+	content: none;
+}
+
+/* Socket positions and sizes of the legacy inventory (my_inventory.rcss), in reference pixels.
+   In the client the rows touch (each socket picture ends 2 px above its box); here the middle
+   and bottom rows are pushed down so a small gap shows between the rows of sockets. */
+.openmu-cv__slots {
+	--openmu-cv-slot-gap: 2px;
+}
+
+.openmu-cv__slot--pet { left: calc(15 * var(--u)); top: calc(44 * var(--u)); width: calc(46 * var(--u)); height: calc(46 * var(--u)); }
+.openmu-cv__slot--helm { left: calc(75 * var(--u)); top: calc(44 * var(--u)); width: calc(46 * var(--u)); height: calc(46 * var(--u)); }
+.openmu-cv__slot--wings { left: calc(120 * var(--u)); top: calc(44 * var(--u)); width: calc(61 * var(--u)); height: calc(46 * var(--u)); }
+.openmu-cv__slot--weapon { left: calc(15 * var(--u)); top: calc(88 * var(--u) + var(--openmu-cv-slot-gap)); width: calc(46 * var(--u)); height: calc(66 * var(--u)); }
+.openmu-cv__slot--armor { left: calc(75 * var(--u)); top: calc(88 * var(--u) + var(--openmu-cv-slot-gap)); width: calc(46 * var(--u)); height: calc(66 * var(--u)); }
+.openmu-cv__slot--shield { left: calc(135 * var(--u)); top: calc(88 * var(--u) + var(--openmu-cv-slot-gap)); width: calc(46 * var(--u)); height: calc(66 * var(--u)); }
+.openmu-cv__slot--gloves { left: calc(15 * var(--u)); top: calc(152 * var(--u) + 2 * var(--openmu-cv-slot-gap)); width: calc(46 * var(--u)); height: calc(46 * var(--u)); }
+.openmu-cv__slot--pants { left: calc(75 * var(--u)); top: calc(152 * var(--u) + 2 * var(--openmu-cv-slot-gap)); width: calc(46 * var(--u)); height: calc(46 * var(--u)); }
+.openmu-cv__slot--boots { left: calc(135 * var(--u)); top: calc(152 * var(--u) + 2 * var(--openmu-cv-slot-gap)); width: calc(46 * var(--u)); height: calc(46 * var(--u)); }
+.openmu-cv__slot--pendant { left: calc(54 * var(--u)); top: calc(88 * var(--u) + var(--openmu-cv-slot-gap)); width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
+.openmu-cv__slot--ring1 { left: calc(54 * var(--u)); top: calc(152 * var(--u) + 2 * var(--openmu-cv-slot-gap)); width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
+.openmu-cv__slot--ring2 { left: calc(114 * var(--u)); top: calc(152 * var(--u) + 2 * var(--openmu-cv-slot-gap)); width: calc(28 * var(--u)); height: calc(28 * var(--u)); }
+
+/* Game look: each socket's empty-slot picture (texture addresses set by the plugin). */
+.openmu-cv--textured .openmu-cv__slot--pet { background-image: var(--openmu-cv-tx-slot-pet); }
+.openmu-cv--textured .openmu-cv__slot--helm { background-image: var(--openmu-cv-tx-slot-helm); }
+.openmu-cv--textured .openmu-cv__slot--wings { background-image: var(--openmu-cv-tx-slot-wings); }
+.openmu-cv--textured .openmu-cv__slot--weapon { background-image: var(--openmu-cv-tx-slot-weapon); }
+.openmu-cv--textured .openmu-cv__slot--armor { background-image: var(--openmu-cv-tx-slot-armor); }
+.openmu-cv--textured .openmu-cv__slot--shield { background-image: var(--openmu-cv-tx-slot-shield); }
+.openmu-cv--textured .openmu-cv__slot--gloves { background-image: var(--openmu-cv-tx-slot-gloves); }
+.openmu-cv--textured .openmu-cv__slot--pants { background-image: var(--openmu-cv-tx-slot-pants); }
+.openmu-cv--textured .openmu-cv__slot--boots { background-image: var(--openmu-cv-tx-slot-boots); }
+.openmu-cv--textured .openmu-cv__slot--pendant { background-image: var(--openmu-cv-tx-slot-pendant); }
+.openmu-cv--textured .openmu-cv__slot--ring1,
+.openmu-cv--textured .openmu-cv__slot--ring2 { background-image: var(--openmu-cv-tx-slot-ring); }
+
+/* The small sockets overlap the big ones in game too; they stay on top, and their
+   pictures get almost the whole socket. */
+.openmu-cv__slot--pendant,
+.openmu-cv__slot--ring1,
+.openmu-cv__slot--ring2 {
+	z-index: 1;
+}
+
+.openmu-cv__slot--pendant .openmu-cv__item,
+.openmu-cv__slot--ring1 .openmu-cv__item,
+.openmu-cv__slot--ring2 .openmu-cv__item {
+	width: calc(100% - 3 * var(--u));
+	height: calc(100% - 3 * var(--u));
+	margin: calc(1.5 * var(--u));
+	padding: calc(1 * var(--u));
+}
+
+/* An equipped item: its picture in the socket. Game look: a dark field first covers the socket's silhouette (not its rim). */
+.openmu-cv__item {
+	position: relative;
+	box-sizing: border-box;
+	display: grid;
+	place-items: center;
+	width: calc(100% - 4 * var(--u));
+	height: calc(100% - 4 * var(--u));
+	margin: calc(2 * var(--u));
+	padding: calc(2 * var(--u));
+	border: 0;
+	border-radius: 0;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+	/* Size container: the picture below measures its scale against the socket (cqw/cqh). */
+	container-type: size;
+	cursor: help;
+	transition: box-shadow 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+.openmu-cv--textured .openmu-cv__item {
+	background: rgb(9 9 11 / 94%);
+	box-shadow: inset 0 0 calc(5 * var(--u)) rgb(0 0 0 / 90%);
+}
+
+/* Absolutely placed, because percentages of a grid cell's auto height don't limit the picture. */
+.openmu-cv__item img {
+	position: absolute;
+	inset: calc(2 * var(--u));
+	width: calc(100% - 4 * var(--u));
+	height: calc(100% - 4 * var(--u));
+	max-width: none;
+	object-fit: contain;
+	filter: drop-shadow(0 2px 3px rgb(0 0 0 / 70%));
+}
+
+/*
+ * A picture cropped by character-view.js (--ow/--oh original, --cw/--ch cropped size
+ * in px) keeps the scale of the whole original: it may be zoomed past the scale at
+ * which the original fits the socket by 1.5x at most (--zoom), and never past the
+ * socket. So a helm with wide transparent margins stays small like in the game
+ * instead of being blown up to the socket size, while big pictures (armor, wings)
+ * still fill their socket. 100cqw x 100cqh is the picture area of the socket.
+ */
+.openmu-cv__item img.is-cropped {
+	--zoom: 1.5;
+	--s-orig: min(100cqw / var(--ow), 100cqh / var(--oh));
+	--s-crop: min(100cqw / var(--cw), 100cqh / var(--ch));
+	--s: min(var(--s-crop), var(--zoom) * var(--s-orig));
+	inset: 0;
+	margin: auto;
+	width: calc(var(--cw) * var(--s));
+	height: calc(var(--ch) * var(--s));
+}
+
+/* Items without a picture show their name in small letters instead. */
+.openmu-cv__item-name {
+	font-size: calc(5 * var(--u));
+	line-height: 1.15;
+	color: var(--openmu-cv-text);
+	overflow-wrap: anywhere;
+}
+
+/*
+ * Hover, focus and the open tooltip light the socket like the item under the game cursor.
+ * The gold frame is drawn on the socket itself (a pseudo-element over the visible socket,
+ * see above), not on the inner item field, so it has the socket's rounded corners.
+ */
+.openmu-cv__slot::after {
+	content: "";
+	position: absolute;
+	inset: var(--openmu-cv-socket-inset);
+	border-radius: calc(2 * var(--u));
+	pointer-events: none;
+	opacity: 0;
+	transition: box-shadow 0.15s ease-out, opacity 0.15s ease-out;
+}
+
+.openmu-cv__slot:has(.openmu-cv__item:hover)::after,
+.openmu-cv__slot:has(.openmu-cv__item.is-active)::after {
+	opacity: 1;
+	box-shadow: inset 0 0 calc(7 * var(--u)) rgb(226 193 94 / 40%), inset 0 0 0 1px rgb(226 193 94 / 60%);
+}
+
+.openmu-cv__slot:has(.openmu-cv__item:focus-visible)::after {
+	opacity: 1;
+	outline: 2px solid var(--openmu-cv-focus);
+	outline-offset: -2px;
+}
+
+.openmu-cv__item:hover,
+.openmu-cv__item.is-active {
+	background-color: rgb(226 193 94 / 12%);
+}
+
+.openmu-cv--textured .openmu-cv__item:hover,
+.openmu-cv--textured .openmu-cv__item.is-active {
+	background-color: rgb(40 34 18 / 45%);
+}
+
+/* The frame above replaces the browser's focus ring. */
+.openmu-cv__item:focus-visible {
+	outline: none;
+}
+
+/* Zen bar of the inventory under the sockets (owner only). Neutral: a bordered field, label left, amount right. */
+.openmu-cv__zen {
+	position: absolute;
+	inset-inline-start: calc(10 * var(--u));
+	/* Anchored to the bottom, where the client draws it, however tall the window gets. */
+	inset-block-end: calc(35 * var(--u));
+	box-sizing: border-box;
+	display: flex;
+	justify-content: space-between;
+	gap: 0.5em;
+	width: calc(170 * var(--u));
+	height: calc(26 * var(--u));
+	margin: 0;
+	padding: 0 calc(9 * var(--u));
+	background: var(--openmu-cv-field);
+	border: 1px solid var(--openmu-cv-line);
+	font-size: calc(7.5 * var(--u));
+	font-weight: 700;
+	line-height: calc(26 * var(--u) - 2px);
+	text-align: end;
+	font-variant-numeric: tabular-nums;
+	color: var(--openmu-cv-value);
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.openmu-cv__zen-label {
+	font-weight: 400;
+	color: var(--openmu-cv-muted);
+}
+
+/* Game look: the client's zen bar; its coin picture says "zen", so the label is for screen readers only. */
+.openmu-cv--textured .openmu-cv__zen {
+	display: block;
+	padding: 0 calc(9 * var(--u)) 0 calc(42 * var(--u));
+	background: var(--openmu-cv-tx-zen) 0 0 / 100% 100% no-repeat;
+	border: 0;
+	line-height: calc(26 * var(--u));
+	color: var(--openmu-cv-gold);
+}
+
+.openmu-cv--textured .openmu-cv__zen-label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+/* Sources of the tooltips stay hidden; the script shows a copy. */
+.openmu-cv__tip-source[hidden] {
+	display: none;
+}
+
+/* ---------- Item tooltip --------------------------------------------------- */
+
+/*
+ * One box at the end of the page (made by character-view.js), fixed to the
+ * viewport so no window frame clips it: black, see-through, centred lines,
+ * coloured by meaning as in the client.
+ */
+.openmu-cv-tip {
+	position: fixed;
+	z-index: 100000;
+	box-sizing: border-box;
+	max-width: min(23rem, calc(100vw - 16px));
+	padding: 0.7rem 1.1rem 0.8rem;
+	/* Neutral look: nearly opaque, so a light page behind it doesn't wash out the game colours. */
+	background: rgb(0 0 0 / 93%);
+	border: 1px solid rgb(191 195 201 / 22%);
+	box-shadow: 0 8px 26px rgb(0 0 0 / 65%);
+	/* Fixed light text: the box is always dark, while a theme's "contrast" colour is dark on light themes. */
+	color: #e8e6e1;
+	font-size: 0.875rem;
+	line-height: 1.45;
+	text-align: center;
+	pointer-events: none;
+}
+
+/* Game look: see-through like the client's tooltip, over the dark textured window. */
+.openmu-cv-tip--textured {
+	background: rgb(0 0 0 / 84%);
+}
+
+.openmu-cv-tip[hidden] {
+	display: none;
+}
+
+.openmu-cv-tip p {
+	margin: 0;
+}
+
+.openmu-cv-tip__title {
+	font-family: var(--wp--preset--font-family--heading, Georgia, "Times New Roman", serif);
+	font-size: 1.05rem;
+	font-weight: 700;
+}
+
+.openmu-cv-tip__lines {
+	margin-block-start: 0.55rem;
+}
+
+/* Line and title colours: blue options, green excellent, gold ancient/+7, purple sockets. */
+.openmu-cv-tip__line,
+.openmu-cv-tip__line--option,
+.openmu-cv-tip__line--skill,
+.openmu-cv-tip__line--luck,
+.openmu-cv-tip__line--wing { color: var(--wp--preset--color--option, #80aeff); }
+.openmu-cv-tip__line--excellent,
+.openmu-cv-tip__line--note { color: var(--wp--preset--color--excellent, #62e36a); }
+.openmu-cv-tip__line--ancient,
+.openmu-cv-tip__line--harmony { color: var(--wp--preset--color--ancient, #e2c15e); }
+/* Ancient set item title: rgb(0,255,0) on a rgb(60,60,200) bar (TEXT_COLOR_GREEN_BLUE), full tooltip width. */
+.openmu-cv-tip__title.openmu-cv-tip__line--set {
+	margin: -0.7rem -1.1rem 0;
+	padding: 0.25rem 1.1rem;
+	color: #00ff00;
+	background: #3c3cc8;
+}
+.openmu-cv-tip__line--set { color: #00ff00; }
+.openmu-cv-tip__line--guardian { color: #e0609f; }
+.openmu-cv-tip__line--socket,
+.openmu-cv-tip__line--violet { color: #b98cf0; }
+.openmu-cv-tip__line--purple { color: #ef6af0; }
+.openmu-cv-tip__line--requirement { color: var(--wp--preset--color--requirement, #ff6060); }
+.openmu-cv-tip__line--muted { color: var(--wp--preset--color--muted, #a3a19c); }
+.openmu-cv-tip__line--plain,
+.openmu-cv-tip__line--stat { color: #e8e6e1; }
+/* The client writes excellent options in its option blue; only the title of an excellent item is green. */
+.openmu-cv-tip__lines .openmu-cv-tip__line--excellent { color: var(--wp--preset--color--option, #80aeff); }
+/* Bold blue lines, e.g. "Wizardry Dmg 70% rise" of staffs (TextBold in the client). */
+.openmu-cv-tip__line--emphasis {
+	color: var(--wp--preset--color--option, #80aeff);
+	font-weight: 700;
+}
+/* Class notes of a skill, e.g. "Knight specific skill": white on a dark red bar (TEXT_COLOR_DARKRED). */
+.openmu-cv-tip__line--darkred {
+	color: #fff;
+	background: #a00000;
+}
+/* Empty row between the blocks (stats, classes, options, set), like the client's blank rows. */
+.openmu-cv-tip__line--gap { height: 0.6em; }
+
+/* ---------- Account section: back link and character switch -------------- */
+
+.openmu-account__character-nav {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem 1.5rem;
+}
+
+.openmu-account__switch {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0;
+}
+
+.openmu-account__switch select {
+	/* The OpenMU Site palette when present, else the browser's own field colours. */
+	background-color: var(--wp--preset--color--base-deep, Field);
+	color: var(--wp--preset--color--contrast, FieldText);
+	border: 1px solid rgb(191 195 201 / 45%);
+	padding: 0.45rem 0.6rem;
+	font: inherit;
+	max-width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.openmu-cv__item,
+	.openmu-cv__slot::after {
+		transition: none;
+	}
+}
+
+/* ---------- Account page: same size as in the armory ----------------------- */
+
+/*
+ * The account block sits in the narrow content column (42rem), the armory in the wide
+ * one (72rem). Where the viewport is wider than the column, the view breaks out of it
+ * to the wide width and stays centred on the column, so it has the same size in both
+ * places. Below that the column is already as wide as the screen allows.
+ */
+@media (min-width: 60rem) {
+	.openmu-account .openmu-cv {
+		width: min(72rem, calc(100vw - 4rem));
+		margin-inline: calc(50% - min(72rem, calc(100vw - 4rem)) / 2);
+	}
+}

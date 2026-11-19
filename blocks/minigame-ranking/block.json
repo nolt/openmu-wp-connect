@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "openmu/minigame-ranking",
+	"title": "Mini game ranking",
+	"category": "widgets",
+	"icon": "awards",
+	"description": "Leaderboard of a mini game (Blood Castle, Devil Square, Chaos Castle...) for the last days; visitors can switch between the mini games.",
+	"keywords": [ "ranking", "blood castle", "devil square", "chaos castle", "mini game" ],
+	"textdomain": "openmu-wp-connect",
+	"attributes": {
+		"miniGameType": { "type": "string", "default": "" },
+		"days": { "type": "integer", "default": 0 }
+	},
+	"supports": { "html": false, "align": [ "wide" ] },
+	"editorScript": "openmu-wp-connect-editor-extra",
+	"style": [ "openmu-wp-connect-blocks", "openmu-wp-connect-blocks-extra" ],
+	"render": "file:./render.php"
+}

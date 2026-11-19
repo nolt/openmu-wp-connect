@@ -1,0 +1,15 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "openmu/server-status",
+	"title": "Server status",
+	"category": "widgets",
+	"icon": "networking",
+	"description": "Whether the game server is online and how many players are in game.",
+	"keywords": [ "online", "players", "status" ],
+	"textdomain": "openmu-wp-connect",
+	"supports": { "html": false, "align": false },
+	"editorScript": "openmu-wp-connect-editor",
+	"style": "openmu-wp-connect-blocks",
+	"render": "file:./render.php"
+}

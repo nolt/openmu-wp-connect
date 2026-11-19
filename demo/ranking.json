@@ -1,0 +1,98 @@
+[
+	{
+		"name": "Ragnar",
+		"characterClass": "Blade Master",
+		"level": 400,
+		"masterLevel": 212,
+		"resets": 14,
+		"guild": "Tempest"
+	},
+	{
+		"name": "Morgoth",
+		"characterClass": "Grand Master",
+		"level": 400,
+		"masterLevel": 198,
+		"resets": 14,
+		"guild": "Tempest"
+	},
+	{
+		"name": "Lirien",
+		"characterClass": "High Elf",
+		"level": 400,
+		"masterLevel": 175,
+		"resets": 13,
+		"guild": "Valhalla"
+	},
+	{
+		"name": "Kaelthas",
+		"characterClass": "Duel Master",
+		"level": 400,
+		"masterLevel": 160,
+		"resets": 12,
+		"guild": "Legion"
+	},
+	{
+		"name": "Varian",
+		"characterClass": "Lord Emperor",
+		"level": 400,
+		"masterLevel": 151,
+		"resets": 12,
+		"guild": "Legion"
+	},
+	{
+		"name": "Nyx",
+		"characterClass": "Dimension Master",
+		"level": 400,
+		"masterLevel": 120,
+		"resets": 11,
+		"guild": null
+	},
+	{
+		"name": "Brakk",
+		"characterClass": "Fist Master",
+		"level": 400,
+		"masterLevel": 98,
+		"resets": 10,
+		"guild": "Valhalla"
+	},
+	{
+		"name": "Seraphine",
+		"characterClass": "Muse Elf",
+		"level": 380,
+		"masterLevel": 0,
+		"resets": 9,
+		"guild": "Tempest"
+	},
+	{
+		"name": "Durin",
+		"characterClass": "Blade Knight",
+		"level": 362,
+		"masterLevel": 0,
+		"resets": 9,
+		"guild": null
+	},
+	{
+		"name": "Elowen",
+		"characterClass": "Soul Master",
+		"level": 355,
+		"masterLevel": 0,
+		"resets": 8,
+		"guild": "Legion"
+	},
+	{
+		"name": "Torvald",
+		"characterClass": "Dark Lord",
+		"level": 340,
+		"masterLevel": 0,
+		"resets": 8,
+		"guild": "Valhalla"
+	},
+	{
+		"name": "Ishara",
+		"characterClass": "Summoner",
+		"level": 298,
+		"masterLevel": 0,
+		"resets": 6,
+		"guild": null
+	}
+]

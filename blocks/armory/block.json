@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "openmu/armory",
+	"title": "Armory",
+	"category": "widgets",
+	"icon": "shield",
+	"description": "A character's class, level and equipped items, shown as in-game item tooltips. Visitors search by name, or the block shows one fixed character.",
+	"keywords": [ "armory", "character", "equipment", "items" ],
+	"textdomain": "openmu-wp-connect",
+	"attributes": {
+		"characterName": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "align": [ "wide" ] },
+	"editorScript": "openmu-wp-connect-editor",
+	"style": "openmu-wp-connect-blocks",
+	"render": "file:./render.php"
+}

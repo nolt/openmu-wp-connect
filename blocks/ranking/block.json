@@ -1,0 +1,19 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "openmu/ranking",
+	"title": "Character ranking",
+	"category": "widgets",
+	"icon": "awards",
+	"description": "Top characters by resets and level, optionally for one class. Names link to the armory.",
+	"keywords": [ "ranking", "top", "characters" ],
+	"textdomain": "openmu-wp-connect",
+	"attributes": {
+		"limit": { "type": "integer", "default": 10 },
+		"characterClass": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "align": [ "wide" ] },
+	"editorScript": "openmu-wp-connect-editor",
+	"style": "openmu-wp-connect-blocks",
+	"render": "file:./render.php"
+}

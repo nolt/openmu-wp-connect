@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "openmu/account",
+	"title": "Player account",
+	"category": "widgets",
+	"icon": "admin-users",
+	"description": "Game account on the site: log in with the game login, see your characters, change the password, and optionally create a new account.",
+	"keywords": [ "account", "login", "register", "password", "characters" ],
+	"textdomain": "openmu-wp-connect",
+	"attributes": {
+		"allowRegistration": { "type": "boolean", "default": true }
+	},
+	"supports": { "html": false, "multiple": false, "align": [ "wide" ] },
+	"editorScript": "openmu-wp-connect-editor-extra",
+	"style": [ "openmu-wp-connect-blocks", "openmu-wp-connect-blocks-extra" ],
+	"render": "file:./render.php"
+}

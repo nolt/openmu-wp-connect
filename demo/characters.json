@@ -1,0 +1,273 @@
+[
+	{
+		"name": "Ragnar",
+		"characterClass": "Blade Master",
+		"level": 400,
+		"masterLevel": 212,
+		"resets": 14,
+		"guild": "Tempest",
+		"online": true,
+		"equipment": {
+			"weapon": {
+				"name": "Knight Blade",
+				"level": 15,
+				"excellent": true,
+				"skill": true,
+				"luck": true,
+				"options": [
+					"Additional damage +16",
+					"Excellent damage rate +10%",
+					"Increases attacking speed +7"
+				]
+			},
+			"helm": {
+				"name": "Dragon Helm",
+				"level": 13,
+				"ancientSet": "Hyon",
+				"luck": true,
+				"options": [
+					"Additional defense +16"
+				]
+			},
+			"armor": {
+				"name": "Dragon Armor",
+				"level": 13,
+				"excellent": true,
+				"luck": true,
+				"options": [
+					"Additional defense +16",
+					"Increases maximum life +4%"
+				]
+			},
+			"pants": {
+				"name": "Dragon Pants",
+				"level": 13,
+				"excellent": true,
+				"luck": true,
+				"options": [
+					"Additional defense +16",
+					"Damage decrease +4%"
+				]
+			},
+			"gloves": {
+				"name": "Dragon Gloves",
+				"level": 13,
+				"excellent": true,
+				"options": [
+					"Additional defense +12",
+					"Increases maximum life +4%"
+				]
+			},
+			"boots": {
+				"name": "Dragon Boots",
+				"level": 13,
+				"excellent": true,
+				"luck": true,
+				"options": [
+					"Additional defense +16",
+					"Defense success rate +10%"
+				]
+			},
+			"wings": {
+				"name": "Wing of Storm",
+				"level": 13,
+				"luck": true,
+				"options": [
+					"Additional damage +12",
+					"Ignores enemy's defense 5%"
+				]
+			},
+			"pet": {
+				"name": "Horn of Fenrir",
+				"level": 0,
+				"options": [
+					"Increases final damage +10%"
+				]
+			},
+			"pendant": {
+				"name": "Pendant of Lighting",
+				"level": 0,
+				"excellent": true,
+				"options": [
+					"Excellent damage rate +10%"
+				]
+			},
+			"ring1": {
+				"name": "Ring of Fire",
+				"level": 0,
+				"options": [
+					"Increases maximum life +4%"
+				]
+			},
+			"ring2": {
+				"name": "Ring of Poison",
+				"level": 0
+			}
+		}
+	},
+	{
+		"name": "Morgoth",
+		"characterClass": "Grand Master",
+		"level": 400,
+		"masterLevel": 198,
+		"resets": 14,
+		"guild": "Tempest",
+		"online": false,
+		"equipment": {
+			"weapon": {
+				"name": "Staff of Kundun",
+				"level": 13,
+				"excellent": true,
+				"skill": true,
+				"luck": true,
+				"options": [
+					"Additional wizardry damage +16",
+					"Increases wizardry damage +level/20"
+				]
+			},
+			"shield": {
+				"name": "Grand Soul Shield",
+				"level": 11,
+				"options": [
+					"Additional defense rate +12"
+				]
+			},
+			"helm": {
+				"name": "Grand Soul Helm",
+				"level": 13,
+				"excellent": true,
+				"luck": true,
+				"options": [
+					"Additional defense +16",
+					"Increases maximum mana +4%"
+				]
+			},
+			"armor": {
+				"name": "Grand Soul Armor",
+				"level": 13,
+				"excellent": true,
+				"luck": true,
+				"options": [
+					"Additional defense +16",
+					"Increases maximum life +4%"
+				]
+			},
+			"pants": {
+				"name": "Grand Soul Pants",
+				"level": 13,
+				"excellent": true,
+				"options": [
+					"Additional defense +12"
+				]
+			},
+			"gloves": {
+				"name": "Grand Soul Gloves",
+				"level": 11,
+				"luck": true,
+				"options": [
+					"Additional defense +12"
+				]
+			},
+			"boots": {
+				"name": "Grand Soul Boots",
+				"level": 11,
+				"luck": true,
+				"options": [
+					"Additional defense +12"
+				]
+			},
+			"wings": {
+				"name": "Wing of Eternal",
+				"level": 13,
+				"luck": true,
+				"options": [
+					"Additional wizardry damage +12"
+				]
+			},
+			"pendant": {
+				"name": "Pendant of Ability",
+				"level": 0,
+				"excellent": true,
+				"options": [
+					"Increases wizardry damage +2%"
+				]
+			}
+		}
+	},
+	{
+		"name": "Lirien",
+		"characterClass": "High Elf",
+		"level": 400,
+		"masterLevel": 175,
+		"resets": 13,
+		"guild": "Valhalla",
+		"online": true,
+		"equipment": {
+			"weapon": {
+				"name": "Albatross Bow",
+				"level": 13,
+				"excellent": true,
+				"skill": true,
+				"luck": true,
+				"options": [
+					"Additional damage +16",
+					"Excellent damage rate +10%"
+				]
+			},
+			"helm": {
+				"name": "Sylphid Ray Helm",
+				"level": 13,
+				"excellent": true,
+				"luck": true,
+				"options": [
+					"Additional defense +16"
+				]
+			},
+			"armor": {
+				"name": "Sylphid Ray Armor",
+				"level": 13,
+				"excellent": true,
+				"luck": true,
+				"options": [
+					"Additional defense +16",
+					"Damage decrease +4%"
+				]
+			},
+			"pants": {
+				"name": "Sylphid Ray Pants",
+				"level": 13,
+				"luck": true,
+				"options": [
+					"Additional defense +16"
+				]
+			},
+			"gloves": {
+				"name": "Sylphid Ray Gloves",
+				"level": 11,
+				"options": [
+					"Additional defense +12"
+				]
+			},
+			"boots": {
+				"name": "Sylphid Ray Boots",
+				"level": 11,
+				"luck": true,
+				"options": [
+					"Additional defense +12"
+				]
+			},
+			"wings": {
+				"name": "Wing of Illusion",
+				"level": 11,
+				"luck": true,
+				"options": [
+					"Additional damage +8"
+				]
+			},
+			"ring1": {
+				"name": "Ring of Ice",
+				"level": 0
+			}
+		}
+	}
+]

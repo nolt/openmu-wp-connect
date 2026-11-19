@@ -1,0 +1,113 @@
+/*
+ * OpenMU WP Connect - layout of the website-API blocks (account, events, mini game ranking).
+ *
+ * Only spacing and layout live here; the colours come from the --openmu-*
+ * variables and .openmu-line classes of blocks.css, so the OpenMU Site theme
+ * restyles these blocks the same way as the others.
+ */
+
+/* Account: login and registration (or password change and refresh) side by side, stacked on narrow screens. */
+.openmu-account__forms {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+	gap: 1.5rem;
+	margin-block-start: 1.5rem;
+}
+
+.openmu-account__form p { margin: 0 0 0.75rem; }
+.openmu-account__form label { display: block; margin-block-end: 0.2rem; }
+.openmu-account__form input[type="text"],
+.openmu-account__form input[type="password"],
+.openmu-account__form input[type="email"] { width: 100%; box-sizing: border-box; }
+.openmu-account__form .openmu-line--muted { display: block; font-size: 0.85em; }
+.openmu-account__title { margin: 0 0 0.75rem; }
+
+.openmu-account__message { margin-block-end: 1rem; font-weight: 600; }
+.openmu-account__header { margin-block-end: 1.5rem; }
+.openmu-account__header .openmu-line { margin-block-end: 0.25rem; }
+.openmu-account__logout { margin-block-start: 1rem; }
+
+/* Character table: scrolls sideways on phones instead of squeezing the columns. */
+.openmu-account__table { overflow-x: auto; }
+.openmu-account__table table { width: 100%; border-collapse: collapse; }
+.openmu-account__table th, .openmu-account__table td { padding: 0.45em 0.6em; text-align: start; white-space: nowrap; }
+.openmu-account .openmu-account__number { text-align: end; font-variant-numeric: tabular-nums; }
+
+/*
+ * Events: one game window per server, laid out in a grid (2-3 per row on wide
+ * screens, stacked on phones; grid rows make the windows equally tall).
+ * The window look itself comes from the theme's .is-style-mu-window; the
+ * :where() rules below are a flat fallback (zero specificity, so the theme wins).
+ */
+.openmu-events:has(> .openmu-events__server) {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+	gap: 1.75rem;
+}
+:where(.openmu-events__server) {
+	background: #1b1814;
+	border: 2px solid #6b6254;
+	padding: 1.5rem;
+	text-align: center;
+}
+.openmu-events__server-name { margin-block-start: 0; }
+.openmu-events__list { list-style: none; margin: 0; padding: 0; text-align: start; }
+.openmu-events__event {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 0 1rem;
+	align-items: baseline;
+	padding: 0.45em 0;
+	border-block-end: 1px solid rgb(226 193 94 / 18%);
+}
+.openmu-events__event:last-child { border-block-end: 0; }
+.openmu-events__name { flex: 1 1 9rem; font-weight: 600; }
+/* Time and countdown stay together on the right; the countdown wraps under the time on narrow windows. */
+.openmu-events__time { font-variant-numeric: tabular-nums; margin-inline-start: auto; text-align: end; }
+.openmu-events__in { font-size: 0.85em; flex-basis: 100%; text-align: end; }
+.openmu-events__server .openmu-events__in { color: rgb(255 255 255 / 70%); }
+
+/* One game server: a single full-width window whose events run in columns (3 wide, 2 medium, 1 phone).
+   CSS columns fill top-to-bottom, so the soonest events sit together at the top of the first column and
+   the order stays easy to follow; break-inside keeps a row (name / time / "in X") from splitting. */
+.openmu-events--single:has(> .openmu-events__server) { display: block; }
+.openmu-events--single .openmu-events__list {
+	columns: 3 18rem;
+	column-gap: 2.5rem;
+}
+.openmu-events--single .openmu-events__event { break-inside: avoid; }
+@media (max-width: 1000px) { .openmu-events--single .openmu-events__list { columns: 2 18rem; } }
+@media (max-width: 640px) { .openmu-events--single .openmu-events__list { columns: 1; } }
+
+/* Mini game ranking: type selector above the table, which reuses the ranking table styles. */
+.openmu-minigame-ranking__filter { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-block-end: 1rem; }
+.openmu-minigame-ranking__title { margin: 0 0 0.75rem; }
+.openmu-minigame-ranking__title .openmu-line--muted { font-size: 0.7em; font-weight: 400; margin-inline-start: 0.4em; }
+
+/*
+ * Mini game ranking: the leaderboard sits in one game window (theme's .is-style-mu-window, like the
+ * events block). Title = mini game name, then the type selector, then the table (or the empty message).
+ * The table itself reuses the ranking table styles of the theme / blocks.css.
+ */
+.openmu-minigame-ranking__window { text-align: center; }
+.openmu-minigame-ranking__title { margin-block: 0 1rem; }
+.openmu-minigame-ranking__title .openmu-line--muted { display: block; font-family: inherit; font-size: 0.5em; font-weight: 400; margin: 0.3em 0 0; }
+.openmu-minigame-ranking__filter { justify-content: center; margin-block-end: 1.5rem; }
+.openmu-minigame-ranking__filter label { color: rgb(255 255 255 / 80%); }
+/* The theme styles text inputs only; the selector gets the same black client-field look. */
+.openmu-minigame-ranking__filter select {
+	background-color: rgb(0 0 0 / 70%);
+	color: var(--wp--preset--color--contrast, #fff);
+	border: 1px solid rgb(191 195 201 / 45%);
+	border-radius: 0;
+	padding: 0.55rem 0.75rem;
+	font: inherit;
+	max-width: 100%;
+}
+.openmu-minigame-ranking__filter select option { background: #111; color: #fff; }
+/* Wide leaderboard scrolls sideways inside the window on phones instead of squeezing the columns. */
+.openmu-minigame-ranking__table { overflow-x: auto; text-align: start; }
+.openmu-minigame-ranking__table th, .openmu-minigame-ranking__table td { white-space: nowrap; }
+.openmu-minigame-ranking__empty { margin: 0.5rem 0 0; text-align: center; }
+@media (max-width: 640px) { .openmu-minigame-ranking__filter select { flex: 1 1 10rem; } }
