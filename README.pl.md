@@ -86,6 +86,12 @@ captchą może dopisać się do formularza rejestracji akcją
 `openmu_wp_connect_register_form` i odrzucić rejestrację filtrem
 `openmu_wp_connect_register_allowed` (zob. Dla programistów).
 
+## Odinstalowanie
+
+Usunięcie wtyczki w **Wtyczki** kasuje jej ustawienia, zapamiętane odpowiedzi,
+sesje graczy i obrazki przedmiotów zapisane w `uploads/openmu-wp-connect/`.
+Opcjonalne pliki klienta gry są Twoje i zostają. Stałe z `wp-config.php` usuń ręcznie.
+
 ## Cache
 
 Wtyczka zapamiętuje odpowiedzi serwera na krótko: status na 30 sekund, rankingi

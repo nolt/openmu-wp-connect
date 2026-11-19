@@ -85,6 +85,13 @@ filter. A captcha plugin can print into the registration form with the
 `openmu_wp_connect_register_form` action and refuse a registration with the
 `openmu_wp_connect_register_allowed` filter (see For developers).
 
+## Uninstalling
+
+Deleting the plugin in **Plugins** removes its settings, the cached answers, the
+player sessions and the item pictures it saved in `uploads/openmu-wp-connect/`.
+The optional game client files are yours and stay. Remove the `wp-config.php`
+constants by hand.
+
 ## Caching
 
 The plugin caches answers of the server for a short time: the status for
