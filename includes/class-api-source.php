@@ -36,6 +36,11 @@ class OpenMU_WP_Connect_Api_Source implements OpenMU_WP_Connect_Data_Source {
 	private const CHARACTER_CACHE = 60;
 
 	/**
+	 * Largest item picture stored from the server; the item editor's pictures are a few KB.
+	 */
+	private const ITEM_IMAGE_MAX_BYTES = 262144;
+
+	/**
 	 * Inventory slots of OpenMU, mapped to the slot keys of the armory block.
 	 */
 	private const SLOTS = array(
@@ -245,8 +250,14 @@ class OpenMU_WP_Connect_Api_Source implements OpenMU_WP_Connect_Data_Source {
 			return null;
 		}
 
+		// Only a real PNG of sensible size is stored in the public uploads folder, whatever the server sent.
+		$body = wp_remote_retrieve_body( $response );
+		if ( strlen( $body ) > self::ITEM_IMAGE_MAX_BYTES || ! str_starts_with( $body, "\x89PNG\r\n\x1a\n" ) || false === @getimagesizefromstring( $body ) ) { // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged -- a broken picture is expected input, not an error worth a warning.
+			return null;
+		}
+
 		wp_mkdir_p( $dir );
-		file_put_contents( $dir . $file, wp_remote_retrieve_body( $response ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- cache file in uploads.
+		file_put_contents( $dir . $file, $body ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- cache file in uploads.
 		return $url;
 	}
 
