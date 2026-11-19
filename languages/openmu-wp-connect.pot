@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T13:26:45+00:00\n"
+"POT-Creation-Date: 2026-11-19T20:57:21+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: openmu-wp-connect\n"
@@ -41,182 +41,182 @@ msgstr ""
 msgid "https://github.com/nolt"
 msgstr ""
 
-#: blocks/account/render.php:57
-#: blocks/account/render.php:67
+#: blocks/account/render.php:63
+#: blocks/account/render.php:73
 msgid "Log in"
 msgstr ""
 
-#: blocks/account/render.php:60
-#: blocks/account/render.php:76
+#: blocks/account/render.php:66
+#: blocks/account/render.php:82
 msgid "Login name"
 msgstr ""
 
-#: blocks/account/render.php:64
-#: blocks/account/render.php:81
-#: blocks/account/render.php:234
+#: blocks/account/render.php:70
+#: blocks/account/render.php:87
+#: blocks/account/render.php:241
 msgid "Password"
 msgstr ""
 
-#: blocks/account/render.php:68
+#: blocks/account/render.php:74
 msgid "Use the login name and password of your game account."
 msgstr ""
 
-#: blocks/account/render.php:73
+#: blocks/account/render.php:79
 msgid "Create an account"
 msgstr ""
 
-#: blocks/account/render.php:78
+#: blocks/account/render.php:84
 msgid "3 to 10 characters, no spaces."
 msgstr ""
 
-#: blocks/account/render.php:83
-#: blocks/account/render.php:219
+#: blocks/account/render.php:89
+#: blocks/account/render.php:226
 msgid "3 to 20 characters, without national characters."
 msgstr ""
 
-#: blocks/account/render.php:86
+#: blocks/account/render.php:92
 msgid "Repeat the password"
 msgstr ""
 
-#: blocks/account/render.php:90
+#: blocks/account/render.php:96
 msgid "E-mail (optional)"
 msgstr ""
 
-#: blocks/account/render.php:93
+#: blocks/account/render.php:100
 msgid "Create account"
 msgstr ""
 
 #. translators: %s: login name of the game account.
-#: blocks/account/render.php:107
+#: blocks/account/render.php:114
 #, php-format
 msgid "Account %s"
 msgstr ""
 
 #. translators: %s: account state from the game server, e.g. Normal or Banned.
-#: blocks/account/render.php:114
+#: blocks/account/render.php:121
 #, php-format
 msgid "Account state: %s"
 msgstr ""
 
-#: blocks/account/render.php:119
+#: blocks/account/render.php:126
 msgid "A character of this account is leveling offline. End offline leveling before you change the password."
 msgstr ""
 
-#: blocks/account/render.php:121
+#: blocks/account/render.php:128
 msgid "You are in the game now. Leave the game to change the password."
 msgstr ""
 
-#: blocks/account/render.php:123
+#: blocks/account/render.php:130
 msgid "You are not in the game now."
 msgstr ""
 
 #. translators: 1: time the data was read from the game server, 2: time the website session ends.
-#: blocks/account/render.php:130
+#: blocks/account/render.php:137
 #, php-format
 msgid "Data as of %1$s. Your session on the site ends at %2$s."
 msgstr ""
 
-#: blocks/account/render.php:140
+#: blocks/account/render.php:147
 msgid "Characters"
 msgstr ""
 
 #. translators: %s: character name from the address.
-#: blocks/account/render.php:145
+#: blocks/account/render.php:152
 #, php-format
 msgid "There is no character named \"%s\" on your account."
 msgstr ""
 
-#: blocks/account/render.php:150
+#: blocks/account/render.php:157
 msgid "No characters yet. Create one in the game."
 msgstr ""
 
-#: blocks/account/render.php:156
+#: blocks/account/render.php:163
 #: blocks/minigame-ranking/render.php:116
 #: blocks/ranking/render.php:27
-#: includes/character-view.php:486
+#: includes/character-view.php:498
 msgid "Character"
 msgstr ""
 
-#: blocks/account/render.php:157
+#: blocks/account/render.php:164
 #: blocks/minigame-ranking/render.php:117
 #: blocks/ranking/render.php:28
 #: assets/editor.js:47
 msgid "Class"
 msgstr ""
 
-#: blocks/account/render.php:158
+#: blocks/account/render.php:165
 #: blocks/ranking/render.php:30
-#: includes/character-view.php:289
+#: includes/character-view.php:301
 msgid "Level"
 msgstr ""
 
-#: blocks/account/render.php:159
+#: blocks/account/render.php:166
 #: blocks/ranking/render.php:29
-#: includes/character-view.php:291
+#: includes/character-view.php:303
 msgid "Resets"
 msgstr ""
 
-#: blocks/account/render.php:160
-#: includes/character-view.php:394
+#: blocks/account/render.php:167
+#: includes/character-view.php:406
 msgid "Zen"
 msgstr ""
 
-#: blocks/account/render.php:161
-#: includes/character-view.php:302
+#: blocks/account/render.php:168
+#: includes/character-view.php:314
 msgid "Location"
 msgstr ""
 
 #. translators: %d: master level, shown after the normal level.
-#: blocks/account/render.php:174
+#: blocks/account/render.php:181
 #: blocks/ranking/render.php:46
 #, php-format
 msgid "+%d ML"
 msgstr ""
 
 #. translators: %d: map number of the game.
-#: blocks/account/render.php:186
-#: includes/character-view.php:301
+#: blocks/account/render.php:193
+#: includes/character-view.php:313
 #, php-format
 msgid "Map %d"
 msgstr ""
 
 #. translators: 1: map name, 2: X coordinate, 3: Y coordinate.
-#: blocks/account/render.php:190
-#: includes/character-view.php:304
+#: blocks/account/render.php:197
+#: includes/character-view.php:316
 #, php-format
 msgid "%1$s (%2$d, %3$d)"
 msgstr ""
 
-#: blocks/account/render.php:208
-#: blocks/account/render.php:225
+#: blocks/account/render.php:215
+#: blocks/account/render.php:232
 msgid "Change password"
 msgstr ""
 
-#: blocks/account/render.php:213
+#: blocks/account/render.php:220
 msgid "Current password"
 msgstr ""
 
-#: blocks/account/render.php:217
+#: blocks/account/render.php:224
 msgid "New password"
 msgstr ""
 
-#: blocks/account/render.php:222
+#: blocks/account/render.php:229
 msgid "Repeat the new password"
 msgstr ""
 
-#: blocks/account/render.php:230
+#: blocks/account/render.php:237
 msgid "Refresh data"
 msgstr ""
 
-#: blocks/account/render.php:232
+#: blocks/account/render.php:239
 msgid "The site does not keep your password, so it needs it again to read the current data."
 msgstr ""
 
-#: blocks/account/render.php:237
+#: blocks/account/render.php:244
 msgid "Refresh"
 msgstr ""
 
-#: blocks/account/render.php:242
+#: blocks/account/render.php:249
 msgid "Log out"
 msgstr ""
 
@@ -299,7 +299,7 @@ msgid "Mini game"
 msgstr ""
 
 #: blocks/minigame-ranking/render.php:104
-#: includes/character-view.php:498
+#: includes/character-view.php:510
 msgid "Show"
 msgstr ""
 
@@ -333,7 +333,7 @@ msgid "No characters in this ranking yet."
 msgstr ""
 
 #: blocks/ranking/render.php:31
-#: includes/character-view.php:294
+#: includes/character-view.php:306
 msgid "Guild"
 msgstr ""
 
@@ -353,104 +353,124 @@ msgstr[1] ""
 msgid "Server offline"
 msgstr ""
 
+#: includes/account-guard.php:165
+msgid "Leave this field empty"
+msgstr ""
+
 #: includes/account-menu.php:44
 msgid "Sign in"
 msgstr ""
 
 #. translators: %d: minutes until the next try is allowed.
-#: includes/account.php:381
+#: includes/account.php:384
 #, php-format
 msgid "Too many failed attempts. Try again in %d minute."
 msgid_plural "Too many failed attempts. Try again in %d minutes."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/account.php:384
+#: includes/account.php:387
 msgid "Too many failed attempts. Try again later."
 msgstr ""
 
-#: includes/account.php:387
-msgid "You are logged in."
-msgstr ""
-
-#: includes/account.php:388
-msgid "Your account data is up to date."
-msgstr ""
-
-#: includes/account.php:389
-msgid "You are logged out."
-msgstr ""
-
-#: includes/account.php:390
-msgid "Your account has been created. You can log in now, on the site and in the game."
-msgstr ""
-
+#. translators: %d: minutes until the next registration is allowed.
 #: includes/account.php:391
-msgid "Your password has been changed. Use the new one in the game too."
-msgstr ""
-
-#: includes/account.php:392
-msgid "Wrong login name or password."
-msgstr ""
+#, php-format
+msgid "Too many accounts were created from your address. Try again in %d minute."
+msgid_plural "Too many accounts were created from your address. Try again in %d minutes."
+msgstr[0] ""
+msgstr[1] ""
 
 #: includes/account.php:394
-msgid "The current password is wrong."
-msgstr ""
-
-#: includes/account.php:395
-msgid "A character of this account is offline leveling. Stop the offline leveling in the game first, then change the password."
-msgstr ""
-
-#: includes/account.php:396
-msgid "Your account is in the game now. Leave the game, then change the password."
+msgid "Too many accounts were created from your address. Try again later."
 msgstr ""
 
 #: includes/account.php:397
-msgid "The new password must have 3 to 20 characters: letters, digits and common symbols (no national characters)."
+msgid "You are logged in."
 msgstr ""
 
 #: includes/account.php:398
-msgid "The password must have 3 to 20 characters: letters, digits and common symbols (no national characters)."
+msgid "Your account data is up to date."
 msgstr ""
 
 #: includes/account.php:399
-msgid "The login name must have 3 to 10 characters: letters, digits and common symbols, no spaces."
+msgid "You are logged out."
 msgstr ""
 
 #: includes/account.php:400
-msgid "The two passwords are not the same."
+msgid "Your account has been created. You can log in now, on the site and in the game."
 msgstr ""
 
 #: includes/account.php:401
-msgid "The e-mail address is not valid."
+msgid "Your password has been changed. Use the new one in the game too."
 msgstr ""
 
 #: includes/account.php:402
-msgid "The server did not accept these account details."
-msgstr ""
-
-#: includes/account.php:403
-msgid "This login name is already taken."
+msgid "Wrong login name or password."
 msgstr ""
 
 #: includes/account.php:404
-msgid "This function is not enabled for the site on the game server."
+msgid "The current password is wrong."
 msgstr ""
 
 #: includes/account.php:405
-#: includes/blocks-extra.php:92
-msgid "Connect the site to an OpenMU server in Settings > OpenMU WP Connect."
+msgid "A character of this account is offline leveling. Stop the offline leveling in the game first, then change the password."
 msgstr ""
 
 #: includes/account.php:406
-msgid "The game server is not available right now. Try again later."
+msgid "Your account is in the game now. Leave the game, then change the password."
 msgstr ""
 
 #: includes/account.php:407
-msgid "Your session has ended. Log in again."
+msgid "The new password must have 3 to 20 characters: letters, digits and common symbols (no national characters)."
 msgstr ""
 
 #: includes/account.php:408
+msgid "The password must have 3 to 20 characters: letters, digits and common symbols (no national characters)."
+msgstr ""
+
+#: includes/account.php:409
+msgid "The login name must have 3 to 10 characters: letters, digits and common symbols, no spaces."
+msgstr ""
+
+#: includes/account.php:410
+msgid "The two passwords are not the same."
+msgstr ""
+
+#: includes/account.php:411
+msgid "The e-mail address is not valid."
+msgstr ""
+
+#: includes/account.php:412
+msgid "The server did not accept these account details."
+msgstr ""
+
+#: includes/account.php:413
+msgid "This login name is already taken."
+msgstr ""
+
+#: includes/account.php:415
+msgid "Please confirm that you are not a robot."
+msgstr ""
+
+#: includes/account.php:416
+msgid "This function is not enabled for the site on the game server."
+msgstr ""
+
+#: includes/account.php:417
+#: includes/blocks-extra.php:100
+msgid "Connect the site to an OpenMU server in Settings > OpenMU WP Connect."
+msgstr ""
+
+#: includes/account.php:418
+msgid "The game server is not available right now. Try again later."
+msgstr ""
+
+#: includes/account.php:419
+msgid "Your session has ended. Log in again."
+msgstr ""
+
+#: includes/account.php:420
 msgid "The form has expired. Please try again."
 msgstr ""
 
@@ -499,77 +519,77 @@ msgstr ""
 msgid "Boots"
 msgstr ""
 
-#: includes/character-view.php:211
+#: includes/character-view.php:212
 #: includes/item-options.php:254
 msgid "Skill"
 msgstr ""
 
-#: includes/character-view.php:214
+#: includes/character-view.php:218
 #: includes/item-options.php:273
 msgid "Luck (critical damage rate +5%)"
 msgstr ""
 
 #. translators: %s: ancient set name.
-#: includes/character-view.php:223
+#: includes/character-view.php:233
 #: includes/item-data.php:982
 #: includes/item-options.php:133
 #, php-format
 msgid "Set: %s"
 msgstr ""
 
-#: includes/character-view.php:290
+#: includes/character-view.php:302
 msgid "Master level"
 msgstr ""
 
-#: includes/character-view.php:336
-#: includes/character-view.php:337
+#: includes/character-view.php:348
+#: includes/character-view.php:349
 msgid "Equipment"
 msgstr ""
 
 #. translators: %s: equipment slot, e.g. Helm.
-#: includes/character-view.php:347
+#: includes/character-view.php:359
 #, php-format
 msgid "%s: empty"
 msgstr ""
 
 #. translators: 1: equipment slot, e.g. Helm; 2: item title, e.g. Dragon Helm +13.
-#: includes/character-view.php:373
+#: includes/character-view.php:385
 #, php-format
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: includes/character-view.php:477
+#: includes/character-view.php:489
 msgid "Your characters"
 msgstr ""
 
-#: includes/character-view.php:478
+#: includes/character-view.php:490
 msgid "‹ All characters"
 msgstr ""
 
 #. translators: 1: character name, 2: class name, 3: level.
-#: includes/character-view.php:492
+#: includes/character-view.php:504
 #, php-format
 msgid "%1$s – %2$s, level %3$d"
 msgstr ""
 
-#: includes/character-view.php:504
+#: includes/character-view.php:516
 msgid "The equipment of this character cannot be read from the game server right now."
 msgstr ""
 
-#: includes/class-api-source.php:215
+#: includes/class-openmu-wp-connect-api-source.php:230
 msgid "Connected. The server status can be read."
 msgstr ""
 
-#: includes/class-api-source.php:216
+#: includes/class-openmu-wp-connect-api-source.php:234
 msgid "The API key is unknown or disabled."
 msgstr ""
 
-#: includes/class-api-source.php:217
+#: includes/class-openmu-wp-connect-api-source.php:238
 msgid "The key works, but it is not a website key or \"Server status\" is not selected for it."
 msgstr ""
 
 #. translators: %d: HTTP status code.
-#: includes/class-api-source.php:218
+#: includes/class-openmu-wp-connect-api-source.php:242
 #, php-format
 msgid "Unexpected answer of the server: HTTP %d."
 msgstr ""
@@ -594,8 +614,8 @@ msgstr ""
 msgid "Kanturu"
 msgstr ""
 
-#: includes/functions.php:68
-msgid "OpenMU WP Connect shows demo data: the server status, ranking and armory blocks are not connected to your game server yet."
+#: includes/functions.php:80
+msgid "OpenMU WP Connect shows demo data: its blocks are not connected to your game server yet. Set the server address and the API key in Settings > OpenMU WP Connect."
 msgstr ""
 
 #. translators: 1: minimum damage, 2: maximum damage.
