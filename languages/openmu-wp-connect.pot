@@ -3,13 +3,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenMU WP Connect 0.1.0\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/openmu-wp-connect\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/p\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-19T20:57:21+00:00\n"
+"POT-Creation-Date: 2026-11-20T06:59:53+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: openmu-wp-connect\n"
@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: openmu-wp-connect.php
 #: includes/settings.php:69
-#: includes/settings.php:85
+#: includes/settings.php:109
 msgid "OpenMU WP Connect"
 msgstr ""
 
@@ -1848,63 +1848,67 @@ msgstr ""
 msgid "Attack power increase"
 msgstr ""
 
-#: includes/settings.php:86
+#: includes/settings.php:89
+msgid "Settings"
+msgstr ""
+
+#: includes/settings.php:110
 msgid "Create an API key with the role \"Website (selected functions only)\" in the OpenMU admin panel (API keys), select the functions this site uses, and enter it here. Without an address and a key, the blocks show demo data."
 msgstr ""
 
-#: includes/settings.php:94
+#: includes/settings.php:118
 msgid "Server address"
 msgstr ""
 
-#: includes/settings.php:97
+#: includes/settings.php:121
 msgid "Address of the OpenMU admin panel, as this server reaches it. Keep the admin panel out of the internet; only this site needs to reach it."
 msgstr ""
 
-#: includes/settings.php:101
+#: includes/settings.php:125
 msgid "API key"
 msgstr ""
 
-#: includes/settings.php:104
+#: includes/settings.php:128
 msgid "Set by OPENMU_WP_CONNECT_API_KEY in wp-config.php instead, if you prefer to keep the key out of the database."
 msgstr ""
 
-#: includes/settings.php:123
+#: includes/settings.php:147
 msgid "Inventory textures: the armory is drawn like the game window."
 msgstr ""
 
-#: includes/settings.php:124
+#: includes/settings.php:148
 msgid "Class pictures: the armory shows the class render instead of an emblem."
 msgstr ""
 
-#: includes/settings.php:125
+#: includes/settings.php:149
 msgid "Item data: item tooltips add base stats, requirements and descriptions."
 msgstr ""
 
-#: includes/settings.php:128
+#: includes/settings.php:152
 msgid "Game client look (optional)"
 msgstr ""
 
-#: includes/settings.php:129
+#: includes/settings.php:153
 msgid "The plugin ships no files of the game client. Copy the textures, class pictures and item data from your own game client into this folder to give the armory the look of the game; the README lists the files. Without them the armory uses a neutral style."
 msgstr ""
 
-#: includes/settings.php:132
+#: includes/settings.php:156
 msgid "Folder"
 msgstr ""
 
-#: includes/settings.php:134
+#: includes/settings.php:158
 msgid "(none)"
 msgstr ""
 
-#: includes/settings.php:135
+#: includes/settings.php:159
 msgid "Change it with the openmu_wp_connect_client_assets filter."
 msgstr ""
 
-#: includes/settings.php:143
+#: includes/settings.php:167
 msgid "Found"
 msgstr ""
 
-#: includes/settings.php:145
+#: includes/settings.php:169
 msgid "Not found"
 msgstr ""
 

@@ -17,7 +17,7 @@ msgstr ""
 #. Plugin Name of the plugin
 #: openmu-wp-connect.php
 #: includes/settings.php:69
-#: includes/settings.php:85
+#: includes/settings.php:109
 msgid "OpenMU WP Connect"
 msgstr "OpenMU WP Connect"
 
@@ -1933,63 +1933,63 @@ msgstr "Zwiększa zdrowie"
 msgid "Attack power increase"
 msgstr "Zwiększa siłę ataku"
 
-#: includes/settings.php:86
+#: includes/settings.php:110
 msgid "Create an API key with the role \"Website (selected functions only)\" in the OpenMU admin panel (API keys), select the functions this site uses, and enter it here. Without an address and a key, the blocks show demo data."
 msgstr "Utwórz w panelu admina OpenMU (API keys) klucz API z rolą „Website (selected functions only)”, zaznacz funkcje, których używa ta strona, i wpisz go tutaj. Bez adresu i klucza bloki pokazują dane demonstracyjne."
 
-#: includes/settings.php:94
+#: includes/settings.php:118
 msgid "Server address"
 msgstr "Adres serwera"
 
-#: includes/settings.php:97
+#: includes/settings.php:121
 msgid "Address of the OpenMU admin panel, as this server reaches it. Keep the admin panel out of the internet; only this site needs to reach it."
 msgstr "Adres panelu admina OpenMU, pod którym ten serwer go widzi. Nie wystawiaj panelu do internetu; dostęp potrzebny jest tylko tej stronie."
 
-#: includes/settings.php:101
+#: includes/settings.php:125
 msgid "API key"
 msgstr "Klucz API"
 
-#: includes/settings.php:104
+#: includes/settings.php:128
 msgid "Set by OPENMU_WP_CONNECT_API_KEY in wp-config.php instead, if you prefer to keep the key out of the database."
 msgstr "Możesz go ustawić stałą OPENMU_WP_CONNECT_API_KEY w wp-config.php, jeśli wolisz nie trzymać klucza w bazie."
 
-#: includes/settings.php:123
+#: includes/settings.php:147
 msgid "Inventory textures: the armory is drawn like the game window."
 msgstr "Tekstury ekwipunku: zbrojownia wygląda jak okno w grze."
 
-#: includes/settings.php:124
+#: includes/settings.php:148
 msgid "Class pictures: the armory shows the class render instead of an emblem."
 msgstr "Obrazki klas: zbrojownia pokazuje postać klasy zamiast emblematu."
 
-#: includes/settings.php:125
+#: includes/settings.php:149
 msgid "Item data: item tooltips add base stats, requirements and descriptions."
 msgstr "Dane przedmiotów: tooltipy pokazują też statystyki bazowe, wymagania i opisy."
 
-#: includes/settings.php:128
+#: includes/settings.php:152
 msgid "Game client look (optional)"
 msgstr "Wygląd z klienta gry (opcjonalnie)"
 
-#: includes/settings.php:129
+#: includes/settings.php:153
 msgid "The plugin ships no files of the game client. Copy the textures, class pictures and item data from your own game client into this folder to give the armory the look of the game; the README lists the files. Without them the armory uses a neutral style."
 msgstr "Wtyczka nie zawiera plików klienta gry. Skopiuj tekstury, obrazki klas i dane przedmiotów z własnego klienta do tego folderu, żeby zbrojownia wyglądała jak w grze; lista plików jest w README. Bez nich zbrojownia ma neutralny wygląd."
 
-#: includes/settings.php:132
+#: includes/settings.php:156
 msgid "Folder"
 msgstr "Folder"
 
-#: includes/settings.php:134
+#: includes/settings.php:158
 msgid "(none)"
 msgstr "(brak)"
 
-#: includes/settings.php:135
+#: includes/settings.php:159
 msgid "Change it with the openmu_wp_connect_client_assets filter."
 msgstr "Zmienisz go filtrem openmu_wp_connect_client_assets."
 
-#: includes/settings.php:143
+#: includes/settings.php:167
 msgid "Found"
 msgstr "Znaleziono"
 
-#: includes/settings.php:145
+#: includes/settings.php:169
 msgid "Not found"
 msgstr "Nie znaleziono"
 
@@ -2139,3 +2139,7 @@ msgstr "Potwierdź, że nie jesteś robotem."
 #: includes/functions.php:80
 msgid "OpenMU WP Connect shows demo data: its blocks are not connected to your game server yet. Set the server address and the API key in Settings > OpenMU WP Connect."
 msgstr "OpenMU WP Connect pokazuje dane demo: bloki nie są jeszcze połączone z Twoim serwerem gry. Ustaw adres serwera i klucz API w Ustawienia > OpenMU WP Connect."
+
+#: includes/settings.php:89
+msgid "Settings"
+msgstr "Ustawienia"

@@ -71,6 +71,30 @@ function openmu_wp_connect_settings_menu(): void {
 add_action( 'admin_menu', 'openmu_wp_connect_settings_menu' );
 
 /**
+ * Adds a "Settings" link to the plugin's row on the Plugins screen.
+ *
+ * Admins look for the settings next to "Deactivate"; without the link the plugin looks
+ * like it has none, since the page itself sits below the Settings menu.
+ *
+ * @param string[] $links Action links of the row.
+ * @return string[] The links with "Settings" first.
+ */
+function openmu_wp_connect_plugin_action_links( array $links ): array {
+	if ( current_user_can( 'manage_options' ) ) {
+		array_unshift(
+			$links,
+			sprintf(
+				'<a href="%s">%s</a>',
+				esc_url( admin_url( 'options-general.php?page=openmu-wp-connect' ) ),
+				esc_html__( 'Settings', 'openmu-wp-connect' )
+			)
+		);
+	}
+	return $links;
+}
+add_filter( 'plugin_action_links_' . plugin_basename( OPENMU_WP_CONNECT_DIR . 'openmu-wp-connect.php' ), 'openmu_wp_connect_plugin_action_links' );
+
+/**
  * Renders the settings page, with the result of a connection test when the settings are complete.
  */
 function openmu_wp_connect_settings_page(): void {
