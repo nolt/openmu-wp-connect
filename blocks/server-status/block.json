@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "openmu/server-status",
 	"title": "Server status",
-	"category": "widgets",
+	"category": "openmu",
 	"icon": "networking",
 	"description": "Whether the game server is online and how many players are in game.",
 	"keywords": [ "online", "players", "status" ],

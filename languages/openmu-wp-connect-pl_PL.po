@@ -2143,3 +2143,7 @@ msgstr "OpenMU WP Connect pokazuje dane demo: bloki nie są jeszcze połączone 
 #: includes/settings.php:89
 msgid "Settings"
 msgstr "Ustawienia"
+
+#: includes/blocks.php:63
+msgid "OpenMU"
+msgstr "OpenMU"

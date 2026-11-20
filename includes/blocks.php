@@ -45,3 +45,25 @@ function openmu_wp_connect_register_blocks(): void {
 	}
 }
 add_action( 'init', 'openmu_wp_connect_register_blocks' );
+
+/**
+ * Adds the "OpenMU" category to the block inserter, first in the list.
+ *
+ * All blocks of the plugin are in it (the "category" in each block.json), so they are found
+ * together instead of among WordPress's own widgets.
+ *
+ * @param array<int, array<string, mixed>> $categories Block categories.
+ * @return array<int, array<string, mixed>> The categories with "OpenMU" added.
+ */
+function openmu_wp_connect_block_category( array $categories ): array {
+	array_unshift(
+		$categories,
+		array(
+			'slug'  => 'openmu',
+			'title' => __( 'OpenMU', 'openmu-wp-connect' ),
+			'icon'  => null,
+		)
+	);
+	return $categories;
+}
+add_filter( 'block_categories_all', 'openmu_wp_connect_block_category' );

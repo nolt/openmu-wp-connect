@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "openmu/minigame-ranking",
 	"title": "Mini game ranking",
-	"category": "widgets",
+	"category": "openmu",
 	"icon": "awards",
 	"description": "Leaderboard of a mini game (Blood Castle, Devil Square, Chaos Castle...) for the last days; visitors can switch between the mini games.",
 	"keywords": [ "ranking", "blood castle", "devil square", "chaos castle", "mini game" ],

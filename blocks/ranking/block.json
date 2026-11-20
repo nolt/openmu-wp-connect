@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "openmu/ranking",
 	"title": "Character ranking",
-	"category": "widgets",
+	"category": "openmu",
 	"icon": "awards",
 	"description": "Top characters by resets and level, optionally for one class. Names link to the armory.",
 	"keywords": [ "ranking", "top", "characters" ],

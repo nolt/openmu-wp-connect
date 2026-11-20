@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "openmu/events",
 	"title": "Event schedule",
-	"category": "widgets",
+	"category": "openmu",
 	"icon": "calendar-alt",
 	"description": "Next start of the game events (Blood Castle, Devil Square, invasions...) on each game server, in the site's time zone, soonest first.",
 	"keywords": [ "events", "schedule", "blood castle", "devil square" ],

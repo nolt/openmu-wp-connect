@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "openmu/armory",
 	"title": "Armory",
-	"category": "widgets",
+	"category": "openmu",
 	"icon": "shield",
 	"description": "A character's class, level and equipped items, shown as in-game item tooltips. Visitors search by name, or the block shows one fixed character.",
 	"keywords": [ "armory", "character", "equipment", "items" ],

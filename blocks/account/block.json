@@ -3,7 +3,7 @@
 	"apiVersion": 3,
 	"name": "openmu/account",
 	"title": "Player account",
-	"category": "widgets",
+	"category": "openmu",
 	"icon": "admin-users",
 	"description": "Game account on the site: log in with the game login, see your characters, change the password, and optionally create a new account.",
 	"keywords": [ "account", "login", "register", "password", "characters" ],

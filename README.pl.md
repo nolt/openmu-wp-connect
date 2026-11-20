@@ -48,7 +48,7 @@ wtyczka robi dokładnie tak.
 
 ## Bloki
 
-Wszystkie bloki są w wstawiaczu w grupie **Widżety** i renderują się na serwerze,
+Wszystkie bloki są w wstawiaczu w grupie **OpenMU** i renderują się na serwerze,
 więc zawsze pokazują aktualne dane.
 
 | Blok | Pokazuje | Ustawienia | Funkcje klucza API |

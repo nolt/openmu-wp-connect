@@ -47,7 +47,7 @@ the plugin does exactly that.
 
 ## Blocks
 
-All blocks are in the inserter under **Widgets** and render on the server, so they
+All blocks are in the inserter under **OpenMU** and render on the server, so they
 always show current data.
 
 | Block | Shows | Settings | API key functions |
