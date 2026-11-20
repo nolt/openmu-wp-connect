@@ -12,6 +12,11 @@ Działa z każdym motywem blokowym. Nie ma własnego motywu; zbrojownia ma neutr
 wygląd albo wygląd okna postaci z gry, gdy dodasz pliki z własnego klienta gry
 (zobacz [Wygląd z klienta gry](#wygląd-z-klienta-gry-opcjonalnie)).
 
+Kompletną stronę od razu po instalacji dostaniesz z motywem towarzyszącym
+**[OpenMU WP Theme](https://github.com/nolt/openmu-wp-theme)**: włączenie motywu tworzy
+strony z tymi blokami (ranking, minigry, zbrojownia, wydarzenia, konto), menu i stronę
+główną. Każde z nich działa też bez drugiego.
+
 ## Wymagania
 
 - WordPress 6.6 lub nowszy, PHP 8.1 lub nowszy.
@@ -19,8 +24,10 @@ wygląd albo wygląd okna postaci z gry, gdy dodasz pliki z własnego klienta gr
   **Website (selected functions only)**. API dla stron jest dodawane do OpenMU;
   dopóki nie trafi do wydania, potrzebny jest build, który je zawiera.
 
-Bez połączenia bloki pokazują dane demonstracyjne (`demo/`), a kokpit informuje
-o tym administratorów — nic zmyślonego nie zostanie opublikowane przez przypadek.
+Bez połączenia bloki statusu serwera, rankingu i zbrojowni pokazują dane
+demonstracyjne (`demo/`), a kokpit informuje o tym administratorów — nic zmyślonego nie
+zostanie opublikowane przez przypadek. Harmonogram wydarzeń, rankingi minigier i konto
+gracza potrzebują połączenia; do tego czasu o tym informują.
 
 ## Instalacja
 

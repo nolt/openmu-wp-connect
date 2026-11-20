@@ -12,6 +12,11 @@ It works with any block theme. It brings no theme of its own; the armory has a
 neutral look, or the look of the game's character window when you add files from
 your own game client (see [Game client look](#game-client-look-optional)).
 
+For a complete site out of the box, use it with the companion theme
+**[OpenMU WP Theme](https://github.com/nolt/openmu-wp-theme)**: activating the theme
+creates the pages with these blocks (ranking, mini games, armory, events, account),
+the menu and the front page. Each works without the other, too.
+
 ## Requirements
 
 - WordPress 6.6 or later, PHP 8.1 or later.
@@ -19,8 +24,10 @@ your own game client (see [Game client look](#game-client-look-optional)).
   role **Website (selected functions only)**. The website API is being added to
   OpenMU; until it's part of a release, use a build which contains it.
 
-Without a connection the blocks show demo data (`demo/`), and the dashboard tells
-administrators so — nothing fake gets published by accident.
+Without a connection the server status, ranking and armory blocks show demo data
+(`demo/`), and the dashboard tells administrators so — nothing fake gets published by
+accident. The event schedule, mini game rankings and player account need the connection;
+until then they say so.
 
 ## Installation
 
