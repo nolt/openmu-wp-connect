@@ -21,8 +21,10 @@ the menu and the front page. Each works without the other, too.
 
 - WordPress 6.6 or later, PHP 8.1 or later.
 - An OpenMU server with the website API (`/api/website`) and an API key of the
-  role **Website (selected functions only)**. The website API is being added to
-  OpenMU; until it's part of a release, use a build which contains it.
+  role **Website (selected functions only)**. The website API is in OpenMU's `master`
+  branch since November 2026; until it is part of a release, use a build of the
+  current `master`. OpenMU describes the API and its keys in
+  [The API of a website](https://github.com/MUnique/OpenMU/blob/master/docs-website/docs/admin-panel/authentication.md#the-api-of-a-website).
 
 Without a connection the server status, ranking and armory blocks show demo data
 (`demo/`), and the dashboard tells administrators so — nothing fake gets published by
@@ -33,20 +35,35 @@ until then they say so.
 
 1. Copy this folder to `wp-content/plugins/openmu-wp-connect` (or upload it as a
    zip under **Plugins > Add New > Upload Plugin**) and activate **OpenMU WP Connect**.
-2. In the OpenMU admin panel, create an API key with the role
+2. In the OpenMU admin panel, open **API keys** (next to *Users*; it needs the
+   administrator role), click **Create API key**, pick the role
    **Website (selected functions only)** and tick the functions the site uses
-   (see the table below).
+   (see the table below). The key is shown once: copy it right away. Keys can only be
+   created once the panel has its first user. Details:
+   [API keys for external applications](https://github.com/MUnique/OpenMU/blob/master/docs-website/docs/admin-panel/authentication.md#api-keys-for-external-applications).
 3. In WordPress, open **Settings > OpenMU WP Connect** and enter the address of the
-   OpenMU admin panel and the key. Or put them in `wp-config.php`, which keeps the
-   key out of the database; the constants win over the settings:
+   OpenMU admin panel and the key, then use the connection test on that page. Or put
+   them in `wp-config.php`, which keeps the key out of the database; the constants win
+   over the settings:
 
    ```php
    define( 'OPENMU_WP_CONNECT_API_URL', 'http://192.168.1.10:8080' );
    define( 'OPENMU_WP_CONNECT_API_KEY', '...' );
    ```
 
-4. Create the pages and add the blocks (the plugin doesn't create pages). Two
-   addresses are expected: the armory at `/armory/` (ranking rows link there) and
+   **The address is the admin panel as the WordPress server reaches it**, not as
+   your browser does: WordPress calls the API itself. Some common cases:
+
+   | Setup | Address |
+   | --- | --- |
+   | WordPress and OpenMU in Docker, on one Docker network | the OpenMU container's name and the panel's port inside the container, e.g. `http://openmu-server:8080` |
+   | Both on one machine, OpenMU's panel port published | `http://<the machine's address>:<published port>` (from a WordPress container, `localhost` is the container itself, not the machine) |
+   | On different machines | the OpenMU machine's address and panel port; the port has to be open to the WordPress server only, not to the internet |
+
+4. Create the pages and add the blocks. With the companion theme
+   [OpenMU WP Theme](https://github.com/nolt/openmu-wp-theme) this is done for you: activating the theme creates the
+   pages with these blocks and the menu. With another theme, create them yourself;
+   two addresses are expected: the armory at `/armory/` (ranking rows link there) and
    the account at `/account/` (its menu item reads "Sign in" for visitors).
 
 Call the API from the WordPress server only, never from the visitors' browsers;

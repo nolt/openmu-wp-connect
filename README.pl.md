@@ -21,8 +21,10 @@ główną. Każde z nich działa też bez drugiego.
 
 - WordPress 6.6 lub nowszy, PHP 8.1 lub nowszy.
 - Serwer OpenMU z API dla stron (`/api/website`) i klucz API z rolą
-  **Website (selected functions only)**. API dla stron jest dodawane do OpenMU;
-  dopóki nie trafi do wydania, potrzebny jest build, który je zawiera.
+  **Website (selected functions only)**. API dla stron jest w gałęzi `master` OpenMU
+  od listopada 2026; dopóki nie trafi do wydania, potrzebny jest build z aktualnego
+  `master`. OpenMU opisuje to API i jego klucze w
+  [The API of a website](https://github.com/MUnique/OpenMU/blob/master/docs-website/docs/admin-panel/authentication.md#the-api-of-a-website) (po angielsku).
 
 Bez połączenia bloki statusu serwera, rankingu i zbrojowni pokazują dane
 demonstracyjne (`demo/`), a kokpit informuje o tym administratorów — nic zmyślonego nie
@@ -34,21 +36,36 @@ gracza potrzebują połączenia; do tego czasu o tym informują.
 1. Skopiuj ten katalog do `wp-content/plugins/openmu-wp-connect` (albo wgraj go jako
    zip w **Wtyczki > Dodaj nową > Wyślij wtyczkę na serwer**) i włącz
    **OpenMU WP Connect**.
-2. W admin panelu OpenMU utwórz klucz API z rolą
+2. W admin panelu OpenMU otwórz **API keys** (obok *Users*; potrzebna rola
+   administratora), kliknij **Create API key**, wybierz rolę
    **Website (selected functions only)** i zaznacz funkcje, których używa strona
-   (tabela niżej).
-3. W WordPressie otwórz **Ustawienia > OpenMU WP Connect** i wpisz adres admin
-   panelu OpenMU oraz klucz. Albo wpisz je w `wp-config.php`, wtedy klucz nie leży
-   w bazie; stałe mają pierwszeństwo przed ustawieniami:
+   (tabela niżej). Klucz jest pokazany raz: od razu go skopiuj. Klucz da się utworzyć
+   dopiero, gdy panel ma pierwszego użytkownika. Szczegóły:
+   [API keys for external applications](https://github.com/MUnique/OpenMU/blob/master/docs-website/docs/admin-panel/authentication.md#api-keys-for-external-applications).
+3. W WordPressie otwórz **Ustawienia > OpenMU WP Connect**, wpisz adres admin
+   panelu OpenMU oraz klucz i użyj testu połączenia na tej stronie. Albo wpisz je w
+   `wp-config.php`, wtedy klucz nie leży w bazie; stałe mają pierwszeństwo przed
+   ustawieniami:
 
    ```php
    define( 'OPENMU_WP_CONNECT_API_URL', 'http://192.168.1.10:8080' );
    define( 'OPENMU_WP_CONNECT_API_KEY', '...' );
    ```
 
-4. Utwórz strony i wstaw na nie bloki (wtyczka nie tworzy stron). Oczekiwane są
-   dwa adresy: zbrojownia pod `/armory/` (wiersze rankingu tam linkują) i konto pod
-   `/account/` (jego pozycja w menu brzmi „Sign in” dla gości).
+   **Adres to admin panel widziany z serwera WordPressa**, a nie z Twojej
+   przeglądarki: API wywołuje sam WordPress. Typowe przypadki:
+
+   | Układ | Adres |
+   | --- | --- |
+   | WordPress i OpenMU w Dockerze, w jednej sieci Dockera | nazwa kontenera OpenMU i port panelu wewnątrz kontenera, np. `http://openmu-server:8080` |
+   | Oba na jednej maszynie, port panelu OpenMU wystawiony | `http://<adres maszyny>:<wystawiony port>` (z kontenera WordPressa `localhost` to sam kontener, nie maszyna) |
+   | Na różnych maszynach | adres maszyny z OpenMU i port panelu; port ma być otwarty tylko dla serwera WordPressa, nie dla internetu |
+
+4. Utwórz strony i wstaw na nie bloki. Z motywem towarzyszącym
+   [OpenMU WP Theme](https://github.com/nolt/openmu-wp-theme) dzieje się to samo: włączenie motywu tworzy strony z tymi
+   blokami i menu. Z innym motywem utwórz je sam; oczekiwane są dwa adresy: zbrojownia
+   pod `/armory/` (wiersze rankingu tam linkują) i konto pod `/account/` (jego pozycja
+   w menu brzmi „Sign in” dla gości).
 
 API wywołuj tylko z serwera WordPressa, nigdy z przeglądarek odwiedzających;
 wtyczka robi dokładnie tak.
