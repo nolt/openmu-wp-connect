@@ -2147,3 +2147,7 @@ msgstr "Ustawienia"
 #: includes/blocks.php:63
 msgid "OpenMU"
 msgstr "OpenMU"
+
+#: includes/account.php:421
+msgid "This form was sent from another site and was not accepted. Use the form on this page."
+msgstr "Ten formularz został wysłany z innej strony i nie został przyjęty. Użyj formularza na tej stronie."

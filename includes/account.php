@@ -418,6 +418,7 @@ function openmu_wp_connect_account_message( string $code, int $retry_minutes = 0
 		'unavailable'              => array( 'requirement', __( 'The game server is not available right now. Try again later.', 'openmu-wp-connect' ) ),
 		'session_expired'          => array( 'requirement', __( 'Your session has ended. Log in again.', 'openmu-wp-connect' ) ),
 		'expired_form'             => array( 'requirement', __( 'The form has expired. Please try again.', 'openmu-wp-connect' ) ),
+		'foreign_form'             => array( 'requirement', __( 'This form was sent from another site and was not accepted. Use the form on this page.', 'openmu-wp-connect' ) ),
 	);
 
 	return $messages[ $code ] ?? null;
@@ -461,6 +462,44 @@ function openmu_wp_connect_account_posted( string $name ): string {
 }
 
 /**
+ * Whether the posted form came from a page of this site.
+ *
+ * Browsers send an Origin header with every cross-site POST; it must name this site (the address
+ * of the site or of WordPress). "null" (sandboxed frames, some redirects) does not count as this
+ * site. Without Origin the Referer decides, and without both the request is let through: such
+ * a browser does not send Origin at all, and the nonce still applies.
+ *
+ * @return bool False when the form was posted from another origin.
+ */
+function openmu_wp_connect_account_same_origin(): bool {
+	$allowed = array();
+	foreach ( array( home_url( '/' ), site_url( '/' ) ) as $url ) {
+		$parts = wp_parse_url( $url );
+		if ( ! empty( $parts['scheme'] ) && ! empty( $parts['host'] ) ) {
+			$allowed[] = strtolower( $parts['scheme'] . '://' . $parts['host'] . ( isset( $parts['port'] ) ? ':' . $parts['port'] : '' ) );
+		}
+	}
+
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- compared with the allowed origins only.
+	$origin = isset( $_SERVER['HTTP_ORIGIN'] ) ? strtolower( trim( (string) wp_unslash( $_SERVER['HTTP_ORIGIN'] ) ) ) : '';
+	if ( '' !== $origin ) {
+		return in_array( $origin, $allowed, true );
+	}
+
+	// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- only its scheme, host and port are compared.
+	$referer = isset( $_SERVER['HTTP_REFERER'] ) ? (string) wp_unslash( $_SERVER['HTTP_REFERER'] ) : '';
+	if ( '' !== $referer ) {
+		$parts = wp_parse_url( $referer );
+		if ( empty( $parts['scheme'] ) || empty( $parts['host'] ) ) {
+			return false;
+		}
+		return in_array( strtolower( $parts['scheme'] . '://' . $parts['host'] . ( isset( $parts['port'] ) ? ':' . $parts['port'] : '' ) ), $allowed, true );
+	}
+
+	return true;
+}
+
+/**
  * Handles the forms of the account block: login, refresh, registration, password change, logout.
  *
  * Runs before the page is rendered, so it can set the cookie and redirect.
@@ -473,6 +512,12 @@ function openmu_wp_connect_account_handle_forms(): void {
 	$action = sanitize_key( wp_unslash( $_POST['openmu_wp_connect_action'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- the nonce is checked below, per action.
 	if ( ! in_array( $action, array( 'login', 'refresh', 'register', 'password', 'logout' ), true ) ) {
 		return;
+	}
+
+	// Nonces of visitors who are not WordPress users are the same for everyone, so a nonce alone
+	// would not stop another site from posting a login with the attacker's account (login CSRF).
+	if ( ! openmu_wp_connect_account_same_origin() ) {
+		openmu_wp_connect_account_redirect( 'foreign_form' );
 	}
 
 	$nonce = isset( $_POST['openmu_wp_connect_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['openmu_wp_connect_nonce'] ) ) : '';
