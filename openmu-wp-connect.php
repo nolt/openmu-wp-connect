@@ -3,7 +3,7 @@
  * Plugin Name: OpenMU WP Connect
  * Plugin URI: https://github.com/nolt/openmu-wp-connect
  * Description: Blocks that show live data from an OpenMU game server through its website API: server status, character ranking, mini game rankings, event schedule, the armory and a player account. The site never touches the game database. Until the API is connected the blocks show demo data.
- * Version: 0.1.0
+ * Version: 0.1.1
  * Requires at least: 6.6
  * Requires PHP: 8.1
  * Author: Nolt
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
 define( 'OPENMU_WP_CONNECT_DIR', plugin_dir_path( __FILE__ ) );
 
 /** Plugin version; used to bust browser caches of the plugin's CSS and JS. */
-define( 'OPENMU_WP_CONNECT_VERSION', '0.1.0' );
+define( 'OPENMU_WP_CONNECT_VERSION', '0.1.1' );
 
 require_once OPENMU_WP_CONNECT_DIR . 'includes/interface-data-source.php';
 require_once OPENMU_WP_CONNECT_DIR . 'includes/class-openmu-wp-connect-demo-source.php';
